@@ -77,6 +77,17 @@ templateVocabularyHelperTypeEnum = """
 type Enum$nameCamel = $typeEnumeration
 """
 
+templateVocabularyHelperEnumFromString = """
+stringToEnum$nameCamel : String -> Enum$nameCamel
+stringToEnum$nameCamel value =
+    case value of
+        $typeEnumerationFromString
+        "ui:content-appearance/header/one" -> UiContentAppearanceHeaderOne
+        _ ->
+            $typeEnumerationFromStringDefault
+            UiContentAppearanceParagraphs
+
+"""
 
 templateVocabularyHelperStringForId = """
 {-|  $description -}

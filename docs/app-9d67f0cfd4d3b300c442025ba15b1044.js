@@ -9585,6 +9585,14 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppe
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderThree = {ctor: 'UiContentAppearanceHeaderThree'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderTwo = {ctor: 'UiContentAppearanceHeaderTwo'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne = {ctor: 'UiContentAppearanceHeaderOne'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumContentAppearance = function (value) {
+	var _p0 = value;
+	if (_p0 === 'ui:content-appearance/header/one') {
+		return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne;
+	} else {
+		return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs;
+	}
+};
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsum = A2(

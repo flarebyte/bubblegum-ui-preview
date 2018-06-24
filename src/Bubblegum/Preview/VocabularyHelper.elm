@@ -77,6 +77,16 @@ type EnumContentAppearance
     | UiContentAppearanceParagraphs
 
 
+stringToEnumContentAppearance : String -> EnumContentAppearance
+stringToEnumContentAppearance value =
+    case value of
+        "ui:content-appearance/header/one" ->
+            UiContentAppearanceHeaderOne
+
+        _ ->
+            UiContentAppearanceParagraphs
+
+
 {-| The appearance of the field content
 -}
 getContentAppearance : SettingsEntity.Model -> Outcome String
