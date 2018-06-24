@@ -3,5 +3,6 @@ content-right-to-left,Whether the content requires right to left,Bool,user attri
 user-language,Language used by the user,String,small! attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 user-right-to-left,Whether the user is using right to left,Bool,attribute,
 content,The content of the field,String,state very-large attribute,some content 
+content-appearance,The appearance of the field content,String, enum!,
 selected,The selected tags for the field,List String,state compactUris,id:suggestion:1 
 

@@ -42,6 +42,13 @@ ui_content =
     "ui:content"
 
 
+{-| The appearance of the field content. (String)
+-}
+ui_contentAppearance : String
+ui_contentAppearance =
+    "ui:content-appearance"
+
+
 {-| The selected tags for the field. (List String)
 -}
 ui_selected : String

@@ -53,6 +53,27 @@ getContent settings =
         |> Validation.withinStringCharsRange limitVeryLargeRange
 
 
+enumContentAppearance : List String
+enumContentAppearance =
+    [ "ui:content-appearance/h1"
+    , "ui:content-appearance/h2"
+    , "ui:content-appearance/h3"
+    , "ui:content-appearance/h4"
+    , "ui:content-appearance/h5"
+    , "ui:content-appearance/h6"
+    , "ui:content-appearance/block-quote"
+    , "ui:content-appearance/paragraphs"
+    ]
+
+
+{-| The appearance of the field content
+-}
+getContentAppearance : SettingsEntity.Model -> Outcome String
+getContentAppearance settings =
+    findString ui_contentAppearance settings.attributes
+        |> Validation.matchEnum enumContentAppearance
+
+
 {-| The selected tags for the field
 -}
 getSelected : StateEntity.Model -> Outcome (List String)

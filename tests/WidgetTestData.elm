@@ -582,6 +582,27 @@ selectorsNotContentLanguage : List Selector
 selectorsNotContentLanguage = [ Selector.class "bubblegum-tag__input",
     Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
 
+-- The appearance of the field content
+withSettingsContentAppearance: Int -> SettingsEntity.Model
+withSettingsContentAppearance value = {
+    attributes = [
+        attr ui_contentAppearance (createString value)
+    ]
+ }
+
+fuzzyContentAppearance : Fuzzer Int
+fuzzyContentAppearance = intRange 1 1
+
+fuzzyNotContentAppearance : Fuzzer Int
+fuzzyNotContentAppearance = intRange 100 400
+
+selectorsContentAppearance : List Selector
+selectorsContentAppearance = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotContentAppearance : List Selector
+selectorsNotContentAppearance = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
 -- private
 
 

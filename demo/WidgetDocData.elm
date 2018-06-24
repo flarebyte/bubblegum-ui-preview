@@ -22,7 +22,8 @@ tagWidgetDoc =
         , createKey ui_userRightToLeft ZeroOrOne [ "true", "false", "other" ] descUserRightToLeft
         ]
     , settings =
-        []
+        [ createKey ui_contentAppearance ZeroOrOne [ "", "other" ] descContentAppearance
+        ]
     , stateAttributes =
         [ createKey ui_content ZeroOrOne [ "some content", "other" ] descContent
         , createKey ui_selected ZeroOrOne [ "id:suggestion:1", "other" ] descSelected

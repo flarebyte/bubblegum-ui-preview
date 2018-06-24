@@ -32,6 +32,11 @@ descContent =
     "The content of the field"
 
 
+descContentAppearance : String
+descContentAppearance =
+    "The appearance of the field content"
+
+
 descSelected : String
 descSelected =
     "The selected tags for the field"

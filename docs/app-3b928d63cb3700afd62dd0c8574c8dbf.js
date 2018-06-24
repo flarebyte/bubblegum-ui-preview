@@ -9374,6 +9374,7 @@ var _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle = function 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDescription = 'ui:constituent-description';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentLabel = 'ui:constituent-label';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_selected = 'ui:selected';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance = 'ui:content-appearance';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content = 'ui:content';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage = 'ui:user-language';
@@ -9512,6 +9513,45 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getConstituen
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getSelected = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_selected, settings.attributes);
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance = {
+	ctor: '::',
+	_0: 'ui:content-appearance/h1',
+	_1: {
+		ctor: '::',
+		_0: 'ui:content-appearance/h2',
+		_1: {
+			ctor: '::',
+			_0: 'ui:content-appearance/h3',
+			_1: {
+				ctor: '::',
+				_0: 'ui:content-appearance/h4',
+				_1: {
+					ctor: '::',
+					_0: 'ui:content-appearance/h5',
+					_1: {
+						ctor: '::',
+						_0: 'ui:content-appearance/h6',
+						_1: {
+							ctor: '::',
+							_0: 'ui:content-appearance/block-quote',
+							_1: {
+								ctor: '::',
+								_0: 'ui:content-appearance/paragraphs',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentAppearance = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$matchEnum,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance, settings.attributes));
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent = function (settings) {
 	return A2(
@@ -10388,6 +10428,7 @@ var _flarebyte$bubblegum_ui_tag$AttributeDoc$OnlyOne = {ctor: 'OnlyOne'};
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentDescription = 'Description of the constituent';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentLabel = 'Label of the constituent';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance = 'The appearance of the field content';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContent = 'The content of the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft = 'Whether the user is using right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used by the user';
@@ -10551,7 +10592,24 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 			}
 		}
 	},
-	settings: {ctor: '[]'},
+	settings: {
+		ctor: '::',
+		_0: A4(
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance,
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+			{
+				ctor: '::',
+				_0: '',
+				_1: {
+					ctor: '::',
+					_0: 'other',
+					_1: {ctor: '[]'}
+				}
+			},
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance),
+		_1: {ctor: '[]'}
+	},
 	stateAttributes: {
 		ctor: '::',
 		_0: A4(

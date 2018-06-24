@@ -5,6 +5,7 @@ import csv
 from string import Template
 from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv, readFileAsString
 from vocabulary_template import * 
+from vocabulary_meta import * 
 
 ui_keys_csv = "ui-keys.csv"
 ui_range_keys_csv = "ui-range-keys.csv"
@@ -18,8 +19,12 @@ def formatTemplate(template, row):
         signature = signatureField.strip()
         namecamel = camelCase(name)
         nameCamel = camelCaseUpper(name)
-        rangeRestriction=checkRangeRestriction(extra)
+        rangeRestriction=checkRangeRestriction(extra, nameCamel)
         examples = generateExamples(examplesField, signature)
+        enumeration = None
+        if name in enumerations:
+            parts = ["\"{}\"".format(a) for a in enumerations[name]]
+            enumeration = ",".join(parts)
         entity = "SettingsEntity"
         if isState(row):
             entity = "StateEntity" 
@@ -31,7 +36,8 @@ def formatTemplate(template, row):
             nameCamel=nameCamel,
             rangeRestriction=rangeRestriction,
             examples = examples,
-            entity = entity
+            entity = entity,
+            enumeration = enumeration
             )
 
 def formatRangeTemplate(template, row):
@@ -86,6 +92,8 @@ def createVocabularyHelper():
             if isBool(row):
                 file.write(formatTemplate(templateVocabularyHelperBool, row))
             if isString(row):
+                if isEnum(row):
+                    file.write(formatTemplate(templateVocabularyHelperEnum, row))
                 file.write(formatTemplate(templateVocabularyHelperString, row))
             if isListString(row):
                 if isCurieList(row):
@@ -231,6 +239,13 @@ def isAttribute(row):
     else:
         return False
 
+def isEnum(row):
+    nameField, descriptionField, signatureField, extraField, examplesField = row
+    if  "enum" in extraField:
+        return True
+    else:
+        return False
+
 def isSettings(row):
     return not (isUserSettings(row) or isState(row))        
 
@@ -240,7 +255,7 @@ def prefixWithComa(keyword, yes, text):
     else:
         return text
 
-def checkRangeRestriction(extra):
+def checkRangeRestriction(extra, nameCamel):
     if "small!" in extra:
         return "|> Validation.withinStringCharsRange limitSmallRangeNotEmpty"
     elif "small" in extra:
@@ -255,6 +270,8 @@ def checkRangeRestriction(extra):
         return "|> Validation.withinStringCharsRange limitVeryLargeRange"
     elif "curie!" in extra:
         return "|> Validation.matchCompactUri"
+    elif "enum!" in extra:
+        return "|> Validation.matchEnum enum" + nameCamel
     else:
         return ""
 

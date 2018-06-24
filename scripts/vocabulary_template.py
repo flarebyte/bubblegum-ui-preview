@@ -66,6 +66,14 @@ get$nameCamel settings =
         $rangeRestriction
 """
 
+templateVocabularyHelperEnum = """
+enum$nameCamel : List String
+enum$nameCamel = [
+       $enumeration 
+    ]    
+"""
+
+
 templateVocabularyHelperStringForId = """
 {-|  $description -}
 get$nameCamel : $entity.Model -> String -> Outcome String
