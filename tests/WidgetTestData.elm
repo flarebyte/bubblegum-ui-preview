@@ -561,6 +561,27 @@ selectorsDangerMaximumTags : List Selector
 selectorsDangerMaximumTags =
     [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ] --should be danger but tests tricky to update
 
+-- Language of the content
+withSettingsContentLanguage: Int -> SettingsEntity.Model
+withSettingsContentLanguage value = {
+    attributes = [
+        attr ui_contentLanguage (createString value)
+    ]
+ }
+
+fuzzyContentLanguage : Fuzzer Int
+fuzzyContentLanguage = intRange 1 1
+
+fuzzyNotContentLanguage : Fuzzer Int
+fuzzyNotContentLanguage = intRange 100 400
+
+selectorsContentLanguage : List Selector
+selectorsContentLanguage = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotContentLanguage : List Selector
+selectorsNotContentLanguage = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
 -- private
 
 

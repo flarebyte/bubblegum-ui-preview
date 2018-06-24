@@ -2,17 +2,14 @@ module WidgetBuilder exposing (viewWidget)
 
 import AppModel exposing (AppModel)
 import AppMsg exposing (AppMsg(..))
-import Bubblegum.Tag.Adapter as Adapter
-import Bubblegum.Tag.Widget as Widget
+import Bubblegum.Preview.Adapter as Adapter
+import Bubblegum.Preview.Widget as Widget
 import Html exposing (..)
 
 
 adapter : Adapter.Model AppMsg
 adapter =
-    { onSearchInput = OnSearchInputContent
-    , onToggleDropbox = OnToggleDropbox
-    , onAddTag = OnAddTag
-    , onDeleteTag = OnDeleteTag
+    { onMouseOver = OnMouseOver
     }
 
 

@@ -14,7 +14,7 @@ import AppMsg exposing (AppMsg(..))
 import Bubblegum.Entity.Attribute exposing (deleteAttributeByKey, replaceAttributeByKey)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
-import Bubblegum.Tag.Vocabulary exposing (..)
+import Bubblegum.Preview.Vocabulary exposing (..)
 import Debug as Debug
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -38,11 +38,6 @@ main =
 update : AppMsg -> AppModel -> AppModel
 update msg model =
     case msg of
-        OnSearchInputContent value ->
-            replaceAttributeByKey ui_search [ value ] model.state.attributes
-                |> StateEntity.asAttributesIn model.state
-                |> asStateIn model
-
         OnSelectSetting isUser key value ->
             replaceAttributeByKey key [ value ] (getSettingsAttributes isUser model)
                 |> SettingsEntity.asAttributesIn (getSettings isUser model)
@@ -63,20 +58,8 @@ update msg model =
                 |> StateEntity.asAttributesIn (getState model)
                 |> asStateIn model
 
-        OnToggleDropbox ->
-            replaceAttributeByKey ui_suggesting [ notSuggesting model.state ] model.state.attributes
-                |> StateEntity.asAttributesIn model.state
-                |> asStateIn model
-
-        OnAddTag tagId ->
-            replaceAttributeByKey ui_selected (addTagIdToSelected tagId model.state) model.state.attributes
-                |> StateEntity.asAttributesIn model.state
-                |> asStateIn model
-
-        OnDeleteTag tagId ->
-            replaceAttributeByKey ui_selected (deleteTagIdToSelected tagId model.state) model.state.attributes
-                |> StateEntity.asAttributesIn model.state
-                |> asStateIn model
+        OnMouseOver key ->
+            model
 
 
 

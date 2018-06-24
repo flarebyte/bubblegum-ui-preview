@@ -1,4 +1,4 @@
-module Bubblegum.Tag.VocabularyHelper exposing (..)
+module Bubblegum.Preview.VocabularyHelper exposing (..)
 
 {-| Helpers for accessing settings
 
@@ -10,9 +10,17 @@ import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Entity.Validation as Validation
-import Bubblegum.Tag.EntityHelper exposing (..)
-import Bubblegum.Tag.HelperLimits exposing (..)
-import Bubblegum.Tag.Vocabulary exposing (..)
+import Bubblegum.Preview.EntityHelper exposing (..)
+import Bubblegum.Preview.HelperLimits exposing (..)
+import Bubblegum.Preview.Vocabulary exposing (..)
+
+
+{-| Language of the content
+-}
+getContentLanguage : SettingsEntity.Model -> Outcome String
+getContentLanguage settings =
+    findString ui_contentLanguage settings.attributes
+        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
 
 
 {-| Whether the content requires right to left
@@ -20,66 +28,6 @@ import Bubblegum.Tag.Vocabulary exposing (..)
 isContentRightToLeft : SettingsEntity.Model -> Outcome Bool
 isContentRightToLeft settings =
     findBool ui_contentRightToLeft settings.attributes
-
-
-{-| The selected tags for the field
--}
-getSelected : StateEntity.Model -> Outcome (List String)
-getSelected settings =
-    findListCompactUri ui_selected settings.attributes
-
-
-{-| Suggesting is currently happening
--}
-isSuggesting : StateEntity.Model -> Outcome Bool
-isSuggesting settings =
-    findBool ui_suggesting settings.attributes
-
-
-{-| The list of suggested tags for the field
--}
-getSuggestion : SettingsEntity.Model -> Outcome (List String)
-getSuggestion settings =
-    findListCompactUri ui_suggestion settings.attributes
-
-
-{-| Search term for filtering the available options
--}
-getSearch : StateEntity.Model -> Outcome String
-getSearch settings =
-    findString ui_search settings.attributes
-
-
-{-| Help message to highlight an issue with the content
--}
-getDangerHelp : StateEntity.Model -> Outcome String
-getDangerHelp settings =
-    findString ui_dangerHelp settings.attributes
-        |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
-
-
-{-| Some help tip related to the field
--}
-getHelp : SettingsEntity.Model -> Outcome String
-getHelp settings =
-    findString ui_help settings.attributes
-        |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
-
-
-{-| Label related to the field
--}
-getLabel : SettingsEntity.Model -> Outcome String
-getLabel settings =
-    findString ui_label settings.attributes
-        |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
-
-
-{-| Label related to the search field
--}
-getSearchLabel : SettingsEntity.Model -> Outcome String
-getSearchLabel settings =
-    findString ui_searchLabel settings.attributes
-        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
 
 
 {-| Language used by the user
@@ -97,20 +45,19 @@ isUserRightToLeft settings =
     findBool ui_userRightToLeft settings.attributes
 
 
-{-| The range of tags accepted for successful content
+{-| The content of the field
 -}
-getSuccessTagRange : SettingsEntity.Model -> Outcome ( Int, Int )
-getSuccessTagRange settings =
-    findIntRange ( ui_successMinimumTags, ui_successMaximumTags ) settings.attributes
-        |> Validation.withinIntRange limitVeryLargeRangeNotEmpty
+getContent : StateEntity.Model -> Outcome String
+getContent settings =
+    findString ui_content settings.attributes
+        |> Validation.withinStringCharsRange limitVeryLargeRange
 
 
-{-| The range of tags triggering a warning
+{-| The selected tags for the field
 -}
-getDangerTagRange : SettingsEntity.Model -> Outcome ( Int, Int )
-getDangerTagRange settings =
-    findIntRange ( ui_dangerMinimumTags, ui_dangerMaximumTags ) settings.attributes
-        |> Validation.withinIntRange limitVeryLargeRangeNotEmpty
+getSelected : StateEntity.Model -> Outcome (List String)
+getSelected settings =
+    findListCompactUri ui_selected settings.attributes
 
 
 {-| Label of the constituent

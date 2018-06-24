@@ -12,24 +12,12 @@ Please have a look at the main [documentation](https://github.com/flarebyte/bubb
 
 -}
 
-import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
+import Bubblegum.Entity.Outcome exposing (Outcome(..))
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.Adapter as TagAdapter
-import Bubblegum.Preview.BulmaHelper
-    exposing
-        ( appendHtmlIfSuccess
-        , dangerHelp
-        , dropdownActiveStatus
-        , infoHelp
-        , mainBox
-        , searchDropdown
-        , selectedTags
-        , suggestionDropdown
-        , widgetLabel
-        )
-import Bubblegum.Tag.Helper exposing (getRemainingSuggestions)
-import Bubblegum.Tag.VocabularyHelper exposing (..)
+import Bubblegum.Preview.BulmaHelper exposing (mainBox)
+import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Html exposing (..)
 
 
@@ -53,34 +41,6 @@ import Html exposing (..)
 -}
 view : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
 view adapter userSettings settings state =
-    let
-        addLabel =
-            appendHtmlIfSuccess widgetLabel (getLabel settings)
-
-        addHelp =
-            appendHtmlIfSuccess infoHelp (getHelp settings)
-
-        addDangerHelp =
-            appendHtmlIfSuccess dangerHelp (getDangerHelp state)
-
-        addSearchLabel =
-            getSearchLabel settings
-
-        suggestions =
-            getRemainingSuggestions settings state
-
-        isDropdownActive =
-            isSuggesting state |> Outcome.toMaybe |> Maybe.withDefault False |> dropdownActiveStatus
-    in
     mainBox (getUserLanguage userSettings)
         (isUserRightToLeft userSettings)
-        ([ selectedTags adapter userSettings settings state ]
-            ++ addLabel []
-            ++ [ div [ isDropdownActive ]
-                    [ searchDropdown addSearchLabel adapter
-                    , suggestionDropdown adapter userSettings settings suggestions
-                    ]
-               ]
-            |> addDangerHelp
-            |> addHelp
-        )
+        []

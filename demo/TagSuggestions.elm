@@ -1,7 +1,7 @@
 module TagSuggestions exposing (getExampleAttributes)
 
 import Bubblegum.Entity.Attribute as Attribute
-import Bubblegum.Tag.Vocabulary exposing (..)
+import Bubblegum.Preview.Vocabulary exposing (..)
 import Ipsum exposing (ipsum)
 import List as List
 
@@ -61,15 +61,9 @@ suggestion uid infoTags =
     ]
 
 
-defaultSuggestions : List String
-defaultSuggestions =
-    List.range 1 28 |> List.map (toString >> (++) "id:suggestion:")
-
-
 getExampleAttributes : List Attribute.Model
 getExampleAttributes =
-    [ attr ui_suggestion defaultSuggestions ]
-        ++ suggestion 1 [ "info a", "info a 2" ]
+    suggestion 1 [ "info a", "info a 2" ]
         ++ suggestion 2 [ "info b" ]
         ++ suggestion 3 [ "info c", "info2" ]
         ++ suggestion 4 [ "info d" ]
