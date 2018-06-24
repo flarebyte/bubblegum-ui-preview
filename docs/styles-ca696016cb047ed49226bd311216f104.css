@@ -1,8 +1,0 @@
-.fixed {
-    position: fixed; 
-  }
-
-.scrollable {
-  overflow-y: scroll;
-  height: 70vh;
-}  

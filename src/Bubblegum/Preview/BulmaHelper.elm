@@ -13,6 +13,7 @@ This helper facilitates the creation of Bulma styled html elements.
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
+import Bubblegum.Preview.Helper exposing (ListItem)
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Html exposing (..)
@@ -109,19 +110,13 @@ type TextPreviewType
     | Paragraphs String
 
 
-type alias ListItem =
-    { label : Outcome String
-    , description : Outcome String
-    }
-
-
 type ListPreviewType
-    = OrderedListDecimal (List ListItem)
-    | OrderedListAlphabeticUpper (List ListItem)
-    | OrderedListAlphabeticLower (List ListItem)
-    | OrderedListRomanUpper (List ListItem)
-    | OrderedListRomanLower (List ListItem)
-    | BulletedList (List ListItem)
+    = OrderedListDecimal
+    | OrderedListAlphabeticUpper
+    | OrderedListAlphabeticLower
+    | OrderedListRomanUpper
+    | OrderedListRomanLower
+    | BulletedList
 
 
 previewText : TextPreviewType -> Html msg
@@ -162,46 +157,53 @@ previewTextListItem listItem =
     li ([] |> appendAttributeIfSuccess title listItem.description)
         ([] |> appendHtmlIfSuccess text listItem.label)
 
+previewTextListItems : List ListItem -> List (Html msg)
+previewTextListItems list =
+    List.map previewTextListItem list
 
 previewTextListType : ListPreviewType -> String
 previewTextListType listPreviewType =
     case listPreviewType of
-        OrderedListDecimal _ ->
+        OrderedListDecimal ->
             "1"
 
-        OrderedListAlphabeticUpper _ ->
+        OrderedListAlphabeticUpper ->
             "A"
 
-        OrderedListAlphabeticLower _ ->
+        OrderedListAlphabeticLower ->
             "a"
 
-        OrderedListRomanUpper _ ->
+        OrderedListRomanUpper ->
             "I"
 
-        OrderedListRomanLower _ ->
+        OrderedListRomanLower ->
             "i"
 
-        BulletedList _ ->
+        BulletedList ->
             "disc"
 
 
-previewTextList : ListPreviewType -> Html msg
-previewTextList listPreviewType =
+previewTextList : ListPreviewType -> Outcome (List ListItem) -> Html msg
+previewTextList listPreviewType outcome =
+    let
+        liList = [] |> appendListHtmlIfSuccess previewTextListItems outcome
+    in
+        
     case listPreviewType of
-        OrderedListDecimal list ->
-            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListDecimal  ->
+             liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        OrderedListAlphabeticUpper list ->
-            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListAlphabeticUpper  ->
+            liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        OrderedListAlphabeticLower list ->
-            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListAlphabeticLower ->
+            liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        OrderedListRomanUpper list ->
-            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListRomanUpper ->
+            liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        OrderedListRomanLower list ->
-            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListRomanLower ->
+            liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        BulletedList list ->
-            List.map previewTextListItem list |> ul []
+        BulletedList ->
+            liList |> ul []

@@ -1,7 +1,8 @@
 module Bubblegum.Preview.Helper
     exposing
-        ( getSelectedAsList
+        ( ListItem
         , getUserIsoLanguage
+        , getListContent
         )
 
 {-| Helper to keep the noise away from Widget
@@ -13,7 +14,9 @@ import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Preview.VocabularyHelper
     exposing
-        ( getSelected
+        ( getConstituentDescription
+        , getConstituentLabel
+        , getSelected
         , getUserLanguage
         )
 import Maybe exposing (Maybe(..))
@@ -31,6 +34,22 @@ getUserIsoLanguage settings =
     getUserLanguageOrEnglish settings |> toIsoLanguage
 
 
-getSelectedAsList : StateEntity.Model -> List String
-getSelectedAsList state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
+type alias ListItem =
+    { label : Outcome String
+    , description : Outcome String
+    }
+
+
+getListItem : SettingsEntity.Model -> String -> ListItem
+getListItem settings id =
+    { label = getConstituentLabel settings id
+    , description = getConstituentDescription settings id
+    }
+
+getListItems : SettingsEntity.Model -> List String -> List ListItem
+getListItems settings ids =
+    List.map (getListItem settings) ids
+
+getListContent : SettingsEntity.Model -> StateEntity.Model -> Outcome (List ListItem)
+getListContent settings state =
+    getSelected state  |> Outcome.map (getListItems settings)

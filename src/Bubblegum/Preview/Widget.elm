@@ -41,6 +41,13 @@ import Html exposing (..)
 -}
 view : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
 view adapter userSettings settings state =
+    let
+        addContent =
+            getContent state
+
+        addListContent =
+            getListContent settings state
+    in
     mainBox (getUserLanguage userSettings)
         (isUserRightToLeft userSettings)
         []
