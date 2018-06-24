@@ -9371,9 +9371,6 @@ var _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle = function 
 			outcome));
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDangerTag = 'ui:constituent-danger-tag';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentWarningTag = 'ui:constituent-warning-tag';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentTag = 'ui:constituent-tag';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDescription = 'ui:constituent-description';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentLabel = 'ui:constituent-label';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_selected = 'ui:selected';
@@ -9499,18 +9496,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findIntRange = F2
 					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$findOutcomeByKeyTuple, keyTuple, attributes))));
 	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getConstituentDangerTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDangerTag, settings.attributes, id);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getConstituentWarningTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentWarningTag, settings.attributes, id);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getConstituentTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentTag, settings.attributes, id);
-	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getConstituentDescription = F2(
 	function (settings, id) {
 		return A2(
@@ -9577,357 +9562,101 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$attri = F3(
 			values: values
 		};
 	});
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion = F2(
-	function (uid, infoTags) {
-		var dangerTags = _elm_lang$core$Native_Utils.eq(
-			A2(_elm_lang$core$Basics_ops['%'], uid, 5),
-			0) ? {
-			ctor: '::',
-			_0: _elm_lang$core$String$reverse(
-				A3(_elm_lang$core$String$slice, uid, uid + 7, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum)),
-			_1: {ctor: '[]'}
-		} : {ctor: '[]'};
-		var warningTags = _elm_lang$core$Native_Utils.eq(
-			A2(_elm_lang$core$Basics_ops['%'], uid, 3),
-			0) ? {
-			ctor: '::',
-			_0: A3(_elm_lang$core$String$slice, uid, uid + 5, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum),
-			_1: {ctor: '[]'}
-		} : {ctor: '[]'};
-		var description = A3(
-			_elm_lang$core$String$slice,
-			uid,
-			3 * uid,
-			_elm_lang$core$String$reverse(_flarebyte$bubblegum_ui_tag$Ipsum$ipsum));
-		var label = A3(_elm_lang$core$String$slice, uid, 2 * uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum);
-		var id = A2(
-			_elm_lang$core$Basics_ops['++'],
-			'id:suggestion:',
-			_elm_lang$core$Basics$toString(uid));
-		return {
+var _flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion = function (uid) {
+	var description = A3(
+		_elm_lang$core$String$slice,
+		uid,
+		3 * uid,
+		_elm_lang$core$String$reverse(_flarebyte$bubblegum_ui_tag$Ipsum$ipsum));
+	var label = A3(_elm_lang$core$String$slice, uid, 2 * uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum);
+	var id = A2(
+		_elm_lang$core$Basics_ops['++'],
+		'id:suggestion:',
+		_elm_lang$core$Basics$toString(uid));
+	return {
+		ctor: '::',
+		_0: A3(
+			_flarebyte$bubblegum_ui_tag$TagSuggestions$attri,
+			id,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentLabel,
+			{
+				ctor: '::',
+				_0: label,
+				_1: {ctor: '[]'}
+			}),
+		_1: {
 			ctor: '::',
 			_0: A3(
 				_flarebyte$bubblegum_ui_tag$TagSuggestions$attri,
 				id,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentLabel,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDescription,
 				{
 					ctor: '::',
-					_0: label,
+					_0: description,
 					_1: {ctor: '[]'}
 				}),
-			_1: {
-				ctor: '::',
-				_0: A3(
-					_flarebyte$bubblegum_ui_tag$TagSuggestions$attri,
-					id,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDescription,
-					{
-						ctor: '::',
-						_0: description,
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentTag, infoTags),
-					_1: {
-						ctor: '::',
-						_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentWarningTag, warningTags),
-						_1: {
-							ctor: '::',
-							_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_constituentDangerTag, dangerTags),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		};
-	});
+			_1: {ctor: '[]'}
+		}
+	};
+};
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 	_elm_lang$core$Basics_ops['++'],
-	A2(
-		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-		1,
-		{
-			ctor: '::',
-			_0: 'info a',
-			_1: {
-				ctor: '::',
-				_0: 'info a 2',
-				_1: {ctor: '[]'}
-			}
-		}),
+	_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(15),
 	A2(
 		_elm_lang$core$Basics_ops['++'],
-		A2(
-			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-			2,
-			{
-				ctor: '::',
-				_0: 'info b',
-				_1: {ctor: '[]'}
-			}),
+		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(1),
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			A2(
-				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-				3,
-				{
-					ctor: '::',
-					_0: 'info c',
-					_1: {
-						ctor: '::',
-						_0: 'info2',
-						_1: {ctor: '[]'}
-					}
-				}),
+			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(19),
 			A2(
 				_elm_lang$core$Basics_ops['++'],
-				A2(
-					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-					4,
-					{
-						ctor: '::',
-						_0: 'info d',
-						_1: {ctor: '[]'}
-					}),
+				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(2),
 				A2(
 					_elm_lang$core$Basics_ops['++'],
-					A2(
-						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-						5,
-						{
-							ctor: '::',
-							_0: 'info e',
-							_1: {ctor: '[]'}
-						}),
+					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(3),
 					A2(
 						_elm_lang$core$Basics_ops['++'],
-						A2(
-							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-							6,
-							{
-								ctor: '::',
-								_0: 'info f',
-								_1: {ctor: '[]'}
-							}),
+						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(7),
 						A2(
 							_elm_lang$core$Basics_ops['++'],
-							A2(
-								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-								7,
-								{
-									ctor: '::',
-									_0: 'info g',
-									_1: {ctor: '[]'}
-								}),
+							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(16),
 							A2(
 								_elm_lang$core$Basics_ops['++'],
-								A2(
-									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-									8,
-									{
-										ctor: '::',
-										_0: 'info h',
-										_1: {ctor: '[]'}
-									}),
+								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(17),
 								A2(
 									_elm_lang$core$Basics_ops['++'],
-									A2(
-										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-										9,
-										{
-											ctor: '::',
-											_0: 'info i',
-											_1: {ctor: '[]'}
-										}),
+									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(18),
 									A2(
 										_elm_lang$core$Basics_ops['++'],
-										A2(
-											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-											10,
-											{
-												ctor: '::',
-												_0: 'info j',
-												_1: {ctor: '[]'}
-											}),
+										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(8),
 										A2(
 											_elm_lang$core$Basics_ops['++'],
-											A2(
-												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-												11,
-												{
-													ctor: '::',
-													_0: 'info k',
-													_1: {ctor: '[]'}
-												}),
+											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(9),
 											A2(
 												_elm_lang$core$Basics_ops['++'],
-												A2(
-													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-													12,
-													{
-														ctor: '::',
-														_0: 'info l',
-														_1: {ctor: '[]'}
-													}),
+												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(10),
 												A2(
 													_elm_lang$core$Basics_ops['++'],
-													A2(
-														_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-														13,
-														{
-															ctor: '::',
-															_0: 'info m',
-															_1: {ctor: '[]'}
-														}),
+													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(11),
 													A2(
 														_elm_lang$core$Basics_ops['++'],
-														A2(
-															_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-															14,
-															{
-																ctor: '::',
-																_0: 'info n',
-																_1: {ctor: '[]'}
-															}),
+														_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(12),
 														A2(
 															_elm_lang$core$Basics_ops['++'],
-															A2(
-																_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																15,
-																{
-																	ctor: '::',
-																	_0: 'info o',
-																	_1: {ctor: '[]'}
-																}),
+															_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(4),
 															A2(
 																_elm_lang$core$Basics_ops['++'],
-																A2(
-																	_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																	16,
-																	{
-																		ctor: '::',
-																		_0: 'info p',
-																		_1: {ctor: '[]'}
-																	}),
+																_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(5),
 																A2(
 																	_elm_lang$core$Basics_ops['++'],
-																	A2(
-																		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																		17,
-																		{
-																			ctor: '::',
-																			_0: 'info q',
-																			_1: {ctor: '[]'}
-																		}),
+																	_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(6),
 																	A2(
 																		_elm_lang$core$Basics_ops['++'],
-																		A2(
-																			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																			18,
-																			{
-																				ctor: '::',
-																				_0: 'info r',
-																				_1: {ctor: '[]'}
-																			}),
+																		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(13),
 																		A2(
 																			_elm_lang$core$Basics_ops['++'],
-																			A2(
-																				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																				19,
-																				{
-																					ctor: '::',
-																					_0: 'info s',
-																					_1: {ctor: '[]'}
-																				}),
-																			A2(
-																				_elm_lang$core$Basics_ops['++'],
-																				A2(
-																					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																					20,
-																					{
-																						ctor: '::',
-																						_0: 'info t',
-																						_1: {ctor: '[]'}
-																					}),
-																				A2(
-																					_elm_lang$core$Basics_ops['++'],
-																					A2(
-																						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																						21,
-																						{
-																							ctor: '::',
-																							_0: 'info u',
-																							_1: {ctor: '[]'}
-																						}),
-																					A2(
-																						_elm_lang$core$Basics_ops['++'],
-																						A2(
-																							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																							22,
-																							{
-																								ctor: '::',
-																								_0: 'info v',
-																								_1: {ctor: '[]'}
-																							}),
-																						A2(
-																							_elm_lang$core$Basics_ops['++'],
-																							A2(
-																								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																								23,
-																								{
-																									ctor: '::',
-																									_0: 'info w',
-																									_1: {ctor: '[]'}
-																								}),
-																							A2(
-																								_elm_lang$core$Basics_ops['++'],
-																								A2(
-																									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																									24,
-																									{
-																										ctor: '::',
-																										_0: 'info x',
-																										_1: {ctor: '[]'}
-																									}),
-																								A2(
-																									_elm_lang$core$Basics_ops['++'],
-																									A2(
-																										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																										25,
-																										{
-																											ctor: '::',
-																											_0: 'info y',
-																											_1: {ctor: '[]'}
-																										}),
-																									A2(
-																										_elm_lang$core$Basics_ops['++'],
-																										A2(
-																											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																											26,
-																											{
-																												ctor: '::',
-																												_0: 'info z',
-																												_1: {ctor: '[]'}
-																											}),
-																										A2(
-																											_elm_lang$core$Basics_ops['++'],
-																											A2(
-																												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																												27,
-																												{
-																													ctor: '::',
-																													_0: 'info ab',
-																													_1: {ctor: '[]'}
-																												}),
-																											A2(
-																												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																												28,
-																												{
-																													ctor: '::',
-																													_0: 'info ac',
-																													_1: {ctor: '[]'}
-																												}))))))))))))))))))))))))))));
+																			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(14),
+																			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion(20))))))))))))))))))));
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$widgetId = 'id:tag:123';
 
 var _flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected = F2(
@@ -10144,6 +9873,111 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_IsoLanguage$toIsoLanguage = fu
 	}
 };
 
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = function (textType) {
+	var _p0 = textType;
+	switch (_p0.ctor) {
+		case 'BlockQuote':
+			return A2(
+				_elm_lang$html$Html$blockquote,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(_p0._0),
+					_1: {ctor: '[]'}
+				});
+		case 'Paragraphs':
+			return A2(
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(_p0._0),
+					_1: {ctor: '[]'}
+				});
+		default:
+			var _p2 = _p0._1;
+			var _p1 = _p0._0;
+			switch (_p1) {
+				case 1:
+					return A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				case 2:
+					return A2(
+						_elm_lang$html$Html$h2,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				case 3:
+					return A2(
+						_elm_lang$html$Html$h3,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				case 4:
+					return A2(
+						_elm_lang$html$Html$h4,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				case 5:
+					return A2(
+						_elm_lang$html$Html$h5,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				case 6:
+					return A2(
+						_elm_lang$html$Html$h6,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+				default:
+					return A2(
+						_elm_lang$html$Html$h6,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('is-invisible'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(_p2),
+							_1: {ctor: '[]'}
+						});
+			}
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox = function (list) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('content'),
+			_1: {ctor: '[]'}
+		},
+		list);
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$rtlOrLtr = function (value) {
 	return value ? 'rtl' : 'ltr';
 };
@@ -10169,8 +10003,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$asClass2 = F2(
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess = F3(
 	function (ifSuccess, outcome, attributes) {
-		var _p0 = outcome;
-		switch (_p0.ctor) {
+		var _p3 = outcome;
+		switch (_p3.ctor) {
 			case 'None':
 				return attributes;
 			case 'Warning':
@@ -10179,7 +10013,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p0._0),
+						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p3._0),
 						_1: {ctor: '[]'}
 					});
 			default:
@@ -10188,7 +10022,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p0._0),
+						_0: ifSuccess(_p3._0),
 						_1: {ctor: '[]'}
 					});
 		}
@@ -10214,8 +10048,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F3(
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
-		var _p1 = outcome;
-		switch (_p1.ctor) {
+		var _p4 = outcome;
+		switch (_p4.ctor) {
 			case 'None':
 				return htmlList;
 			case 'Warning':
@@ -10233,7 +10067,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSu
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p1._0),
+								_0: _elm_lang$html$Html$text(_p4._0),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -10242,13 +10076,13 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSu
 				return A2(
 					_elm_lang$core$Basics_ops['++'],
 					htmlList,
-					ifSuccess(_p1._0));
+					ifSuccess(_p4._0));
 		}
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
-		var _p2 = outcome;
-		switch (_p2.ctor) {
+		var _p5 = outcome;
+		switch (_p5.ctor) {
 			case 'None':
 				return htmlList;
 			case 'Warning':
@@ -10266,7 +10100,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p2._0),
+								_0: _elm_lang$html$Html$text(_p5._0),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -10277,11 +10111,43 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 					htmlList,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p2._0),
+						_0: ifSuccess(_p5._0),
 						_1: {ctor: '[]'}
 					});
 		}
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$ListItem = F2(
+	function (a, b) {
+		return {label: a, description: b};
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$Paragraphs = function (a) {
+	return {ctor: 'Paragraphs', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BlockQuote = function (a) {
+	return {ctor: 'BlockQuote', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$Header = F2(
+	function (a, b) {
+		return {ctor: 'Header', _0: a, _1: b};
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BulletedList = function (a) {
+	return {ctor: 'BulletedList', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanLower = function (a) {
+	return {ctor: 'OrderedListRomanLower', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanUpper = function (a) {
+	return {ctor: 'OrderedListRomanUpper', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListAlphabeticLower = function (a) {
+	return {ctor: 'OrderedListAlphabeticLower', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListAlphabeticUpper = function (a) {
+	return {ctor: 'OrderedListAlphabeticUpper', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListDecimal = function (a) {
+	return {ctor: 'OrderedListDecimal', _0: a};
+};
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view = F4(
 	function (adapter, userSettings, settings, state) {
@@ -10316,9 +10182,6 @@ var _flarebyte$bubblegum_ui_tag$AttributeDoc$OneOrMany = {ctor: 'OneOrMany'};
 var _flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne = {ctor: 'ZeroOrOne'};
 var _flarebyte$bubblegum_ui_tag$AttributeDoc$OnlyOne = {ctor: 'OnlyOne'};
 
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentDangerTag = 'Tag representing a dangerous aspect of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentWarningTag = 'Tag representing a warning aspect of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentTag = 'Tag used to describe the constituent';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentDescription = 'Description of the constituent';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentLabel = 'Label of the constituent';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';

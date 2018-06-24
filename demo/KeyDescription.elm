@@ -45,18 +45,3 @@ descConstituentLabel =
 descConstituentDescription : String
 descConstituentDescription =
     "Description of the constituent"
-
-
-descConstituentTag : String
-descConstituentTag =
-    "Tag used to describe the constituent"
-
-
-descConstituentWarningTag : String
-descConstituentWarningTag =
-    "Tag representing a warning aspect of the constituent"
-
-
-descConstituentDangerTag : String
-descConstituentDangerTag =
-    "Tag representing a dangerous aspect of the constituent"

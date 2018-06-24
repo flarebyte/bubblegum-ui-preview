@@ -96,3 +96,62 @@ mainBox language rtl list =
             |> appendAttributeIfSuccess dir (rtl |> Outcome.map rtlOrLtr)
         )
         list
+
+
+contentBox : List (Html msg) -> Html msg
+contentBox list =
+    div [ class "content" ] list
+
+
+type TextPreviewType
+    = Header Int String
+    | BlockQuote String
+    | Paragraphs String
+
+
+type alias ListItem =
+    { label : String
+    , description : Maybe String
+    }
+
+
+type ListPreviewType
+    = OrderedListDecimal (List ListItem)
+    | OrderedListAlphabeticUpper (List ListItem)
+    | OrderedListAlphabeticLower (List ListItem)
+    | OrderedListRomanUpper (List ListItem)
+    | OrderedListRomanLower (List ListItem)
+    | BulletedList (List ListItem)
+
+
+previewText : TextPreviewType -> Html msg
+previewText textType =
+    case textType of
+        BlockQuote textContent ->
+            blockquote [] [ text textContent ]
+
+        Paragraphs textContent ->
+            p [] [ text textContent ]
+
+        Header size textContent ->
+            case size of
+                1 ->
+                    h1 [] [ text textContent ]
+
+                2 ->
+                    h2 [] [ text textContent ]
+
+                3 ->
+                    h3 [] [ text textContent ]
+
+                4 ->
+                    h4 [] [ text textContent ]
+
+                5 ->
+                    h5 [] [ text textContent ]
+
+                6 ->
+                    h6 [] [ text textContent ]
+
+                _ ->
+                    h6 [ class "is-invisible" ] [ text textContent ]

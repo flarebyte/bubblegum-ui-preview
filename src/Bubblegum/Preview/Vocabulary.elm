@@ -61,24 +61,3 @@ ui_constituentLabel =
 ui_constituentDescription : String
 ui_constituentDescription =
     "ui:constituent-description"
-
-
-{-| Tag used to describe the constituent. (List String)
--}
-ui_constituentTag : String
-ui_constituentTag =
-    "ui:constituent-tag"
-
-
-{-| Tag representing a warning aspect of the constituent. (List String)
--}
-ui_constituentWarningTag : String
-ui_constituentWarningTag =
-    "ui:constituent-warning-tag"
-
-
-{-| Tag representing a dangerous aspect of the constituent. (List String)
--}
-ui_constituentDangerTag : String
-ui_constituentDangerTag =
-    "ui:constituent-danger-tag"

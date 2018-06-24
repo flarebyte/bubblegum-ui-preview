@@ -74,24 +74,3 @@ getConstituentDescription : SettingsEntity.Model -> String -> Outcome String
 getConstituentDescription settings id =
     findStringForId ui_constituentDescription settings.attributes id
         |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
-
-
-{-| Tag used to describe the constituent
--}
-getConstituentTag : SettingsEntity.Model -> String -> Outcome (List String)
-getConstituentTag settings id =
-    findListStringForId ui_constituentTag settings.attributes id
-
-
-{-| Tag representing a warning aspect of the constituent
--}
-getConstituentWarningTag : SettingsEntity.Model -> String -> Outcome (List String)
-getConstituentWarningTag settings id =
-    findListStringForId ui_constituentWarningTag settings.attributes id
-
-
-{-| Tag representing a dangerous aspect of the constituent
--}
-getConstituentDangerTag : SettingsEntity.Model -> String -> Outcome (List String)
-getConstituentDangerTag settings id =
-    findListStringForId ui_constituentDangerTag settings.attributes id
