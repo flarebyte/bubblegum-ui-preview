@@ -4,6 +4,7 @@ module Bubblegum.Preview.BulmaHelper
         , appendHtmlIfSuccess
         , contentBox
         , mainBox
+        , previewText
         , previewTextList
         )
 
@@ -16,7 +17,7 @@ This helper facilitates the creation of Bulma styled html elements.
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
-import Bubblegum.Preview.Helper exposing (ListItem)
+import Bubblegum.Preview.Helper exposing (ListItem, TextPreviewType(..))
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Html exposing (..)
@@ -107,12 +108,6 @@ contentBox list =
     div [ class "content" ] list
 
 
-type TextPreviewType
-    = Header Int String
-    | BlockQuote String
-    | Paragraphs String
-
-
 type ListPreviewType
     = OrderedListDecimal
     | OrderedListAlphabeticUpper
@@ -126,33 +121,33 @@ previewText : TextPreviewType -> Html msg
 previewText textType =
     case textType of
         BlockQuote textContent ->
-            blockquote [] [ text textContent ]
+            blockquote [] ([] |> appendHtmlIfSuccess text textContent)
 
         Paragraphs textContent ->
-            p [] [ text textContent ]
+            p [] ([] |> appendHtmlIfSuccess text textContent)
 
         Header size textContent ->
             case size of
                 1 ->
-                    h1 [] [ text textContent ]
+                    h1 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 2 ->
-                    h2 [] [ text textContent ]
+                    h2 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 3 ->
-                    h3 [] [ text textContent ]
+                    h3 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 4 ->
-                    h4 [] [ text textContent ]
+                    h4 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 5 ->
-                    h5 [] [ text textContent ]
+                    h5 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 6 ->
-                    h6 [] [ text textContent ]
+                    h6 [] ([] |> appendHtmlIfSuccess text textContent)
 
                 _ ->
-                    h6 [ class "is-invisible" ] [ text textContent ]
+                    h6 [ class "is-invisible" ] ([] |> appendHtmlIfSuccess text textContent)
 
 
 previewTextListItem : ListItem -> Html msg

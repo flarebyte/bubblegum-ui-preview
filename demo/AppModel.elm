@@ -103,7 +103,7 @@ reset =
                 , "id:suggestion:10"
                 , "id:suggestion:11"
                 ]
-                , attrs ui_content
+            , attrs ui_content
                 [ ipsum
                 ]
             ]

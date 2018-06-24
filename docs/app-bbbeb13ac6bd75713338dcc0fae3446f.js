@@ -9743,7 +9743,18 @@ var _flarebyte$bubblegum_ui_tag$AppModel$reset = {
 						}
 					}
 				}),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_flarebyte$bubblegum_ui_tag$AppModel$attrs,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
+					{
+						ctor: '::',
+						_0: _flarebyte$bubblegum_ui_tag$Ipsum$ipsum,
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
 		}
 	}
 };
@@ -9957,6 +9968,20 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$ListItem = F2(
 	function (a, b) {
 		return {label: a, description: b};
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$Paragraphs = function (a) {
+	return {ctor: 'Paragraphs', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$BlockQuote = function (a) {
+	return {ctor: 'BlockQuote', _0: a};
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$getStyledContent = function (state) {
+	return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$BlockQuote(
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent(state));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$Header = F2(
+	function (a, b) {
+		return {ctor: 'Header', _0: a, _1: b};
+	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType = function (listPreviewType) {
 	var _p0 = listPreviewType;
@@ -9973,101 +9998,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListTyp
 			return 'i';
 		default:
 			return 'disc';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = function (textType) {
-	var _p1 = textType;
-	switch (_p1.ctor) {
-		case 'BlockQuote':
-			return A2(
-				_elm_lang$html$Html$blockquote,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(_p1._0),
-					_1: {ctor: '[]'}
-				});
-		case 'Paragraphs':
-			return A2(
-				_elm_lang$html$Html$p,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(_p1._0),
-					_1: {ctor: '[]'}
-				});
-		default:
-			var _p3 = _p1._1;
-			var _p2 = _p1._0;
-			switch (_p2) {
-				case 1:
-					return A2(
-						_elm_lang$html$Html$h1,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				case 2:
-					return A2(
-						_elm_lang$html$Html$h2,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				case 3:
-					return A2(
-						_elm_lang$html$Html$h3,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				case 4:
-					return A2(
-						_elm_lang$html$Html$h4,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				case 5:
-					return A2(
-						_elm_lang$html$Html$h5,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				case 6:
-					return A2(
-						_elm_lang$html$Html$h6,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-				default:
-					return A2(
-						_elm_lang$html$Html$h6,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('is-invisible'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p3),
-							_1: {ctor: '[]'}
-						});
-			}
 	}
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox = function (list) {
@@ -10105,8 +10035,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$asClass2 = F2(
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess = F3(
 	function (ifSuccess, outcome, attributes) {
-		var _p4 = outcome;
-		switch (_p4.ctor) {
+		var _p1 = outcome;
+		switch (_p1.ctor) {
 			case 'None':
 				return attributes;
 			case 'Warning':
@@ -10115,7 +10045,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p4._0),
+						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p1._0),
 						_1: {ctor: '[]'}
 					});
 			default:
@@ -10124,7 +10054,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p4._0),
+						_0: ifSuccess(_p1._0),
 						_1: {ctor: '[]'}
 					});
 		}
@@ -10150,8 +10080,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F3(
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
-		var _p5 = outcome;
-		switch (_p5.ctor) {
+		var _p2 = outcome;
+		switch (_p2.ctor) {
 			case 'None':
 				return htmlList;
 			case 'Warning':
@@ -10169,7 +10099,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSu
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p5._0),
+								_0: _elm_lang$html$Html$text(_p2._0),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -10178,13 +10108,13 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSu
 				return A2(
 					_elm_lang$core$Basics_ops['++'],
 					htmlList,
-					ifSuccess(_p5._0));
+					ifSuccess(_p2._0));
 		}
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
-		var _p6 = outcome;
-		switch (_p6.ctor) {
+		var _p3 = outcome;
+		switch (_p3.ctor) {
 			case 'None':
 				return htmlList;
 			case 'Warning':
@@ -10202,7 +10132,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p6._0),
+								_0: _elm_lang$html$Html$text(_p3._0),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -10213,11 +10143,106 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 					htmlList,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p6._0),
+						_0: ifSuccess(_p3._0),
 						_1: {ctor: '[]'}
 					});
 		}
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = function (textType) {
+	var _p4 = textType;
+	switch (_p4.ctor) {
+		case 'BlockQuote':
+			return A2(
+				_elm_lang$html$Html$blockquote,
+				{ctor: '[]'},
+				A3(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+					_elm_lang$html$Html$text,
+					_p4._0,
+					{ctor: '[]'}));
+		case 'Paragraphs':
+			return A2(
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
+				A3(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+					_elm_lang$html$Html$text,
+					_p4._0,
+					{ctor: '[]'}));
+		default:
+			var _p6 = _p4._1;
+			var _p5 = _p4._0;
+			switch (_p5) {
+				case 1:
+					return A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				case 2:
+					return A2(
+						_elm_lang$html$Html$h2,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				case 3:
+					return A2(
+						_elm_lang$html$Html$h3,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				case 4:
+					return A2(
+						_elm_lang$html$Html$h4,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				case 5:
+					return A2(
+						_elm_lang$html$Html$h5,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				case 6:
+					return A2(
+						_elm_lang$html$Html$h6,
+						{ctor: '[]'},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+				default:
+					return A2(
+						_elm_lang$html$Html$h6,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('is-invisible'),
+							_1: {ctor: '[]'}
+						},
+						A3(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+							_elm_lang$html$Html$text,
+							_p6,
+							{ctor: '[]'}));
+			}
+	}
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem = function (listItem) {
 	return A2(
 		_elm_lang$html$Html$li,
@@ -10301,16 +10326,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextList = 
 					liList);
 		}
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$Paragraphs = function (a) {
-	return {ctor: 'Paragraphs', _0: a};
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BlockQuote = function (a) {
-	return {ctor: 'BlockQuote', _0: a};
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$Header = F2(
-	function (a, b) {
-		return {ctor: 'Header', _0: a, _1: b};
-	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BulletedList = {ctor: 'BulletedList'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanLower = {ctor: 'OrderedListRomanLower'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanUpper = {ctor: 'OrderedListRomanUpper'};
@@ -10320,9 +10335,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListDecimal
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view = F4(
 	function (adapter, userSettings, settings, state) {
+		var textPreviewType = _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$BlockQuote;
 		var listPreviewType = _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BulletedList;
-		var addListContent = A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$getListContent, settings, state);
-		var addContent = _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent(state);
 		return A3(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getUserLanguage(userSettings),
@@ -10332,11 +10346,16 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view = F4(
 				_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox(
 					{
 						ctor: '::',
-						_0: A2(
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextList,
-							listPreviewType,
-							A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$getListContent, settings, state)),
-						_1: {ctor: '[]'}
+						_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$getStyledContent(state)),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextList,
+								listPreviewType,
+								A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Helper$getListContent, settings, state)),
+							_1: {ctor: '[]'}
+						}
 					}),
 				_1: {ctor: '[]'}
 			});

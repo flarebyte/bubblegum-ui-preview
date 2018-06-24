@@ -1,7 +1,9 @@
 module Bubblegum.Preview.Helper
     exposing
         ( ListItem
+        , TextPreviewType(..)
         , getListContent
+        , getStyledContent
         , getUserIsoLanguage
         )
 
@@ -16,6 +18,7 @@ import Bubblegum.Preview.VocabularyHelper
     exposing
         ( getConstituentDescription
         , getConstituentLabel
+        , getContent
         , getSelected
         , getUserLanguage
         )
@@ -55,3 +58,14 @@ getListItems settings ids =
 getListContent : SettingsEntity.Model -> StateEntity.Model -> Outcome (List ListItem)
 getListContent settings state =
     getSelected state |> Outcome.map (getListItems settings)
+
+
+type TextPreviewType
+    = Header Int (Outcome String)
+    | BlockQuote (Outcome String)
+    | Paragraphs (Outcome String)
+
+
+getStyledContent : StateEntity.Model -> TextPreviewType
+getStyledContent state =
+    BlockQuote (getContent state)
