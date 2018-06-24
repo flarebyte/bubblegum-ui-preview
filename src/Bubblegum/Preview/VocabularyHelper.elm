@@ -55,15 +55,26 @@ getContent settings =
 
 enumContentAppearance : List String
 enumContentAppearance =
-    [ "ui:content-appearance/h1"
-    , "ui:content-appearance/h2"
-    , "ui:content-appearance/h3"
-    , "ui:content-appearance/h4"
-    , "ui:content-appearance/h5"
-    , "ui:content-appearance/h6"
+    [ "ui:content-appearance/header/one"
+    , "ui:content-appearance/header/two"
+    , "ui:content-appearance/header/three"
+    , "ui:content-appearance/header/four"
+    , "ui:content-appearance/header/five"
+    , "ui:content-appearance/header/six"
     , "ui:content-appearance/block-quote"
     , "ui:content-appearance/paragraphs"
     ]
+
+
+type EnumContentAppearance
+    = UiContentAppearanceHeaderOne
+    | UiContentAppearanceHeaderTwo
+    | UiContentAppearanceHeaderThree
+    | UiContentAppearanceHeaderFour
+    | UiContentAppearanceHeaderFive
+    | UiContentAppearanceHeaderSix
+    | UiContentAppearanceBlockQuote
+    | UiContentAppearanceParagraphs
 
 
 {-| The appearance of the field content

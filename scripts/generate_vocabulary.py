@@ -22,9 +22,13 @@ def formatTemplate(template, row):
         rangeRestriction=checkRangeRestriction(extra, nameCamel)
         examples = generateExamples(examplesField, signature)
         enumeration = None
+        typeEnumeration = None
         if name in enumerations:
             parts = ["\"{}\"".format(a) for a in enumerations[name]]
             enumeration = ",".join(parts)
+            typeParts = ["{}".format(camelCaseUpper(a)) for a in enumerations[name]]
+            typeEnumeration = "|".join(typeParts)
+
         entity = "SettingsEntity"
         if isState(row):
             entity = "StateEntity" 
@@ -37,7 +41,8 @@ def formatTemplate(template, row):
             rangeRestriction=rangeRestriction,
             examples = examples,
             entity = entity,
-            enumeration = enumeration
+            enumeration = enumeration,
+            typeEnumeration = typeEnumeration
             )
 
 def formatRangeTemplate(template, row):
@@ -94,6 +99,7 @@ def createVocabularyHelper():
             if isString(row):
                 if isEnum(row):
                     file.write(formatTemplate(templateVocabularyHelperEnum, row))
+                    file.write(formatTemplate(templateVocabularyHelperTypeEnum, row))
                 file.write(formatTemplate(templateVocabularyHelperString, row))
             if isListString(row):
                 if isCurieList(row):

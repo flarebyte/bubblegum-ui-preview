@@ -9516,22 +9516,22 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getSelected =
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance = {
 	ctor: '::',
-	_0: 'ui:content-appearance/h1',
+	_0: 'ui:content-appearance/header/one',
 	_1: {
 		ctor: '::',
-		_0: 'ui:content-appearance/h2',
+		_0: 'ui:content-appearance/header/two',
 		_1: {
 			ctor: '::',
-			_0: 'ui:content-appearance/h3',
+			_0: 'ui:content-appearance/header/three',
 			_1: {
 				ctor: '::',
-				_0: 'ui:content-appearance/h4',
+				_0: 'ui:content-appearance/header/four',
 				_1: {
 					ctor: '::',
-					_0: 'ui:content-appearance/h5',
+					_0: 'ui:content-appearance/header/five',
 					_1: {
 						ctor: '::',
-						_0: 'ui:content-appearance/h6',
+						_0: 'ui:content-appearance/header/six',
 						_1: {
 							ctor: '::',
 							_0: 'ui:content-appearance/block-quote',
@@ -9577,6 +9577,14 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentLan
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage, settings.attributes));
 };
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs = {ctor: 'UiContentAppearanceParagraphs'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote = {ctor: 'UiContentAppearanceBlockQuote'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix = {ctor: 'UiContentAppearanceHeaderSix'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFive = {ctor: 'UiContentAppearanceHeaderFive'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFour = {ctor: 'UiContentAppearanceHeaderFour'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderThree = {ctor: 'UiContentAppearanceHeaderThree'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderTwo = {ctor: 'UiContentAppearanceHeaderTwo'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne = {ctor: 'UiContentAppearanceHeaderOne'};
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsum = A2(

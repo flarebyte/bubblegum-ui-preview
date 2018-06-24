@@ -73,6 +73,10 @@ enum$nameCamel = [
     ]    
 """
 
+templateVocabularyHelperTypeEnum = """
+type Enum$nameCamel = $typeEnumeration
+"""
+
 
 templateVocabularyHelperStringForId = """
 {-|  $description -}
