@@ -1,8 +1,8 @@
 module Bubblegum.Preview.Helper
     exposing
         ( ListItem
-        , getUserIsoLanguage
         , getListContent
+        , getUserIsoLanguage
         )
 
 {-| Helper to keep the noise away from Widget
@@ -46,10 +46,12 @@ getListItem settings id =
     , description = getConstituentDescription settings id
     }
 
+
 getListItems : SettingsEntity.Model -> List String -> List ListItem
 getListItems settings ids =
     List.map (getListItem settings) ids
 
+
 getListContent : SettingsEntity.Model -> StateEntity.Model -> Outcome (List ListItem)
 getListContent settings state =
-    getSelected state  |> Outcome.map (getListItems settings)
+    getSelected state |> Outcome.map (getListItems settings)

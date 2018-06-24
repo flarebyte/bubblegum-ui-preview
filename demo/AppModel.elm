@@ -78,11 +78,36 @@ asStateIn =
     flip setState
 
 
+attrs : String -> List String -> Attribute.Model
+attrs key values =
+    { id = Nothing
+    , key = key
+    , facets = []
+    , values = values
+    }
+
+
 reset : AppModel
 reset =
     { userSettings = { attributes = [] }
     , settings = { attributes = getExampleAttributes }
-    , state = { attributes = [] }
+    , state =
+        { attributes =
+            [ attrs ui_selected
+                [ "id:suggestion:1"
+                , "id:suggestion:3"
+                , "id:suggestion:5"
+                , "id:suggestion:6"
+                , "id:suggestion:8"
+                , "id:suggestion:9"
+                , "id:suggestion:10"
+                , "id:suggestion:11"
+                ]
+                , attrs ui_content
+                [ ipsum
+                ]
+            ]
+        }
     }
 
 

@@ -1,7 +1,10 @@
 module Bubblegum.Preview.BulmaHelper
     exposing
-        ( appendHtmlIfSuccess
+        ( ListPreviewType(..)
+        , appendHtmlIfSuccess
+        , contentBox
         , mainBox
+        , previewTextList
         )
 
 {-| The Bulma css framework is used for styling the widget.
@@ -157,9 +160,11 @@ previewTextListItem listItem =
     li ([] |> appendAttributeIfSuccess title listItem.description)
         ([] |> appendHtmlIfSuccess text listItem.label)
 
+
 previewTextListItems : List ListItem -> List (Html msg)
 previewTextListItems list =
     List.map previewTextListItem list
+
 
 previewTextListType : ListPreviewType -> String
 previewTextListType listPreviewType =
@@ -186,14 +191,14 @@ previewTextListType listPreviewType =
 previewTextList : ListPreviewType -> Outcome (List ListItem) -> Html msg
 previewTextList listPreviewType outcome =
     let
-        liList = [] |> appendListHtmlIfSuccess previewTextListItems outcome
+        liList =
+            [] |> appendListHtmlIfSuccess previewTextListItems outcome
     in
-        
     case listPreviewType of
-        OrderedListDecimal  ->
-             liList |> ol [ type_ (previewTextListType listPreviewType) ]
+        OrderedListDecimal ->
+            liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
-        OrderedListAlphabeticUpper  ->
+        OrderedListAlphabeticUpper ->
             liList |> ol [ type_ (previewTextListType listPreviewType) ]
 
         OrderedListAlphabeticLower ->
