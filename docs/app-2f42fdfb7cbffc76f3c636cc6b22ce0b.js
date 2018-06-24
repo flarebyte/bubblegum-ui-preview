@@ -9873,16 +9873,33 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_IsoLanguage$toIsoLanguage = fu
 	}
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = function (textType) {
-	var _p0 = textType;
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType = function (listPreviewType) {
+	var _p0 = listPreviewType;
 	switch (_p0.ctor) {
+		case 'OrderedListDecimal':
+			return '1';
+		case 'OrderedListAlphabeticUpper':
+			return 'A';
+		case 'OrderedListAlphabeticLower':
+			return 'a';
+		case 'OrderedListRomanUpper':
+			return 'I';
+		case 'OrderedListRomanLower':
+			return 'i';
+		default:
+			return 'disc';
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = function (textType) {
+	var _p1 = textType;
+	switch (_p1.ctor) {
 		case 'BlockQuote':
 			return A2(
 				_elm_lang$html$Html$blockquote,
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(_p0._0),
+					_0: _elm_lang$html$Html$text(_p1._0),
 					_1: {ctor: '[]'}
 				});
 		case 'Paragraphs':
@@ -9891,20 +9908,20 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(_p0._0),
+					_0: _elm_lang$html$Html$text(_p1._0),
 					_1: {ctor: '[]'}
 				});
 		default:
-			var _p2 = _p0._1;
-			var _p1 = _p0._0;
-			switch (_p1) {
+			var _p3 = _p1._1;
+			var _p2 = _p1._0;
+			switch (_p2) {
 				case 1:
 					return A2(
 						_elm_lang$html$Html$h1,
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				case 2:
@@ -9913,7 +9930,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				case 3:
@@ -9922,7 +9939,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				case 4:
@@ -9931,7 +9948,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				case 5:
@@ -9940,7 +9957,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				case 6:
@@ -9949,7 +9966,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 				default:
@@ -9962,7 +9979,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = func
 						},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(_p2),
+							_0: _elm_lang$html$Html$text(_p3),
 							_1: {ctor: '[]'}
 						});
 			}
@@ -10003,8 +10020,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$asClass2 = F2(
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess = F3(
 	function (ifSuccess, outcome, attributes) {
-		var _p3 = outcome;
-		switch (_p3.ctor) {
+		var _p4 = outcome;
+		switch (_p4.ctor) {
 			case 'None':
 				return attributes;
 			case 'Warning':
@@ -10013,7 +10030,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p3._0),
+						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p4._0),
 						_1: {ctor: '[]'}
 					});
 			default:
@@ -10022,7 +10039,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					attributes,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p3._0),
+						_0: ifSuccess(_p4._0),
 						_1: {ctor: '[]'}
 					});
 		}
@@ -10047,39 +10064,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F3(
 			list);
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess = F3(
-	function (ifSuccess, outcome, htmlList) {
-		var _p4 = outcome;
-		switch (_p4.ctor) {
-			case 'None':
-				return htmlList;
-			case 'Warning':
-				return A2(
-					_elm_lang$core$Basics_ops['++'],
-					htmlList,
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('is-invisible warning'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p4._0),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					});
-			default:
-				return A2(
-					_elm_lang$core$Basics_ops['++'],
-					htmlList,
-					ifSuccess(_p4._0));
-		}
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
 		var _p5 = outcome;
 		switch (_p5.ctor) {
@@ -10109,13 +10093,120 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 				return A2(
 					_elm_lang$core$Basics_ops['++'],
 					htmlList,
+					ifSuccess(_p5._0));
+		}
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
+	function (ifSuccess, outcome, htmlList) {
+		var _p6 = outcome;
+		switch (_p6.ctor) {
+			case 'None':
+				return htmlList;
+			case 'Warning':
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					htmlList,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p5._0),
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('is-invisible warning'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(_p6._0),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					});
+			default:
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					htmlList,
+					{
+						ctor: '::',
+						_0: ifSuccess(_p6._0),
 						_1: {ctor: '[]'}
 					});
 		}
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem = function (listItem) {
+	return A2(
+		_elm_lang$html$Html$li,
+		A3(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
+			_elm_lang$html$Html_Attributes$title,
+			listItem.description,
+			{ctor: '[]'}),
+		A3(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+			_elm_lang$html$Html$text,
+			listItem.label,
+			{ctor: '[]'}));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextList = function (listPreviewType) {
+	var _p7 = listPreviewType;
+	switch (_p7.ctor) {
+		case 'OrderedListDecimal':
+			return A2(
+				_elm_lang$html$Html$ol,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType(listPreviewType)),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+		case 'OrderedListAlphabeticUpper':
+			return A2(
+				_elm_lang$html$Html$ol,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType(listPreviewType)),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+		case 'OrderedListAlphabeticLower':
+			return A2(
+				_elm_lang$html$Html$ol,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType(listPreviewType)),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+		case 'OrderedListRomanUpper':
+			return A2(
+				_elm_lang$html$Html$ol,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType(listPreviewType)),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+		case 'OrderedListRomanLower':
+			return A2(
+				_elm_lang$html$Html$ol,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListType(listPreviewType)),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+		default:
+			return A2(
+				_elm_lang$html$Html$ul,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListItem, _p7._0));
+	}
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$ListItem = F2(
 	function (a, b) {
 		return {label: a, description: b};

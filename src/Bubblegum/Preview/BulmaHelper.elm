@@ -110,8 +110,8 @@ type TextPreviewType
 
 
 type alias ListItem =
-    { label : String
-    , description : Maybe String
+    { label : Outcome String
+    , description : Outcome String
     }
 
 
@@ -155,3 +155,53 @@ previewText textType =
 
                 _ ->
                     h6 [ class "is-invisible" ] [ text textContent ]
+
+
+previewTextListItem : ListItem -> Html msg
+previewTextListItem listItem =
+    li ([] |> appendAttributeIfSuccess title listItem.description)
+        ([] |> appendHtmlIfSuccess text listItem.label)
+
+
+previewTextListType : ListPreviewType -> String
+previewTextListType listPreviewType =
+    case listPreviewType of
+        OrderedListDecimal _ ->
+            "1"
+
+        OrderedListAlphabeticUpper _ ->
+            "A"
+
+        OrderedListAlphabeticLower _ ->
+            "a"
+
+        OrderedListRomanUpper _ ->
+            "I"
+
+        OrderedListRomanLower _ ->
+            "i"
+
+        BulletedList _ ->
+            "disc"
+
+
+previewTextList : ListPreviewType -> Html msg
+previewTextList listPreviewType =
+    case listPreviewType of
+        OrderedListDecimal list ->
+            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+
+        OrderedListAlphabeticUpper list ->
+            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+
+        OrderedListAlphabeticLower list ->
+            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+
+        OrderedListRomanUpper list ->
+            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+
+        OrderedListRomanLower list ->
+            List.map previewTextListItem list |> ol [ type_ (previewTextListType listPreviewType) ]
+
+        BulletedList list ->
+            List.map previewTextListItem list |> ul []
