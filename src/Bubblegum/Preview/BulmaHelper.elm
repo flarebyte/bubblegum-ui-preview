@@ -17,7 +17,7 @@ This helper facilitates the creation of Bulma styled html elements.
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
-import Bubblegum.Preview.Helper exposing (ListItem, TextPreviewType(..))
+import Bubblegum.Preview.Helper exposing (ListItem)
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Html exposing (..)
@@ -117,37 +117,49 @@ type ListPreviewType
     | BulletedList
 
 
-previewText : TextPreviewType -> Html msg
-previewText textType =
+getWarningMessage : Outcome a -> String
+getWarningMessage outcome =
+    case outcome of
+        Warning msg ->
+            msg
+
+        _ ->
+            ""
+
+
+previewText : Outcome EnumContentAppearance -> Outcome String -> Html msg
+previewText outcomeTextType contentOutcome =
+    let
+        textType =
+            outcomeTextType |> Outcome.toMaybe |> Maybe.withDefault UnknownContentAppearance
+    in
     case textType of
-        BlockQuote textContent ->
-            blockquote [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceBlockQuote ->
+            blockquote [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-        Paragraphs textContent ->
-            p [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceParagraphs ->
+            p [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-        Header size textContent ->
-            case size of
-                1 ->
-                    h1 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderOne ->
+            h1 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                2 ->
-                    h2 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderTwo ->
+            h2 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                3 ->
-                    h3 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderThree ->
+            h3 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                4 ->
-                    h4 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderFour ->
+            h4 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                5 ->
-                    h5 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderFive ->
+            h5 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                6 ->
-                    h6 [] ([] |> appendHtmlIfSuccess text textContent)
+        UiContentAppearanceHeaderSix ->
+            h6 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-                _ ->
-                    h6 [ class "is-invisible" ] ([] |> appendHtmlIfSuccess text textContent)
+        UnknownContentAppearance ->
+            h6 [ class "is-invisible warning" ] [ text (getWarningMessage outcomeTextType) ]
 
 
 previewTextListItem : ListItem -> Html msg
