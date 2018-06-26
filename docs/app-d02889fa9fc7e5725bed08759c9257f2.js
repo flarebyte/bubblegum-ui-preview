@@ -9577,6 +9577,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentLan
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage, settings.attributes));
 };
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance = {ctor: 'UnknownContentAppearance'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs = {ctor: 'UiContentAppearanceParagraphs'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote = {ctor: 'UiContentAppearanceBlockQuote'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix = {ctor: 'UiContentAppearanceHeaderSix'};
@@ -9587,10 +9588,25 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppe
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne = {ctor: 'UiContentAppearanceHeaderOne'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumContentAppearance = function (value) {
 	var _p0 = value;
-	if (_p0 === 'ui:content-appearance/header/one') {
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne;
-	} else {
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs;
+	switch (_p0) {
+		case 'ui:content-appearance/header/one':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne;
+		case 'ui:content-appearance/header/two':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderTwo;
+		case 'ui:content-appearance/header/three':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderThree;
+		case 'ui:content-appearance/header/four':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFour;
+		case 'ui:content-appearance/header/five':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFive;
+		case 'ui:content-appearance/header/six':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix;
+		case 'ui:content-appearance/block-quote':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote;
+		case 'ui:content-appearance/paragraphs':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs;
+		default:
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance;
 	}
 };
 

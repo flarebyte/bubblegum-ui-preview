@@ -67,25 +67,25 @@ get$nameCamel settings =
 """
 
 templateVocabularyHelperEnum = """
+type Enum$nameCamel = $typeEnumeration | Unknown$nameCamel
+
 enum$nameCamel : List String
 enum$nameCamel = [
        $enumeration 
     ]    
-"""
 
-templateVocabularyHelperTypeEnum = """
-type Enum$nameCamel = $typeEnumeration
-"""
-
-templateVocabularyHelperEnumFromString = """
 stringToEnum$nameCamel : String -> Enum$nameCamel
 stringToEnum$nameCamel value =
     case value of
         $typeEnumerationFromString
-        "ui:content-appearance/header/one" -> UiContentAppearanceHeaderOne
         _ ->
-            $typeEnumerationFromStringDefault
-            UiContentAppearanceParagraphs
+            Unknown$nameCamel
+
+{-|  $description -}
+get$nameCamel : $entity.Model -> Outcome String
+get$nameCamel settings =
+    findString ui_$namecamel settings.attributes
+        $rangeRestriction
 
 """
 

@@ -23,11 +23,14 @@ def formatTemplate(template, row):
         examples = generateExamples(examplesField, signature)
         enumeration = None
         typeEnumeration = None
+        typeEnumerationFromString = None
         if name in enumerations:
             parts = ["\"{}\"".format(a) for a in enumerations[name]]
             enumeration = ",".join(parts)
             typeParts = ["{}".format(camelCaseUpper(a)) for a in enumerations[name]]
             typeEnumeration = "|".join(typeParts)
+            typeEnumerationFromStringParts = ["\"{}\" -> {}".format(a, camelCaseUpper(a)) for a in enumerations[name]]
+            typeEnumerationFromString = "\n        ".join(typeEnumerationFromStringParts)
 
         entity = "SettingsEntity"
         if isState(row):
@@ -42,7 +45,8 @@ def formatTemplate(template, row):
             examples = examples,
             entity = entity,
             enumeration = enumeration,
-            typeEnumeration = typeEnumeration
+            typeEnumeration = typeEnumeration,
+            typeEnumerationFromString = typeEnumerationFromString
             )
 
 def formatRangeTemplate(template, row):
@@ -99,8 +103,8 @@ def createVocabularyHelper():
             if isString(row):
                 if isEnum(row):
                     file.write(formatTemplate(templateVocabularyHelperEnum, row))
-                    file.write(formatTemplate(templateVocabularyHelperTypeEnum, row))
-                file.write(formatTemplate(templateVocabularyHelperString, row))
+                else:
+                    file.write(formatTemplate(templateVocabularyHelperString, row))
             if isListString(row):
                 if isCurieList(row):
                     file.write(formatTemplate(templateVocabularyHelperListCurie, row))

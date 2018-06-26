@@ -53,6 +53,18 @@ getContent settings =
         |> Validation.withinStringCharsRange limitVeryLargeRange
 
 
+type EnumContentAppearance
+    = UiContentAppearanceHeaderOne
+    | UiContentAppearanceHeaderTwo
+    | UiContentAppearanceHeaderThree
+    | UiContentAppearanceHeaderFour
+    | UiContentAppearanceHeaderFive
+    | UiContentAppearanceHeaderSix
+    | UiContentAppearanceBlockQuote
+    | UiContentAppearanceParagraphs
+    | UnknownContentAppearance
+
+
 enumContentAppearance : List String
 enumContentAppearance =
     [ "ui:content-appearance/header/one"
@@ -66,25 +78,35 @@ enumContentAppearance =
     ]
 
 
-type EnumContentAppearance
-    = UiContentAppearanceHeaderOne
-    | UiContentAppearanceHeaderTwo
-    | UiContentAppearanceHeaderThree
-    | UiContentAppearanceHeaderFour
-    | UiContentAppearanceHeaderFive
-    | UiContentAppearanceHeaderSix
-    | UiContentAppearanceBlockQuote
-    | UiContentAppearanceParagraphs
-
-
 stringToEnumContentAppearance : String -> EnumContentAppearance
 stringToEnumContentAppearance value =
     case value of
         "ui:content-appearance/header/one" ->
             UiContentAppearanceHeaderOne
 
-        _ ->
+        "ui:content-appearance/header/two" ->
+            UiContentAppearanceHeaderTwo
+
+        "ui:content-appearance/header/three" ->
+            UiContentAppearanceHeaderThree
+
+        "ui:content-appearance/header/four" ->
+            UiContentAppearanceHeaderFour
+
+        "ui:content-appearance/header/five" ->
+            UiContentAppearanceHeaderFive
+
+        "ui:content-appearance/header/six" ->
+            UiContentAppearanceHeaderSix
+
+        "ui:content-appearance/block-quote" ->
+            UiContentAppearanceBlockQuote
+
+        "ui:content-appearance/paragraphs" ->
             UiContentAppearanceParagraphs
+
+        _ ->
+            UnknownContentAppearance
 
 
 {-| The appearance of the field content
