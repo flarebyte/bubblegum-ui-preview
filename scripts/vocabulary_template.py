@@ -82,10 +82,11 @@ stringToEnum$nameCamel value =
             Unknown$nameCamel
 
 {-|  $description -}
-get$nameCamel : $entity.Model -> Outcome String
+get$nameCamel : $entity.Model -> Outcome Enum$nameCamel
 get$nameCamel settings =
     findString ui_$namecamel settings.attributes
-        $rangeRestriction
+        |> Validation.matchEnum enum$nameCamel
+        |> Outcome.map stringToEnum$nameCamel
 
 """
 

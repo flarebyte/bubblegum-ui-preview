@@ -19,7 +19,7 @@ def formatTemplate(template, row):
         signature = signatureField.strip()
         namecamel = camelCase(name)
         nameCamel = camelCaseUpper(name)
-        rangeRestriction=checkRangeRestriction(extra, nameCamel)
+        rangeRestriction=checkRangeRestriction(extra)
         examples = generateExamples(examplesField, signature)
         enumeration = None
         typeEnumeration = None
@@ -265,7 +265,7 @@ def prefixWithComa(keyword, yes, text):
     else:
         return text
 
-def checkRangeRestriction(extra, nameCamel):
+def checkRangeRestriction(extra):
     if "small!" in extra:
         return "|> Validation.withinStringCharsRange limitSmallRangeNotEmpty"
     elif "small" in extra:
@@ -280,8 +280,6 @@ def checkRangeRestriction(extra, nameCamel):
         return "|> Validation.withinStringCharsRange limitVeryLargeRange"
     elif "curie!" in extra:
         return "|> Validation.matchCompactUri"
-    elif "enum!" in extra:
-        return "|> Validation.matchEnum enum" + nameCamel
     else:
         return ""
 

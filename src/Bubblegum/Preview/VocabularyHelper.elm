@@ -111,10 +111,11 @@ stringToEnumContentAppearance value =
 
 {-| The appearance of the field content
 -}
-getContentAppearance : SettingsEntity.Model -> Outcome String
+getContentAppearance : SettingsEntity.Model -> Outcome EnumContentAppearance
 getContentAppearance settings =
     findString ui_contentAppearance settings.attributes
         |> Validation.matchEnum enumContentAppearance
+        |> Outcome.map stringToEnumContentAppearance
 
 
 {-| The selected tags for the field

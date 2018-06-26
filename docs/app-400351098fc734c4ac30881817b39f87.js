@@ -9547,12 +9547,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAp
 		}
 	}
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentAppearance = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$matchEnum,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance, settings.attributes));
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent = function (settings) {
 	return A2(
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
@@ -9608,6 +9602,15 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumC
 		default:
 			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance;
 	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentAppearance = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumContentAppearance,
+		A2(
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$matchEnum,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance,
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance, settings.attributes)));
 };
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
