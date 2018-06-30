@@ -22,7 +22,7 @@ tagWidgetDoc =
         , createKey ui_userRightToLeft ZeroOrOne [ "true", "false", "other" ] descUserRightToLeft
         ]
     , settings =
-        [ createKey ui_contentAppearance ZeroOrOne [ "", "other" ] descContentAppearance
+        [ createKey ui_contentAppearance ZeroOrOne [ "ui:content-appearance/header/one", "ui:content-appearance/header/two", "ui:content-appearance/header/three", "ui:content-appearance/header/four", "ui:content-appearance/header/five", "ui:content-appearance/header/six", "ui:content-appearance/block-quote", "ui:content-appearance/paragraphs" ] descContentAppearance
         ]
     , stateAttributes =
         [ createKey ui_content ZeroOrOne [ "some content", "other" ] descContent

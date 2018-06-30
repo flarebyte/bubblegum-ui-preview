@@ -10631,11 +10631,35 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: '',
+				_0: 'ui:content-appearance/header/one',
 				_1: {
 					ctor: '::',
-					_0: 'other',
-					_1: {ctor: '[]'}
+					_0: 'ui:content-appearance/header/two',
+					_1: {
+						ctor: '::',
+						_0: 'ui:content-appearance/header/three',
+						_1: {
+							ctor: '::',
+							_0: 'ui:content-appearance/header/four',
+							_1: {
+								ctor: '::',
+								_0: 'ui:content-appearance/header/five',
+								_1: {
+									ctor: '::',
+									_0: 'ui:content-appearance/header/six',
+									_1: {
+										ctor: '::',
+										_0: 'ui:content-appearance/block-quote',
+										_1: {
+											ctor: '::',
+											_0: 'ui:content-appearance/paragraphs',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance),

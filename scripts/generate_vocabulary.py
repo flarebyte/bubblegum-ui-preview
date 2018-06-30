@@ -20,7 +20,6 @@ def formatTemplate(template, row):
         namecamel = camelCase(name)
         nameCamel = camelCaseUpper(name)
         rangeRestriction=checkRangeRestriction(extra)
-        examples = generateExamples(examplesField, signature)
         enumeration = None
         typeEnumeration = None
         typeEnumerationFromString = None
@@ -31,7 +30,7 @@ def formatTemplate(template, row):
             typeEnumeration = "|".join(typeParts)
             typeEnumerationFromStringParts = ["\"{}\" -> {}".format(a, camelCaseUpper(a)) for a in enumerations[name]]
             typeEnumerationFromString = "\n        ".join(typeEnumerationFromStringParts)
-
+        examples = generateExamples(examplesField, signature, enumeration)
         entity = "SettingsEntity"
         if isState(row):
             entity = "StateEntity" 
@@ -283,11 +282,13 @@ def checkRangeRestriction(extra):
     else:
         return ""
 
-def generateExamples(suggested, signature):
+def generateExamples(suggested, signature, enumExamples):
     if (signature == "Bool"):
         return quoteArray(["true", "false", "other"])
     elif (signature == "Int"):
         return quoteArray(["0", "2", "4", "8", "16", "32", "-5"])
+    elif (signature == "String") and enumExamples is not None:
+        return enumExamples
     elif (suggested is not None):
         suggestions = suggested.strip().split(";")
         suggestions.append("other")
