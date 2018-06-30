@@ -17,6 +17,7 @@ This helper facilitates the creation of Bulma styled html elements.
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
+import Bubblegum.Entity.Validation as Validation
 import Bubblegum.Preview.Helper exposing (ListItem)
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Preview.VocabularyHelper exposing (..)
@@ -127,18 +128,40 @@ getWarningMessage outcome =
             ""
 
 
+paragraph : String -> Html.Html msg
+paragraph someText =
+    p [] [ text someText ]
+
+
+paragraphs : Outcome (List String) -> List (Html.Html msg)
+paragraphs outcome =
+    [] |> appendListHtmlIfSuccess (\strings -> List.map paragraph strings) outcome
+
+
 previewText : Outcome EnumContentAppearance -> Outcome String -> Html msg
 previewText outcomeTextType contentOutcome =
     let
         textType =
             outcomeTextType |> Outcome.toMaybe |> Maybe.withDefault UnknownContentAppearance
+
+        linesOutcome =
+            Outcome.map String.lines contentOutcome
+
+        isSingleLine =
+            Validation.listEqual 1 linesOutcome |> Outcome.isValid
     in
     case textType of
         UiContentAppearanceBlockQuote ->
-            blockquote [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            if isSingleLine then
+                blockquote [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            else
+                blockquote [] (paragraphs linesOutcome)
 
         UiContentAppearanceParagraphs ->
-            p [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            if isSingleLine then
+                p [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            else
+                div [] (paragraphs linesOutcome)
 
         UiContentAppearanceHeaderOne ->
             h1 [] ([] |> appendHtmlIfSuccess text contentOutcome)

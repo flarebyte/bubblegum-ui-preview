@@ -10064,6 +10064,16 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewTextListTyp
 			return 'disc';
 	}
 };
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraph = function (someText) {
+	return A2(
+		_elm_lang$html$Html$p,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(someText),
+			_1: {ctor: '[]'}
+		});
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$getWarningMessage = function (outcome) {
 	var _p1 = outcome;
 	if (_p1.ctor === 'Warning') {
@@ -10183,6 +10193,15 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSu
 					ifSuccess(_p3._0));
 		}
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs = function (outcome) {
+	return A3(
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess,
+		function (strings) {
+			return A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraph, strings);
+		},
+		outcome,
+		{ctor: '[]'});
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
 		var _p4 = outcome;
@@ -10222,6 +10241,9 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSucces
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = F2(
 	function (outcomeTextType, contentOutcome) {
+		var linesOutcome = A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _elm_lang$core$String$lines, contentOutcome);
+		var isSingleLine = _flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$isValid(
+			A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listEqual, 1, linesOutcome));
 		var textType = A2(
 			_elm_lang$core$Maybe$withDefault,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance,
@@ -10229,23 +10251,29 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = F2(
 		var _p5 = textType;
 		switch (_p5.ctor) {
 			case 'UiContentAppearanceBlockQuote':
-				return A2(
+				return isSingleLine ? A2(
 					_elm_lang$html$Html$blockquote,
 					{ctor: '[]'},
 					A3(
 						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
 						_elm_lang$html$Html$text,
 						contentOutcome,
-						{ctor: '[]'}));
+						{ctor: '[]'})) : A2(
+					_elm_lang$html$Html$blockquote,
+					{ctor: '[]'},
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome));
 			case 'UiContentAppearanceParagraphs':
-				return A2(
+				return isSingleLine ? A2(
 					_elm_lang$html$Html$p,
 					{ctor: '[]'},
 					A3(
 						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
 						_elm_lang$html$Html$text,
 						contentOutcome,
-						{ctor: '[]'}));
+						{ctor: '[]'})) : A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome));
 			case 'UiContentAppearanceHeaderOne':
 				return A2(
 					_elm_lang$html$Html$h1,
