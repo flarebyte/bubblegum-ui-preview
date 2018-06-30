@@ -9825,7 +9825,10 @@ var _flarebyte$bubblegum_ui_tag$AppModel$reset = {
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
 					{
 						ctor: '::',
-						_0: _flarebyte$bubblegum_ui_tag$Ipsum$ipsum,
+						_0: A2(
+							_elm_lang$core$String$join,
+							'\n',
+							A2(_elm_lang$core$List$repeat, 4, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum)),
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}

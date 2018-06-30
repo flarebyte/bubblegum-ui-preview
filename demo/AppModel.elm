@@ -104,7 +104,7 @@ reset =
                 , "id:suggestion:11"
                 ]
             , attrs ui_content
-                [ ipsum
+                [ List.repeat 4 ipsum |> String.join "\n"
                 ]
             ]
         }
