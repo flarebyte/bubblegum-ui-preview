@@ -37,11 +37,6 @@ descContentAppearance =
     "The appearance of the field content"
 
 
-descSelected : String
-descSelected =
-    "The selected tags for the field"
-
-
 descConstituentLabel : String
 descConstituentLabel =
     "Label of the constituent"

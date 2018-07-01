@@ -49,13 +49,6 @@ ui_contentAppearance =
     "ui:content-appearance"
 
 
-{-| The selected tags for the field. (List String)
--}
-ui_selected : String
-ui_selected =
-    "ui:selected"
-
-
 {-| Label of the constituent. (String)
 -}
 ui_constituentLabel : String

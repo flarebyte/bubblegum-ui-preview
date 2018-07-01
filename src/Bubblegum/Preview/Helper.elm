@@ -1,7 +1,6 @@
 module Bubblegum.Preview.Helper
     exposing
         ( ListItem
-        , getListContent
         , getUserIsoLanguage
         )
 
@@ -10,14 +9,12 @@ module Bubblegum.Preview.Helper
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
-import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Preview.VocabularyHelper
     exposing
         ( getConstituentDescription
         , getConstituentLabel
         , getContent
-        , getSelected
         , getUserLanguage
         )
 import Maybe exposing (Maybe(..))
@@ -51,8 +48,3 @@ getListItem settings id =
 getListItems : SettingsEntity.Model -> List String -> List ListItem
 getListItems settings ids =
     List.map (getListItem settings) ids
-
-
-getListContent : SettingsEntity.Model -> StateEntity.Model -> Outcome (List ListItem)
-getListContent settings state =
-    getSelected state |> Outcome.map (getListItems settings)

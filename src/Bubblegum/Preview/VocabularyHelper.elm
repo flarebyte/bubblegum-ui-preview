@@ -158,13 +158,6 @@ getContentAppearance settings =
         |> Outcome.map stringToEnumContentAppearance
 
 
-{-| The selected tags for the field
--}
-getSelected : StateEntity.Model -> Outcome (List String)
-getSelected settings =
-    findListCompactUri ui_selected settings.attributes
-
-
 {-| Label of the constituent
 -}
 getConstituentLabel : SettingsEntity.Model -> String -> Outcome String

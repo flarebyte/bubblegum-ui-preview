@@ -16,7 +16,6 @@ import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.Adapter as TagAdapter
 import Bubblegum.Preview.BulmaHelper exposing (ListPreviewType(..), contentBox, mainBox, previewText, previewTextList)
-import Bubblegum.Preview.Helper exposing (getListContent)
 import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Html exposing (..)
 
@@ -49,6 +48,5 @@ view adapter userSettings settings state =
         (isUserRightToLeft userSettings)
         [ contentBox
             [ previewText (getContentAppearance settings) (getContent state)
-            , previewTextList listPreviewType (getListContent settings state)
             ]
         ]

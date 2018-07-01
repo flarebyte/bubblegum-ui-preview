@@ -93,29 +93,9 @@ reset =
     , settings = { attributes = getExampleAttributes }
     , state =
         { attributes =
-            [ attrs ui_selected
-                [ "id:suggestion:1"
-                , "id:suggestion:3"
-                , "id:suggestion:5"
-                , "id:suggestion:6"
-                , "id:suggestion:8"
-                , "id:suggestion:9"
-                , "id:suggestion:10"
-                , "id:suggestion:11"
-                ]
-            , attrs ui_content
+            [ attrs ui_content
                 [ List.repeat 4 ipsum |> String.join "\n"
                 ]
             ]
         }
     }
-
-
-addTagIdToSelected : String -> StateEntity.Model -> List String
-addTagIdToSelected tagId state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (\list -> list ++ [ tagId ])
-
-
-deleteTagIdToSelected : String -> StateEntity.Model -> List String
-deleteTagIdToSelected tagId state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> List.filter (\t -> t /= tagId)

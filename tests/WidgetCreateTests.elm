@@ -59,9 +59,5 @@ suite =
                 \value -> viewWidgetWithSettings (withSettingsContentAppearance value)
                     |> findWarningDiv           
 
-                , fuzz fuzzySelected "Correct settings for The selected tags for the field" <|
-                \value -> viewWidgetWithState (withStateSelected value)
-                    |> findComponent selectorsSelected
-
             ]
         ]
