@@ -176,7 +176,7 @@ selectorsNotUserRightToLeft =
 withSettingsContentAppearance: String -> SettingsEntity.Model
 withSettingsContentAppearance value = {
     attributes = [
-        attr ui_contentAppearance "ui:content-appearance/header/one"
+        attr ui_contentAppearance value
     ]
  }
 
