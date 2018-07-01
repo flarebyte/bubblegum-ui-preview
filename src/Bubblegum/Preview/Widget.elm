@@ -1,12 +1,10 @@
 module Bubblegum.Preview.Widget exposing (view)
 
-{-| A flexible listbox widget to select multiple tags with the following features:
+{-| A flexible preview widget to display content:
 
   - Supports multiple languages as well as right to left writing.
-  - You can define targets in term of number of tags and display the progress against them.
-  - You can add various tags to each choice (ex: warning tag)
 
-Please have a look at the main [documentation](https://github.com/flarebyte/bubblegum-ui-tag) for more details about the possible settings.
+Please have a look at the main [documentation](https://github.com/flarebyte/bubblegum-ui-preview) for more details about the possible settings.
 
 @docs view
 
@@ -32,8 +30,8 @@ import Html as Html exposing (Html)
         }
 
     userSettings = { attributes = [attr ui_userLanguage "en-US"] }
-    settings = { attributes = [attr ui_label "My Story"] ++ getExampleAttributes }
-    state = { attributes = [ attr ui_suggesting "true" , attrs ui_selected [ "id:suggestion:1", "id:suggestion:3" ]] }
+    settings = { attributes = [ attr ui_contentAppearance "ui:content-appearance/paragraphs" ] }
+    state = { attributes = [ attr ui_content "My Story"] }
 
     view adapter userSettings settings state
 

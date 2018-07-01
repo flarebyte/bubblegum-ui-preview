@@ -18,6 +18,7 @@ This helper facilitates the creation of Bulma styled html elements.
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.Validation as Validation
 import Bubblegum.Preview.VocabularyHelper exposing (EnumContentAppearance(..))
+import Bubblegum.Preview.Adapter as TagAdapter
 import Html as Html
     exposing
         ( Attribute
@@ -38,6 +39,7 @@ import Html as Html
         , text
         )
 import Html.Attributes as Attributes exposing (attribute, class, dir, lang)
+import Html.Events exposing(onMouseOver)
 import List
 
 
@@ -98,10 +100,10 @@ rtlOrLtr value =
         "ltr"
 
 
-mainBox : Outcome String -> Outcome Bool -> List (Html msg) -> Html msg
-mainBox language rtl list =
+mainBox : TagAdapter.Model msg -> Outcome String -> Outcome Bool -> List (Html msg) -> Html msg
+mainBox adapter language rtl list =
     div
-        ([ class "bubblegum-preview__widget box is-marginless is-paddingless is-shadowless" ]
+        ([ class "bubblegum-preview__widget box is-marginless is-paddingless is-shadowless", onMouseOver adapter.onMouseOver]
             |> appendAttributeIfSuccess lang language
             |> appendAttributeIfSuccess dir (rtl |> Outcome.map rtlOrLtr)
         )

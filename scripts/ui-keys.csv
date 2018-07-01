@@ -1,5 +1,6 @@
 user-language,Language used by the user,String,small! attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 user-right-to-left,Whether the user is using right to left,Bool,attribute,
+content-id,The unique id of the content,String,state medium! attribute,id:aa61e603-9947-4fd8-86bb-d63a682259d0 
 content,The content of the field,String,state very-large attribute,some content 
 content-appearance,The appearance of the field content,String, enum!,
 
