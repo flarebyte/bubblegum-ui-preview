@@ -9375,8 +9375,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearanc
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content = 'ui:content';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage = 'ui:user-language';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentRightToLeft = 'ui:content-right-to-left';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage = 'ui:content-language';
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString = F2(
 	function (key, attributes) {
@@ -9484,15 +9482,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getUserLangua
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$isContentRightToLeft = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentRightToLeft, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentLanguage = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage, settings.attributes));
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance = {ctor: 'UnknownContentAppearance'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDanger = {ctor: 'UiContentAppearanceDanger'};
@@ -10141,8 +10130,6 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance = 'The appe
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContent = 'The content of the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft = 'Whether the user is using right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used by the user';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft = 'Whether the content requires right to left';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentLanguage = 'Language of the content';
 
 var _flarebyte$bubblegum_ui_tag$PackageJson$Model = F5(
 	function (a, b, c, d, e) {
@@ -10172,7 +10159,7 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 		ctor: '::',
 		_0: A4(
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage,
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
@@ -10211,12 +10198,12 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 					}
 				}
 			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentLanguage),
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
 		_1: {
 			ctor: '::',
 			_0: A4(
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentRightToLeft,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft,
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
@@ -10231,74 +10218,8 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 						}
 					}
 				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft),
-			_1: {
-				ctor: '::',
-				_0: A4(
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage,
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-					{
-						ctor: '::',
-						_0: 'en-GB',
-						_1: {
-							ctor: '::',
-							_0: 'ja',
-							_1: {
-								ctor: '::',
-								_0: 'ar',
-								_1: {
-									ctor: '::',
-									_0: 'zh-CN-SC',
-									_1: {
-										ctor: '::',
-										_0: 'ru-RUS',
-										_1: {
-											ctor: '::',
-											_0: 'es',
-											_1: {
-												ctor: '::',
-												_0: 'it',
-												_1: {
-													ctor: '::',
-													_0: 'fr',
-													_1: {
-														ctor: '::',
-														_0: 'other',
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
-				_1: {
-					ctor: '::',
-					_0: A4(
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft,
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-						{
-							ctor: '::',
-							_0: 'true',
-							_1: {
-								ctor: '::',
-								_0: 'false',
-								_1: {
-									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
-								}
-							}
-						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
-					_1: {ctor: '[]'}
-				}
-			}
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
+			_1: {ctor: '[]'}
 		}
 	},
 	settings: {

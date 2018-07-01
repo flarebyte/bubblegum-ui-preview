@@ -17,7 +17,7 @@ import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.Adapter as TagAdapter
 import Bubblegum.Preview.BulmaHelper exposing (ListPreviewType(..), contentBox, mainBox, previewText)
 import Bubblegum.Preview.VocabularyHelper exposing (getContent, getContentAppearance, getUserLanguage, isUserRightToLeft)
-import Html exposing (..)
+import Html as Html exposing (Html)
 
 
 {-| View for the widget

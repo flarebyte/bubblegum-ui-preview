@@ -7,20 +7,6 @@ module Bubblegum.Preview.Vocabulary exposing (..)
 -}
 
 
-{-| Language of the content. (String)
--}
-ui_contentLanguage : String
-ui_contentLanguage =
-    "ui:content-language"
-
-
-{-| Whether the content requires right to left. (Bool)
--}
-ui_contentRightToLeft : String
-ui_contentRightToLeft =
-    "ui:content-right-to-left"
-
-
 {-| Language used by the user. (String)
 -}
 ui_userLanguage : String
