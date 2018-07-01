@@ -123,18 +123,17 @@ fuzzyNotUserLanguage =
 
 selectorsUserLanguage : List Selector
 selectorsUserLanguage =
-    [ Selector.class "bubblegum-tag__widget", Selector.attribute (Attributes.lang "es") ]
+    [ Selector.class "bubblegum-preview__widget", Selector.attribute (Attributes.lang "es") ]
 
 
 selectorsNotUserLanguage : List Selector
 selectorsNotUserLanguage =
-    [ Selector.class "bubblegum-tag__widget"
+    [ Selector.class "bubblegum-preview__widget"
     , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:within-string-chars-range:(1,32)")
     ]
 
 
 -- Whether the user is using right to left
-
 
 createTrueOrRandom : Int -> String
 createTrueOrRandom number =
@@ -164,35 +163,45 @@ fuzzyNotUserRightToLeft =
 
 selectorsUserRightToLeft : List Selector
 selectorsUserRightToLeft =
-    [ Selector.class "bubblegum-tag__widget", Selector.attribute (Attributes.dir "rtl") ]
+    [ Selector.class "bubblegum-preview__widget", Selector.attribute (Attributes.dir "rtl") ]
 
 
 selectorsNotUserRightToLeft : List Selector
 selectorsNotUserRightToLeft =
-    [ Selector.class "bubblegum-tag__widget"
+    [ Selector.class "bubblegum-preview__widget"
     , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:bool")
     ]
 
 -- The appearance of the field content
-withSettingsContentAppearance: Int -> SettingsEntity.Model
+withSettingsContentAppearance: String -> SettingsEntity.Model
 withSettingsContentAppearance value = {
     attributes = [
-        attr ui_contentAppearance (createString value)
+        attr ui_contentAppearance "ui:content-appearance/header/one"
     ]
  }
 
-fuzzyContentAppearance : Fuzzer Int
-fuzzyContentAppearance = intRange 1 1
+fuzzyContentAppearance : Fuzzer String
+fuzzyContentAppearance = constant "ui:content-appearance/header/one"
 
-fuzzyNotContentAppearance : Fuzzer Int
-fuzzyNotContentAppearance = intRange 100 400
+fuzzyNotContentAppearance : Fuzzer String
+fuzzyNotContentAppearance = string
 
 selectorsContentAppearance : List Selector
-selectorsContentAppearance = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+selectorsContentAppearance = [ Selector.tag "h1"]
 
-selectorsNotContentAppearance : List Selector
-selectorsNotContentAppearance = [ Selector.class "bubblegum-tag__input",
-    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+-- The content of the field
+withStateContent: Int -> StateEntity.Model
+withStateContent value = {
+    attributes = [
+        attr ui_content (createString value)
+    ]
+ }
+
+fuzzyContent : Fuzzer Int
+fuzzyContent = intRange 1 1
+
+selectorsContent : List Selector
+selectorsContent = [ Selector.class "bubblegum-preview__widget", Selector.attribute (Attributes.lang "es-ES") ]
 
 -- private
 

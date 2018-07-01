@@ -1,3 +1,4 @@
+
 module KeyDescription exposing (..)
 
 {-| List of descriptions for the keys used for the settings
@@ -7,21 +8,18 @@ module KeyDescription exposing (..)
 -}
 
 
-descUserLanguage : String
+descUserLanguage: String
 descUserLanguage =
-    "Language used by the user"
+    "Language used by the user"    
 
-
-descUserRightToLeft : String
+descUserRightToLeft: String
 descUserRightToLeft =
-    "Whether the user is using right to left"
+    "Whether the user is using right to left"    
 
-
-descContent : String
+descContent: String
 descContent =
-    "The content of the field"
+    "The content of the field"    
 
-
-descContentAppearance : String
+descContentAppearance: String
 descContentAppearance =
-    "The appearance of the field content"
+    "The appearance of the field content"    

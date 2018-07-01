@@ -244,7 +244,7 @@ templateWidgetCreateTestsStateWrongAttr = """
 
 templateTemp = ""
 
-checkTemplateTestData = "fuzzy$nameCamel"
+checkTemplateTestData = "fuzzy$nameCamel :"
 
 templateTestData = """
 -- $description
