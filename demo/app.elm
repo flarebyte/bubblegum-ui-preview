@@ -14,8 +14,6 @@ import AppMsg exposing (AppMsg(..))
 import Bubblegum.Entity.Attribute exposing (deleteAttributeByKey, replaceAttributeByKey)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
-import Bubblegum.Preview.Vocabulary exposing (..)
-import Debug as Debug
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import WidgetBuilder exposing (viewWidget)
