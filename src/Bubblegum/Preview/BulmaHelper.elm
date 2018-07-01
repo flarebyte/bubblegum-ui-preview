@@ -163,8 +163,32 @@ previewText outcomeTextType contentOutcome =
             else
                 div [] (paragraphs linesOutcome)
 
+        UiContentAppearanceDark ->
+            article [ class "message is-dark" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
+        UiContentAppearancePrimary ->
+            article [ class "message is-primary" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
+        UiContentAppearanceInfo ->
+            article [ class "message is-info" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
+        UiContentAppearanceSuccess ->
+            article [ class "message is-success" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
+        UiContentAppearanceWarning ->
+            article [ class "message is-warning" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
+        UiContentAppearanceDanger ->
+            article [ class "message is-danger" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
+
         UiContentAppearanceHeaderOne ->
             h1 [] ([] |> appendHtmlIfSuccess text contentOutcome)
+
+        UiContentAppearanceCode ->
+            pre [] [ code [] ([] |> appendHtmlIfSuccess text contentOutcome) ]
+
+        UiContentAppearanceSample ->
+            pre [] [ samp [] ([] |> appendHtmlIfSuccess text contentOutcome) ]
 
         UiContentAppearanceHeaderTwo ->
             h2 [] ([] |> appendHtmlIfSuccess text contentOutcome)

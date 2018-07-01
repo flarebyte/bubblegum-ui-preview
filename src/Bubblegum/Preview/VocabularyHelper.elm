@@ -62,6 +62,14 @@ type EnumContentAppearance
     | UiContentAppearanceHeaderSix
     | UiContentAppearanceBlockQuote
     | UiContentAppearanceParagraphs
+    | UiContentAppearanceCode
+    | UiContentAppearanceSample
+    | UiContentAppearanceDark
+    | UiContentAppearancePrimary
+    | UiContentAppearanceInfo
+    | UiContentAppearanceSuccess
+    | UiContentAppearanceWarning
+    | UiContentAppearanceDanger
     | UnknownContentAppearance
 
 
@@ -75,6 +83,14 @@ enumContentAppearance =
     , "ui:content-appearance/header/six"
     , "ui:content-appearance/block-quote"
     , "ui:content-appearance/paragraphs"
+    , "ui:content-appearance/code"
+    , "ui:content-appearance/sample"
+    , "ui:content-appearance/dark"
+    , "ui:content-appearance/primary"
+    , "ui:content-appearance/info"
+    , "ui:content-appearance/success"
+    , "ui:content-appearance/warning"
+    , "ui:content-appearance/danger"
     ]
 
 
@@ -104,6 +120,30 @@ stringToEnumContentAppearance value =
 
         "ui:content-appearance/paragraphs" ->
             UiContentAppearanceParagraphs
+
+        "ui:content-appearance/code" ->
+            UiContentAppearanceCode
+
+        "ui:content-appearance/sample" ->
+            UiContentAppearanceSample
+
+        "ui:content-appearance/dark" ->
+            UiContentAppearanceDark
+
+        "ui:content-appearance/primary" ->
+            UiContentAppearancePrimary
+
+        "ui:content-appearance/info" ->
+            UiContentAppearanceInfo
+
+        "ui:content-appearance/success" ->
+            UiContentAppearanceSuccess
+
+        "ui:content-appearance/warning" ->
+            UiContentAppearanceWarning
+
+        "ui:content-appearance/danger" ->
+            UiContentAppearanceDanger
 
         _ ->
             UnknownContentAppearance

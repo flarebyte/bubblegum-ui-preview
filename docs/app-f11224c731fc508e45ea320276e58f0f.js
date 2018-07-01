@@ -9538,7 +9538,39 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAp
 							_1: {
 								ctor: '::',
 								_0: 'ui:content-appearance/paragraphs',
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: 'ui:content-appearance/code',
+									_1: {
+										ctor: '::',
+										_0: 'ui:content-appearance/sample',
+										_1: {
+											ctor: '::',
+											_0: 'ui:content-appearance/dark',
+											_1: {
+												ctor: '::',
+												_0: 'ui:content-appearance/primary',
+												_1: {
+													ctor: '::',
+													_0: 'ui:content-appearance/info',
+													_1: {
+														ctor: '::',
+														_0: 'ui:content-appearance/success',
+														_1: {
+															ctor: '::',
+															_0: 'ui:content-appearance/warning',
+															_1: {
+																ctor: '::',
+																_0: 'ui:content-appearance/danger',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
 							}
 						}
 					}
@@ -9572,6 +9604,14 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentLan
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentLanguage, settings.attributes));
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance = {ctor: 'UnknownContentAppearance'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDanger = {ctor: 'UiContentAppearanceDanger'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceWarning = {ctor: 'UiContentAppearanceWarning'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSuccess = {ctor: 'UiContentAppearanceSuccess'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceInfo = {ctor: 'UiContentAppearanceInfo'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearancePrimary = {ctor: 'UiContentAppearancePrimary'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDark = {ctor: 'UiContentAppearanceDark'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSample = {ctor: 'UiContentAppearanceSample'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceCode = {ctor: 'UiContentAppearanceCode'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs = {ctor: 'UiContentAppearanceParagraphs'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote = {ctor: 'UiContentAppearanceBlockQuote'};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix = {ctor: 'UiContentAppearanceHeaderSix'};
@@ -9599,6 +9639,22 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumC
 			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote;
 		case 'ui:content-appearance/paragraphs':
 			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs;
+		case 'ui:content-appearance/code':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceCode;
+		case 'ui:content-appearance/sample':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSample;
+		case 'ui:content-appearance/dark':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDark;
+		case 'ui:content-appearance/primary':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearancePrimary;
+		case 'ui:content-appearance/info':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceInfo;
+		case 'ui:content-appearance/success':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSuccess;
+		case 'ui:content-appearance/warning':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceWarning;
+		case 'ui:content-appearance/danger':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDanger;
 		default:
 			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance;
 	}
@@ -10274,6 +10330,126 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = F2(
 					_elm_lang$html$Html$div,
 					{ctor: '[]'},
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome));
+			case 'UiContentAppearanceDark':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-dark'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearancePrimary':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-primary'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceInfo':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-info'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceSuccess':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-success'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceWarning':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-warning'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceDanger':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-danger'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
 			case 'UiContentAppearanceHeaderOne':
 				return A2(
 					_elm_lang$html$Html$h1,
@@ -10283,6 +10459,38 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = F2(
 						_elm_lang$html$Html$text,
 						contentOutcome,
 						{ctor: '[]'}));
+			case 'UiContentAppearanceCode':
+				return A2(
+					_elm_lang$html$Html$pre,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$code,
+							{ctor: '[]'},
+							A3(
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+								_elm_lang$html$Html$text,
+								contentOutcome,
+								{ctor: '[]'})),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceSample':
+				return A2(
+					_elm_lang$html$Html$pre,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$samp,
+							{ctor: '[]'},
+							A3(
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+								_elm_lang$html$Html$text,
+								contentOutcome,
+								{ctor: '[]'})),
+						_1: {ctor: '[]'}
+					});
 			case 'UiContentAppearanceHeaderTwo':
 				return A2(
 					_elm_lang$html$Html$h2,
@@ -10684,7 +10892,39 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 										_1: {
 											ctor: '::',
 											_0: 'ui:content-appearance/paragraphs',
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: 'ui:content-appearance/code',
+												_1: {
+													ctor: '::',
+													_0: 'ui:content-appearance/sample',
+													_1: {
+														ctor: '::',
+														_0: 'ui:content-appearance/dark',
+														_1: {
+															ctor: '::',
+															_0: 'ui:content-appearance/primary',
+															_1: {
+																ctor: '::',
+																_0: 'ui:content-appearance/info',
+																_1: {
+																	ctor: '::',
+																	_0: 'ui:content-appearance/success',
+																	_1: {
+																		ctor: '::',
+																		_0: 'ui:content-appearance/warning',
+																		_1: {
+																			ctor: '::',
+																			_0: 'ui:content-appearance/danger',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
 										}
 									}
 								}
