@@ -13,8 +13,21 @@ Please have a look at the main [documentation](https://github.com/flarebyte/bubb
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.Adapter as TagAdapter
-import Bubblegum.Preview.BulmaHelper exposing (ListPreviewType(..), contentBox, mainBox, previewText)
-import Bubblegum.Preview.VocabularyHelper exposing (getContent, getContentAppearance, getUserLanguage, isUserRightToLeft)
+import Bubblegum.Preview.BulmaHelper
+    exposing
+        ( ListPreviewType(..)
+        , contentBox
+        , mainBox
+        , previewText
+        )
+import Bubblegum.Preview.VocabularyHelper
+    exposing
+        ( getContent
+        , getContentAppearance
+        , getContentId
+        , getUserLanguage
+        , isUserRightToLeft
+        )
 import Html as Html exposing (Html)
 
 
@@ -38,8 +51,10 @@ import Html as Html exposing (Html)
 -}
 view : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
 view adapter userSettings settings state =
-    mainBox (getUserLanguage userSettings)
+    mainBox adapter
+        (getUserLanguage userSettings)
         (isUserRightToLeft userSettings)
+        (getContentId state)
         [ contentBox
             [ previewText (getContentAppearance settings) (getContent state)
             ]

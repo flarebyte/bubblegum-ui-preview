@@ -203,6 +203,27 @@ fuzzyContent = intRange 1 1
 selectorsContent : List Selector
 selectorsContent = [ Selector.class "bubblegum-preview__widget", Selector.attribute (Attributes.lang "es-ES") ]
 
+-- The unique id of the content
+withSettingsContentId: Int -> SettingsEntity.Model
+withSettingsContentId value = {
+    attributes = [
+        attr ui_contentId (createString value)
+    ]
+ }
+
+fuzzyContentId : Fuzzer Int
+fuzzyContentId = intRange 1 1
+
+fuzzyNotContentId : Fuzzer Int
+fuzzyNotContentId = intRange 100 400
+
+selectorsContentId : List Selector
+selectorsContentId = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotContentId : List Selector
+selectorsNotContentId = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
 -- private
 
 

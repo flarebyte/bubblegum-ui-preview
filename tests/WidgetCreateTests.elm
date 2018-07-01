@@ -31,6 +31,10 @@ suite =
                 \value -> viewWidgetWithUserSettings (withUserSettingsUserRightToLeft value) 
                     |> findComponent selectorsNotUserRightToLeft
 
+                , fuzz fuzzyContentId "Correct settings for The unique id of the content" <|
+                \value -> viewWidgetWithState (withStateContentId value)
+                    |> findComponent selectorsContentId
+
                 , fuzz fuzzyContent "Correct settings for The content of the field" <|
                 \value -> viewWidgetWithState (withStateContent value)
                     |> findComponent selectorsContent

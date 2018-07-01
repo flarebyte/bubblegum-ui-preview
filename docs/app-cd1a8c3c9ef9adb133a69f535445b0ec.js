@@ -9373,6 +9373,7 @@ var _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle = function 
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance = 'ui:content-appearance';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content = 'ui:content';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId = 'ui:content-id';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage = 'ui:user-language';
 
@@ -9473,6 +9474,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent = 
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitVeryLargeRange,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentId = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitMediumRangeNotEmpty,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId, settings.attributes));
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$isUserRightToLeft = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft, settings.attributes);
@@ -9719,23 +9726,36 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfS
 					});
 		}
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F3(
-	function (language, rtl, list) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F5(
+	function (adapter, language, rtl, id, list) {
+		var idOrBlank = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'',
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(id));
 		return A2(
 			_elm_lang$html$Html$div,
 			A3(
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
-				_elm_lang$html$Html_Attributes$dir,
-				A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$rtlOrLtr, rtl),
+				_elm_lang$html$Html_Attributes$attribute('data-bubblegum-id'),
+				id,
 				A3(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
-					_elm_lang$html$Html_Attributes$lang,
-					language,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('bubblegum-preview__widget box is-marginless is-paddingless is-shadowless'),
-						_1: {ctor: '[]'}
-					})),
+					_elm_lang$html$Html_Attributes$dir,
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$rtlOrLtr, rtl),
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
+						_elm_lang$html$Html_Attributes$lang,
+						language,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('bubblegum-preview__widget box is-marginless is-paddingless is-shadowless'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onMouseOver(
+									adapter.onMouseOver(idOrBlank)),
+								_1: {ctor: '[]'}
+							}
+						}))),
 			list);
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess = F3(
@@ -10083,10 +10103,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListDecimal
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view = F4(
 	function (adapter, userSettings, settings, state) {
-		return A3(
+		return A5(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox,
+			adapter,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getUserLanguage(userSettings),
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$isUserRightToLeft(userSettings),
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentId(state),
 			{
 				ctor: '::',
 				_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox(
@@ -10128,6 +10150,7 @@ var _flarebyte$bubblegum_ui_tag$AttributeDoc$OnlyOne = {ctor: 'OnlyOne'};
 
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance = 'The appearance of the field content';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContent = 'The content of the field';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentId = 'The unique id of the content';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft = 'Whether the user is using right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used by the user';
 
@@ -10300,19 +10323,36 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 		ctor: '::',
 		_0: A4(
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId,
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: 'some content',
+				_0: 'id:aa61e603-9947-4fd8-86bb-d63a682259d0',
 				_1: {
 					ctor: '::',
 					_0: 'other',
 					_1: {ctor: '[]'}
 				}
 			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descContent),
-		_1: {ctor: '[]'}
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentId),
+		_1: {
+			ctor: '::',
+			_0: A4(
+				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
+				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+				{
+					ctor: '::',
+					_0: 'some content',
+					_1: {
+						ctor: '::',
+						_0: 'other',
+						_1: {ctor: '[]'}
+					}
+				},
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descContent),
+			_1: {ctor: '[]'}
+		}
 	}
 };
 
