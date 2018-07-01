@@ -35,13 +35,3 @@ descContent =
 descContentAppearance : String
 descContentAppearance =
     "The appearance of the field content"
-
-
-descConstituentLabel : String
-descConstituentLabel =
-    "Label of the constituent"
-
-
-descConstituentDescription : String
-descConstituentDescription =
-    "Description of the constituent"

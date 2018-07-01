@@ -156,19 +156,3 @@ getContentAppearance settings =
     findString ui_contentAppearance settings.attributes
         |> Validation.matchEnum enumContentAppearance
         |> Outcome.map stringToEnumContentAppearance
-
-
-{-| Label of the constituent
--}
-getConstituentLabel : SettingsEntity.Model -> String -> Outcome String
-getConstituentLabel settings id =
-    findStringForId ui_constituentLabel settings.attributes id
-        |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
-
-
-{-| Description of the constituent
--}
-getConstituentDescription : SettingsEntity.Model -> String -> Outcome String
-getConstituentDescription settings id =
-    findStringForId ui_constituentDescription settings.attributes id
-        |> Validation.withinStringCharsRange limitMediumRangeNotEmpty

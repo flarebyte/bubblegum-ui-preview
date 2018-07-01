@@ -7,7 +7,6 @@ import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Preview.Vocabulary exposing (..)
 import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Ipsum exposing (ipsum)
-import TagSuggestions exposing (getExampleAttributes)
 
 
 type alias AppModel =
@@ -90,7 +89,7 @@ attrs key values =
 reset : AppModel
 reset =
     { userSettings = { attributes = [] }
-    , settings = { attributes = getExampleAttributes }
+    , settings = { attributes = [] }
     , state =
         { attributes =
             [ attrs ui_content

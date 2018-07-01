@@ -5,7 +5,6 @@ module Bubblegum.Preview.BulmaHelper
         , contentBox
         , mainBox
         , previewText
-        , previewTextList
         )
 
 {-| The Bulma css framework is used for styling the widget.
@@ -18,18 +17,33 @@ This helper facilitates the creation of Bulma styled html elements.
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.Validation as Validation
-import Bubblegum.Preview.Helper exposing (ListItem)
-import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
-import Bubblegum.Preview.VocabularyHelper exposing (..)
-import Html exposing (..)
-import Html.Attributes as Attributes exposing (..)
+import Bubblegum.Preview.VocabularyHelper exposing (EnumContentAppearance(..))
+import Html as Html
+    exposing
+        ( Attribute
+        , Html
+        , article
+        , blockquote
+        , code
+        , div
+        , h1
+        , h2
+        , h3
+        , h4
+        , h5
+        , h6
+        , p
+        , pre
+        , samp
+        , text
+        )
+import Html.Attributes as Attributes exposing (attribute, class, dir, lang)
 import List
-import String exposing (join)
 
 
 {-| Append some html code when the outcome is successful otherwise hide a warning in the html
 -}
-appendHtmlIfSuccess : (a -> Html.Html msg) -> Outcome a -> List (Html.Html msg) -> List (Html.Html msg)
+appendHtmlIfSuccess : (a -> Html msg) -> Outcome a -> List (Html msg) -> List (Html msg)
 appendHtmlIfSuccess ifSuccess outcome htmlList =
     case outcome of
         None ->
@@ -44,7 +58,7 @@ appendHtmlIfSuccess ifSuccess outcome htmlList =
 
 {-| Append a list of html code when the outcome is successful otherwise hide a warning in the html
 -}
-appendListHtmlIfSuccess : (a -> List (Html.Html msg)) -> Outcome a -> List (Html.Html msg) -> List (Html.Html msg)
+appendListHtmlIfSuccess : (a -> List (Html msg)) -> Outcome a -> List (Html msg) -> List (Html msg)
 appendListHtmlIfSuccess ifSuccess outcome htmlList =
     case outcome of
         None ->
@@ -74,16 +88,6 @@ appendAttributeIfSuccess ifSuccess outcome attributes =
 
 
 -- Various helpers
-
-
-asClass : List String -> Attribute msg
-asClass list =
-    List.reverse list |> join " " |> class
-
-
-asClass2 : String -> String -> Attribute msg
-asClass2 a b =
-    [ b, a ] |> asClass
 
 
 rtlOrLtr : Bool -> String
@@ -207,62 +211,3 @@ previewText outcomeTextType contentOutcome =
 
         UnknownContentAppearance ->
             h6 [ class "is-invisible warning" ] [ text (getWarningMessage outcomeTextType) ]
-
-
-previewTextListItem : ListItem -> Html msg
-previewTextListItem listItem =
-    li ([] |> appendAttributeIfSuccess title listItem.description)
-        ([] |> appendHtmlIfSuccess text listItem.label)
-
-
-previewTextListItems : List ListItem -> List (Html msg)
-previewTextListItems list =
-    List.map previewTextListItem list
-
-
-previewTextListType : ListPreviewType -> String
-previewTextListType listPreviewType =
-    case listPreviewType of
-        OrderedListDecimal ->
-            "1"
-
-        OrderedListAlphabeticUpper ->
-            "A"
-
-        OrderedListAlphabeticLower ->
-            "a"
-
-        OrderedListRomanUpper ->
-            "I"
-
-        OrderedListRomanLower ->
-            "i"
-
-        BulletedList ->
-            "disc"
-
-
-previewTextList : ListPreviewType -> Outcome (List ListItem) -> Html msg
-previewTextList listPreviewType outcome =
-    let
-        liList =
-            [] |> appendListHtmlIfSuccess previewTextListItems outcome
-    in
-    case listPreviewType of
-        OrderedListDecimal ->
-            liList |> ol [ type_ (previewTextListType listPreviewType) ]
-
-        OrderedListAlphabeticUpper ->
-            liList |> ol [ type_ (previewTextListType listPreviewType) ]
-
-        OrderedListAlphabeticLower ->
-            liList |> ol [ type_ (previewTextListType listPreviewType) ]
-
-        OrderedListRomanUpper ->
-            liList |> ol [ type_ (previewTextListType listPreviewType) ]
-
-        OrderedListRomanLower ->
-            liList |> ol [ type_ (previewTextListType listPreviewType) ]
-
-        BulletedList ->
-            liList |> ul []

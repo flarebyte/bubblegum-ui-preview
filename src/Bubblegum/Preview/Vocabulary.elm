@@ -47,17 +47,3 @@ ui_content =
 ui_contentAppearance : String
 ui_contentAppearance =
     "ui:content-appearance"
-
-
-{-| Label of the constituent. (String)
--}
-ui_constituentLabel : String
-ui_constituentLabel =
-    "ui:constituent-label"
-
-
-{-| Description of the constituent. (String)
--}
-ui_constituentDescription : String
-ui_constituentDescription =
-    "ui:constituent-description"
