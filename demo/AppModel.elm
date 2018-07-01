@@ -4,10 +4,9 @@ import Bubblegum.Entity.Attribute as Attribute exposing (replaceAttributeByKey)
 import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
-import Bubblegum.Tag.Vocabulary exposing (..)
-import Bubblegum.Tag.VocabularyHelper exposing (..)
+import Bubblegum.Preview.Vocabulary exposing (..)
+import Bubblegum.Preview.VocabularyHelper exposing (..)
 import Ipsum exposing (ipsum)
-import TagSuggestions exposing (getExampleAttributes)
 
 
 type alias AppModel =
@@ -78,24 +77,24 @@ asStateIn =
     flip setState
 
 
-reset : AppModel
-reset =
-    { userSettings = { attributes = [] }
-    , settings = { attributes = getExampleAttributes }
-    , state = { attributes = [] |> replaceAttributeByKey ui_suggesting [ "false" ] }
+attrs : String -> List String -> Attribute.Model
+attrs key values =
+    { id = Nothing
+    , key = key
+    , facets = []
+    , values = values
     }
 
 
-notSuggesting : StateEntity.Model -> String
-notSuggesting model =
-    isSuggesting model |> Outcome.toMaybe |> Maybe.withDefault True |> not |> toString |> String.toLower
-
-
-addTagIdToSelected : String -> StateEntity.Model -> List String
-addTagIdToSelected tagId state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (\list -> list ++ [ tagId ])
-
-
-deleteTagIdToSelected : String -> StateEntity.Model -> List String
-deleteTagIdToSelected tagId state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> List.filter (\t -> t /= tagId)
+reset : AppModel
+reset =
+    { userSettings = { attributes = [] }
+    , settings = { attributes = [] }
+    , state =
+        { attributes =
+            [ attrs ui_content
+                [ List.repeat 4 ipsum |> String.join "\n"
+                ]
+            ]
+        }
+    }

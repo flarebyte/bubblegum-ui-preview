@@ -110,7 +110,7 @@ def createI18n():
 
 def main(argv):
     createIsoLanguage()
-    createI18n()
+    # createI18n()
     
 if __name__ == "__main__":
    main(sys.argv[1:])

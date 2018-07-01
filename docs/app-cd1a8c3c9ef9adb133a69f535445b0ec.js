@@ -9371,136 +9371,23 @@ var _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle = function 
 			outcome));
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDangerTag = 'ui:constituent-danger-tag';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentWarningTag = 'ui:constituent-warning-tag';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentTag = 'ui:constituent-tag';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDescription = 'ui:constituent-description';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentLabel = 'ui:constituent-label';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMaximumTags = 'ui:danger-maximum-tags';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMinimumTags = 'ui:danger-minimum-tags';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags = 'ui:success-maximum-tags';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags = 'ui:success-minimum-tags';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage = 'ui:user-language';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel = 'ui:search-label';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_label = 'ui:label';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_help = 'ui:help';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp = 'ui:danger-help';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search = 'ui:search';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion = 'ui:suggestion';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting = 'ui:suggesting';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected = 'ui:selected';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft = 'ui:content-right-to-left';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance = 'ui:content-appearance';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content = 'ui:content';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId = 'ui:content-id';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage = 'ui:user-language';
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList = 512;
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitList = 8;
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitVeryLargeRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 60000};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 128};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 32};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitVeryLargeRange = {ctor: '_Tuple2', _0: 0, _1: 60000};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRange = {ctor: '_Tuple2', _0: 0, _1: 128};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRange = {ctor: '_Tuple2', _0: 0, _1: 32};
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$compactUriRegex = _elm_lang$core$Regex$regex('^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$');
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$helperCompactUri = function (value) {
-	return A2(_elm_lang$core$Regex$contains, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$compactUriRegex, value);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$listMatchCompactUri = function (outcome) {
-	return A3(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$check,
-		function (list) {
-			return A2(_elm_lang$core$List$all, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$helperCompactUri, list);
-		},
-		'unsatisfied-constraint:list-compact-uri',
-		outcome);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findAttributeByKeyAndId = F3(
-	function (key, attributes, id) {
-		findAttributeByKeyAndId:
-		while (true) {
-			var _p0 = attributes;
-			if (_p0.ctor === '[]') {
-				return _elm_lang$core$Maybe$Nothing;
-			} else {
-				var _p1 = _p0._0;
-				if (_elm_lang$core$Native_Utils.eq(_p1.key, key) && _elm_lang$core$Native_Utils.eq(
-					_p1.id,
-					_elm_lang$core$Maybe$Just(id))) {
-					return _elm_lang$core$Maybe$Just(_p1);
-				} else {
-					var _v1 = key,
-						_v2 = _p0._1,
-						_v3 = id;
-					key = _v1;
-					attributes = _v2;
-					id = _v3;
-					continue findAttributeByKeyAndId;
-				}
-			}
-		}
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findOutcomeByKeyAndId = F3(
-	function (key, attributes, id) {
-		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$fromMaybe(
-			A2(
-				_elm_lang$core$Maybe$map,
-				function (_) {
-					return _.values;
-				},
-				A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findAttributeByKeyAndId, key, attributes, id)));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri = F2(
-	function (key, attributes) {
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$listMatchCompactUri(
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinListStringCharsRange,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listLessThan,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList,
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$findOutcomeByKey, key, attributes))));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListStringForId = F3(
-	function (key, attributes, id) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinListStringCharsRange,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listLessThan,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList,
-				A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findOutcomeByKeyAndId, key, attributes, id)));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListString = F2(
-	function (key, attributes) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinListStringCharsRange,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listLessThan,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitList,
-				A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$findOutcomeByKey, key, attributes)));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findStringForId = F3(
-	function (key, attributes, id) {
-		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle(
-			A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findOutcomeByKeyAndId, key, attributes, id));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBoolForId = F3(
-	function (key, attributes, id) {
-		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asBool(
-			A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findStringForId, key, attributes, id));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString = F2(
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString = F2(
 	function (key, attributes) {
 		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asSingle(
 			A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$findOutcomeByKey, key, attributes));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool = F2(
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findBool = F2(
 	function (key, attributes) {
 		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asBool(
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, key, attributes));
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, key, attributes));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findIntRange = F2(
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findIntRange = F2(
 	function (keyTuple, attributes) {
 		return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asIntRange(
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$asIntTuple(
@@ -9508,97 +9395,165 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findIntRange = F2(
 					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$findOutcomeByKeyTuple, keyTuple, attributes))));
 	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDangerTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDangerTag, settings.attributes, id);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentWarningTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentWarningTag, settings.attributes, id);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentTag = F2(
-	function (settings, id) {
-		return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentTag, settings.attributes, id);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDescription = F2(
-	function (settings, id) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-			A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDescription, settings.attributes, id));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel = F2(
-	function (settings, id) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-			A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findStringForId, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentLabel, settings.attributes, id));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange = function (settings) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$compactUriLimitList = 512;
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitList = 8;
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitVeryLargeRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 60000};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitMediumRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 128};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty = {ctor: '_Tuple2', _0: 1, _1: 32};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitVeryLargeRange = {ctor: '_Tuple2', _0: 0, _1: 60000};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitMediumRange = {ctor: '_Tuple2', _0: 0, _1: 128};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRange = {ctor: '_Tuple2', _0: 0, _1: 32};
+
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance = {
+	ctor: '::',
+	_0: 'ui:content-appearance/header/one',
+	_1: {
+		ctor: '::',
+		_0: 'ui:content-appearance/header/two',
+		_1: {
+			ctor: '::',
+			_0: 'ui:content-appearance/header/three',
+			_1: {
+				ctor: '::',
+				_0: 'ui:content-appearance/header/four',
+				_1: {
+					ctor: '::',
+					_0: 'ui:content-appearance/header/five',
+					_1: {
+						ctor: '::',
+						_0: 'ui:content-appearance/header/six',
+						_1: {
+							ctor: '::',
+							_0: 'ui:content-appearance/block-quote',
+							_1: {
+								ctor: '::',
+								_0: 'ui:content-appearance/paragraphs',
+								_1: {
+									ctor: '::',
+									_0: 'ui:content-appearance/code',
+									_1: {
+										ctor: '::',
+										_0: 'ui:content-appearance/sample',
+										_1: {
+											ctor: '::',
+											_0: 'ui:content-appearance/dark',
+											_1: {
+												ctor: '::',
+												_0: 'ui:content-appearance/primary',
+												_1: {
+													ctor: '::',
+													_0: 'ui:content-appearance/info',
+													_1: {
+														ctor: '::',
+														_0: 'ui:content-appearance/success',
+														_1: {
+															ctor: '::',
+															_0: 'ui:content-appearance/warning',
+															_1: {
+																ctor: '::',
+																_0: 'ui:content-appearance/danger',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent = function (settings) {
 	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinIntRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitVeryLargeRangeNotEmpty,
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitVeryLargeRange,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentId = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitMediumRangeNotEmpty,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$isUserRightToLeft = function (settings) {
+	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft, settings.attributes);
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getUserLanguage = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_HelperLimits$limitSmallRangeNotEmpty,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance = {ctor: 'UnknownContentAppearance'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDanger = {ctor: 'UiContentAppearanceDanger'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceWarning = {ctor: 'UiContentAppearanceWarning'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSuccess = {ctor: 'UiContentAppearanceSuccess'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceInfo = {ctor: 'UiContentAppearanceInfo'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearancePrimary = {ctor: 'UiContentAppearancePrimary'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDark = {ctor: 'UiContentAppearanceDark'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSample = {ctor: 'UiContentAppearanceSample'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceCode = {ctor: 'UiContentAppearanceCode'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs = {ctor: 'UiContentAppearanceParagraphs'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote = {ctor: 'UiContentAppearanceBlockQuote'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix = {ctor: 'UiContentAppearanceHeaderSix'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFive = {ctor: 'UiContentAppearanceHeaderFive'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFour = {ctor: 'UiContentAppearanceHeaderFour'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderThree = {ctor: 'UiContentAppearanceHeaderThree'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderTwo = {ctor: 'UiContentAppearanceHeaderTwo'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne = {ctor: 'UiContentAppearanceHeaderOne'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumContentAppearance = function (value) {
+	var _p0 = value;
+	switch (_p0) {
+		case 'ui:content-appearance/header/one':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderOne;
+		case 'ui:content-appearance/header/two':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderTwo;
+		case 'ui:content-appearance/header/three':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderThree;
+		case 'ui:content-appearance/header/four':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFour;
+		case 'ui:content-appearance/header/five':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderFive;
+		case 'ui:content-appearance/header/six':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceHeaderSix;
+		case 'ui:content-appearance/block-quote':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceBlockQuote;
+		case 'ui:content-appearance/paragraphs':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceParagraphs;
+		case 'ui:content-appearance/code':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceCode;
+		case 'ui:content-appearance/sample':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSample;
+		case 'ui:content-appearance/dark':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDark;
+		case 'ui:content-appearance/primary':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearancePrimary;
+		case 'ui:content-appearance/info':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceInfo;
+		case 'ui:content-appearance/success':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceSuccess;
+		case 'ui:content-appearance/warning':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceWarning;
+		case 'ui:content-appearance/danger':
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UiContentAppearanceDanger;
+		default:
+			return _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance;
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentAppearance = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$stringToEnumContentAppearance,
 		A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findIntRange,
-			{ctor: '_Tuple2', _0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMinimumTags, _1: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMaximumTags},
-			settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuccessTagRange = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinIntRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitVeryLargeRangeNotEmpty,
-		A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findIntRange,
-			{ctor: '_Tuple2', _0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags, _1: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags},
-			settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isUserRightToLeft = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearchLabel = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getLabel = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_label, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getHelp = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_help, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerHelp = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearch = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft, settings.attributes);
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$matchEnum,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$enumContentAppearance,
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance, settings.attributes)));
 };
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
@@ -9607,19 +9562,7 @@ var _flarebyte$bubblegum_ui_tag$Ipsum$ipsum = A2(
 	_flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart,
 	A2(_elm_lang$core$Basics_ops['++'], _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart, _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart));
 
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$defaultSuggestions = A2(
-	_elm_lang$core$List$map,
-	function (_p0) {
-		return A2(
-			F2(
-				function (x, y) {
-					return A2(_elm_lang$core$Basics_ops['++'], x, y);
-				}),
-			'id:suggestion:',
-			_elm_lang$core$Basics$toString(_p0));
-	},
-	A2(_elm_lang$core$List$range, 1, 28));
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$attr = F2(
+var _flarebyte$bubblegum_ui_tag$AppModel$attrs = F2(
 	function (key, values) {
 		return {
 			id: _elm_lang$core$Maybe$Nothing,
@@ -9628,430 +9571,29 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$attr = F2(
 			values: values
 		};
 	});
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$attri = F3(
-	function (id, key, values) {
-		return {
-			id: _elm_lang$core$Maybe$Just(id),
-			key: key,
-			facets: {ctor: '[]'},
-			values: values
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion = F2(
-	function (uid, infoTags) {
-		var dangerTags = _elm_lang$core$Native_Utils.eq(
-			A2(_elm_lang$core$Basics_ops['%'], uid, 5),
-			0) ? {
-			ctor: '::',
-			_0: _elm_lang$core$String$reverse(
-				A3(_elm_lang$core$String$slice, uid, uid + 7, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum)),
-			_1: {ctor: '[]'}
-		} : {ctor: '[]'};
-		var warningTags = _elm_lang$core$Native_Utils.eq(
-			A2(_elm_lang$core$Basics_ops['%'], uid, 3),
-			0) ? {
-			ctor: '::',
-			_0: A3(_elm_lang$core$String$slice, uid, uid + 5, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum),
-			_1: {ctor: '[]'}
-		} : {ctor: '[]'};
-		var description = A3(
-			_elm_lang$core$String$slice,
-			uid,
-			3 * uid,
-			_elm_lang$core$String$reverse(_flarebyte$bubblegum_ui_tag$Ipsum$ipsum));
-		var label = A3(_elm_lang$core$String$slice, uid, 2 * uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum);
-		var id = A2(
-			_elm_lang$core$Basics_ops['++'],
-			'id:suggestion:',
-			_elm_lang$core$Basics$toString(uid));
-		return {
-			ctor: '::',
-			_0: A3(
-				_flarebyte$bubblegum_ui_tag$TagSuggestions$attri,
-				id,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentLabel,
-				{
-					ctor: '::',
-					_0: label,
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A3(
-					_flarebyte$bubblegum_ui_tag$TagSuggestions$attri,
-					id,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDescription,
-					{
-						ctor: '::',
-						_0: description,
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentTag, infoTags),
-					_1: {
-						ctor: '::',
-						_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentWarningTag, warningTags),
-						_1: {
-							ctor: '::',
-							_0: A3(_flarebyte$bubblegum_ui_tag$TagSuggestions$attri, id, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_constituentDangerTag, dangerTags),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
-	_elm_lang$core$Basics_ops['++'],
-	{
-		ctor: '::',
-		_0: A2(_flarebyte$bubblegum_ui_tag$TagSuggestions$attr, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion, _flarebyte$bubblegum_ui_tag$TagSuggestions$defaultSuggestions),
-		_1: {ctor: '[]'}
-	},
-	A2(
-		_elm_lang$core$Basics_ops['++'],
-		A2(
-			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-			1,
-			{
-				ctor: '::',
-				_0: 'info a',
-				_1: {
-					ctor: '::',
-					_0: 'info a 2',
-					_1: {ctor: '[]'}
-				}
-			}),
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			A2(
-				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-				2,
-				{
-					ctor: '::',
-					_0: 'info b',
-					_1: {ctor: '[]'}
-				}),
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				A2(
-					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-					3,
-					{
-						ctor: '::',
-						_0: 'info c',
-						_1: {
-							ctor: '::',
-							_0: 'info2',
-							_1: {ctor: '[]'}
-						}
-					}),
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					A2(
-						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-						4,
-						{
-							ctor: '::',
-							_0: 'info d',
-							_1: {ctor: '[]'}
-						}),
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						A2(
-							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-							5,
-							{
-								ctor: '::',
-								_0: 'info e',
-								_1: {ctor: '[]'}
-							}),
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							A2(
-								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-								6,
-								{
-									ctor: '::',
-									_0: 'info f',
-									_1: {ctor: '[]'}
-								}),
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								A2(
-									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-									7,
-									{
-										ctor: '::',
-										_0: 'info g',
-										_1: {ctor: '[]'}
-									}),
-								A2(
-									_elm_lang$core$Basics_ops['++'],
-									A2(
-										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-										8,
-										{
-											ctor: '::',
-											_0: 'info h',
-											_1: {ctor: '[]'}
-										}),
-									A2(
-										_elm_lang$core$Basics_ops['++'],
-										A2(
-											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-											9,
-											{
-												ctor: '::',
-												_0: 'info i',
-												_1: {ctor: '[]'}
-											}),
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											A2(
-												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-												10,
-												{
-													ctor: '::',
-													_0: 'info j',
-													_1: {ctor: '[]'}
-												}),
-											A2(
-												_elm_lang$core$Basics_ops['++'],
-												A2(
-													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-													11,
-													{
-														ctor: '::',
-														_0: 'info k',
-														_1: {ctor: '[]'}
-													}),
-												A2(
-													_elm_lang$core$Basics_ops['++'],
-													A2(
-														_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-														12,
-														{
-															ctor: '::',
-															_0: 'info l',
-															_1: {ctor: '[]'}
-														}),
-													A2(
-														_elm_lang$core$Basics_ops['++'],
-														A2(
-															_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-															13,
-															{
-																ctor: '::',
-																_0: 'info m',
-																_1: {ctor: '[]'}
-															}),
-														A2(
-															_elm_lang$core$Basics_ops['++'],
-															A2(
-																_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																14,
-																{
-																	ctor: '::',
-																	_0: 'info n',
-																	_1: {ctor: '[]'}
-																}),
-															A2(
-																_elm_lang$core$Basics_ops['++'],
-																A2(
-																	_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																	15,
-																	{
-																		ctor: '::',
-																		_0: 'info o',
-																		_1: {ctor: '[]'}
-																	}),
-																A2(
-																	_elm_lang$core$Basics_ops['++'],
-																	A2(
-																		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																		16,
-																		{
-																			ctor: '::',
-																			_0: 'info p',
-																			_1: {ctor: '[]'}
-																		}),
-																	A2(
-																		_elm_lang$core$Basics_ops['++'],
-																		A2(
-																			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																			17,
-																			{
-																				ctor: '::',
-																				_0: 'info q',
-																				_1: {ctor: '[]'}
-																			}),
-																		A2(
-																			_elm_lang$core$Basics_ops['++'],
-																			A2(
-																				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																				18,
-																				{
-																					ctor: '::',
-																					_0: 'info r',
-																					_1: {ctor: '[]'}
-																				}),
-																			A2(
-																				_elm_lang$core$Basics_ops['++'],
-																				A2(
-																					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																					19,
-																					{
-																						ctor: '::',
-																						_0: 'info s',
-																						_1: {ctor: '[]'}
-																					}),
-																				A2(
-																					_elm_lang$core$Basics_ops['++'],
-																					A2(
-																						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																						20,
-																						{
-																							ctor: '::',
-																							_0: 'info t',
-																							_1: {ctor: '[]'}
-																						}),
-																					A2(
-																						_elm_lang$core$Basics_ops['++'],
-																						A2(
-																							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																							21,
-																							{
-																								ctor: '::',
-																								_0: 'info u',
-																								_1: {ctor: '[]'}
-																							}),
-																						A2(
-																							_elm_lang$core$Basics_ops['++'],
-																							A2(
-																								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																								22,
-																								{
-																									ctor: '::',
-																									_0: 'info v',
-																									_1: {ctor: '[]'}
-																								}),
-																							A2(
-																								_elm_lang$core$Basics_ops['++'],
-																								A2(
-																									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																									23,
-																									{
-																										ctor: '::',
-																										_0: 'info w',
-																										_1: {ctor: '[]'}
-																									}),
-																								A2(
-																									_elm_lang$core$Basics_ops['++'],
-																									A2(
-																										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																										24,
-																										{
-																											ctor: '::',
-																											_0: 'info x',
-																											_1: {ctor: '[]'}
-																										}),
-																									A2(
-																										_elm_lang$core$Basics_ops['++'],
-																										A2(
-																											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																											25,
-																											{
-																												ctor: '::',
-																												_0: 'info y',
-																												_1: {ctor: '[]'}
-																											}),
-																										A2(
-																											_elm_lang$core$Basics_ops['++'],
-																											A2(
-																												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																												26,
-																												{
-																													ctor: '::',
-																													_0: 'info z',
-																													_1: {ctor: '[]'}
-																												}),
-																											A2(
-																												_elm_lang$core$Basics_ops['++'],
-																												A2(
-																													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																													27,
-																													{
-																														ctor: '::',
-																														_0: 'info ab',
-																														_1: {ctor: '[]'}
-																													}),
-																												A2(
-																													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
-																													28,
-																													{
-																														ctor: '::',
-																														_0: 'info ac',
-																														_1: {ctor: '[]'}
-																													})))))))))))))))))))))))))))));
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$widgetId = 'id:tag:123';
-
-var _flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected = F2(
-	function (tagId, state) {
-		return A2(
-			_elm_lang$core$List$filter,
-			function (t) {
-				return !_elm_lang$core$Native_Utils.eq(t, tagId);
-			},
-			A2(
-				_elm_lang$core$Maybe$withDefault,
-				{ctor: '[]'},
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state))));
-	});
-var _flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected = F2(
-	function (tagId, state) {
-		return function (list) {
-			return A2(
-				_elm_lang$core$Basics_ops['++'],
-				list,
-				{
-					ctor: '::',
-					_0: tagId,
-					_1: {ctor: '[]'}
-				});
-		}(
-			A2(
-				_elm_lang$core$Maybe$withDefault,
-				{ctor: '[]'},
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state))));
-	});
-var _flarebyte$bubblegum_ui_tag$AppModel$notSuggesting = function (model) {
-	return _elm_lang$core$String$toLower(
-		_elm_lang$core$Basics$toString(
-			!A2(
-				_elm_lang$core$Maybe$withDefault,
-				true,
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(model)))));
-};
 var _flarebyte$bubblegum_ui_tag$AppModel$reset = {
 	userSettings: {
 		attributes: {ctor: '[]'}
 	},
-	settings: {attributes: _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes},
+	settings: {
+		attributes: {ctor: '[]'}
+	},
 	state: {
-		attributes: A3(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
-			{
-				ctor: '::',
-				_0: 'false',
-				_1: {ctor: '[]'}
-			},
-			{ctor: '[]'})
+		attributes: {
+			ctor: '::',
+			_0: A2(
+				_flarebyte$bubblegum_ui_tag$AppModel$attrs,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$core$String$join,
+						'\n',
+						A2(_elm_lang$core$List$repeat, 4, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
 	}
 };
 var _flarebyte$bubblegum_ui_tag$AppModel$setState = F2(
@@ -10104,13 +9646,9 @@ var _flarebyte$bubblegum_ui_tag$AppModel$AppModel = F3(
 		return {userSettings: a, settings: b, state: c};
 	});
 
-var _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag = function (a) {
-	return {ctor: 'OnDeleteTag', _0: a};
+var _flarebyte$bubblegum_ui_tag$AppMsg$OnMouseOver = function (a) {
+	return {ctor: 'OnMouseOver', _0: a};
 };
-var _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag = function (a) {
-	return {ctor: 'OnAddTag', _0: a};
-};
-var _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox = {ctor: 'OnToggleDropbox'};
 var _flarebyte$bubblegum_ui_tag$AppMsg$OnActivateState = function (a) {
 	return {ctor: 'OnActivateState', _0: a};
 };
@@ -10126,673 +9664,46 @@ var _flarebyte$bubblegum_ui_tag$AppMsg$OnSelectSetting = F3(
 	function (a, b, c) {
 		return {ctor: 'OnSelectSetting', _0: a, _1: b, _2: c};
 	});
-var _flarebyte$bubblegum_ui_tag$AppMsg$OnSearchInputContent = function (a) {
-	return {ctor: 'OnSearchInputContent', _0: a};
+
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Adapter$Model = function (a) {
+	return {onMouseOver: a};
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F4(
-	function (a, b, c, d) {
-		return {onSearchInput: a, onToggleDropbox: b, onAddTag: c, onDeleteTag: d};
-	});
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$getLanguageCode = function (language) {
-	return A2(_elm_lang$core$String$left, 2, language);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Vietnamese = {ctor: 'Vietnamese'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Ukrainian = {ctor: 'Ukrainian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Turkish = {ctor: 'Turkish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Thai = {ctor: 'Thai'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Swedish = {ctor: 'Swedish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Spanish = {ctor: 'Spanish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Slovak = {ctor: 'Slovak'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Russian = {ctor: 'Russian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Romanian = {ctor: 'Romanian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Portuguese = {ctor: 'Portuguese'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Polish = {ctor: 'Polish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Persian = {ctor: 'Persian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Norwegian = {ctor: 'Norwegian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Korean = {ctor: 'Korean'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Japanese = {ctor: 'Japanese'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Italian = {ctor: 'Italian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Indonesian = {ctor: 'Indonesian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Hungarian = {ctor: 'Hungarian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Hebrew = {ctor: 'Hebrew'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Greek = {ctor: 'Greek'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$German = {ctor: 'German'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$French = {ctor: 'French'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Finnish = {ctor: 'Finnish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English = {ctor: 'English'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Dutch = {ctor: 'Dutch'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Danish = {ctor: 'Danish'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Czech = {ctor: 'Czech'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Chinese = {ctor: 'Chinese'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Bulgarian = {ctor: 'Bulgarian'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Arabic = {ctor: 'Arabic'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage = function (language) {
-	var _p0 = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$getLanguageCode(language);
-	switch (_p0) {
-		case 'ar':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Arabic;
-		case 'bg':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Bulgarian;
-		case 'zh':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Chinese;
-		case 'cs':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Czech;
-		case 'da':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Danish;
-		case 'nl':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Dutch;
-		case 'en':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English;
-		case 'fi':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Finnish;
-		case 'fr':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$French;
-		case 'de':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$German;
-		case 'el':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Greek;
-		case 'iw':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Hebrew;
-		case 'hu':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Hungarian;
-		case 'in':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Indonesian;
-		case 'it':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Italian;
-		case 'ja':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Japanese;
-		case 'ko':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Korean;
-		case 'no':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Norwegian;
-		case 'fa':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Persian;
-		case 'pl':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Polish;
-		case 'pt':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Portuguese;
-		case 'ro':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Romanian;
-		case 'ru':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Russian;
-		case 'sk':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Slovak;
-		case 'es':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Spanish;
-		case 'sv':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Swedish;
-		case 'th':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Thai;
-		case 'tr':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Turkish;
-		case 'uk':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Ukrainian;
-		case 'vi':
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$Vietnamese;
-		default:
-			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English;
-	}
-};
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$isLabelMatchSearch = F3(
-	function (settings, search, id) {
-		return A2(
-			_elm_lang$core$Maybe$withDefault,
-			false,
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-					function (label) {
-						return A2(_elm_lang$core$String$contains, search, label);
-					},
-					A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id))));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$filterSuggestionsBySearch = F3(
-	function (settings, search, suggestions) {
-		return _elm_lang$core$String$isEmpty(search) ? suggestions : A2(
-			_elm_lang$core$List$filter,
-			function (id) {
-				return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$isLabelMatchSearch, settings, search, id);
-			},
-			suggestions);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable = F2(
-	function (suggestions, selected) {
-		return _elm_lang$core$Set$toList(
-			A2(
-				_elm_lang$core$Set$diff,
-				_elm_lang$core$Set$fromList(suggestions),
-				_elm_lang$core$Set$fromList(selected)));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSearchAsString = function (state) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraph = function (someText) {
 	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		'',
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearch(state)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList = function (state) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
+		_elm_lang$html$Html$p,
 		{ctor: '[]'},
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions = F2(
-	function (settings, state) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-			function (suggestions) {
-				return A3(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$filterSuggestionsBySearch,
-					settings,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSearchAsString(state),
-					suggestions);
-			},
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-				function (suggestions) {
-					return A2(
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable,
-						suggestions,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
-				},
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings)));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish = function (settings) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		'en-GB',
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage(settings)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage = function (settings) {
-	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish(settings));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle = function (status) {
-	var _p0 = status;
-	switch (_p0.ctor) {
-		case 'IsSuccess':
-			return 'has-text-success';
-		case 'IsDanger':
-			return 'has-text-danger';
-		default:
-			return 'has-text-grey-light';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle = function (status) {
-	var _p1 = status;
-	switch (_p1.ctor) {
-		case 'IsSuccess':
-			return 'is-success';
-		case 'IsDanger':
-			return 'is-danger';
-		default:
-			return 'is-dark';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
-	function (size, range) {
-		return (_elm_lang$core$Native_Utils.cmp(
-			size,
-			_elm_lang$core$Tuple$first(range)) > -1) && (_elm_lang$core$Native_Utils.cmp(
-			size,
-			_elm_lang$core$Tuple$second(range)) < 1);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange = F2(
-	function (size, range) {
-		return !A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange, size, range);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral = {ctor: 'IsNeutral'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsDanger = {ctor: 'IsDanger'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsSuccess = {ctor: 'IsSuccess'};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress = F2(
-	function (a, b) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$withDefault,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral,
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$or,
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsSuccess,
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, a)),
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsDanger,
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, b))));
-	});
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateDangerTag = function (language) {
-	var _p0 = language;
-	switch (_p0.ctor) {
-		case 'Chinese':
-			return '危險標籤';
-		case 'English':
-			return 'tag indicating danger';
-		case 'French':
-			return 'étiquette indiquant le danger';
-		case 'German':
-			return 'Tag der die Gefahr anzeigt';
-		case 'Italian':
-			return 'tag che indica pericolo';
-		case 'Japanese':
-			return '危険を示すタグ';
-		case 'Russian':
-			return 'тег указывающий опасность';
-		case 'Spanish':
-			return 'etiqueta que indica peligro';
-		case 'Swedish':
-			return 'tag indicating danger';
-		case 'Vietnamese':
-			return 'tag indicating danger';
-		case 'Romanian':
-			return 'tag indicating danger';
-		case 'Dutch':
-			return 'tag indicating danger';
-		case 'Korean':
-			return 'tag indicating danger';
-		case 'Danish':
-			return 'tag indicating danger';
-		case 'Bulgarian':
-			return 'tag indicating danger';
-		case 'Hungarian':
-			return 'tag indicating danger';
-		case 'Ukrainian':
-			return 'tag indicating danger';
-		case 'Turkish':
-			return 'tag indicating danger';
-		case 'Norwegian':
-			return 'tag indicating danger';
-		case 'Thai':
-			return 'tag indicating danger';
-		case 'Finnish':
-			return 'tag indicating danger';
-		case 'Indonesian':
-			return 'tag indicating danger';
-		case 'Greek':
-			return 'tag indicating danger';
-		case 'Portuguese':
-			return 'tag indicating danger';
-		case 'Czech':
-			return 'tag indicating danger';
-		case 'Persian':
-			return 'tag indicating danger';
-		case 'Slovak':
-			return 'tag indicating danger';
-		case 'Hebrew':
-			return 'tag indicating danger';
-		case 'Polish':
-			return 'tag indicating danger';
-		default:
-			return 'tag indicating danger';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateWarningTag = function (language) {
-	var _p1 = language;
-	switch (_p1.ctor) {
-		case 'Chinese':
-			return '警告標籤';
-		case 'English':
-			return 'tag indicating warning';
-		case 'French':
-			return 'étiquette indiquant l\'avertissement';
-		case 'German':
-			return 'Tag der die Warnung anzeigt';
-		case 'Italian':
-			return 'tag che indica avvertimento';
-		case 'Japanese':
-			return '警告を示すタグ';
-		case 'Russian':
-			return 'тег указывающий предупреждение';
-		case 'Spanish':
-			return 'etiqueta que indica advertencia';
-		case 'Swedish':
-			return 'tag indicating warning';
-		case 'Vietnamese':
-			return 'tag indicating warning';
-		case 'Romanian':
-			return 'tag indicating warning';
-		case 'Dutch':
-			return 'tag indicating warning';
-		case 'Korean':
-			return 'tag indicating warning';
-		case 'Danish':
-			return 'tag indicating warning';
-		case 'Bulgarian':
-			return 'tag indicating warning';
-		case 'Hungarian':
-			return 'tag indicating warning';
-		case 'Ukrainian':
-			return 'tag indicating warning';
-		case 'Turkish':
-			return 'tag indicating warning';
-		case 'Norwegian':
-			return 'tag indicating warning';
-		case 'Thai':
-			return 'tag indicating warning';
-		case 'Finnish':
-			return 'tag indicating warning';
-		case 'Indonesian':
-			return 'tag indicating warning';
-		case 'Greek':
-			return 'tag indicating warning';
-		case 'Portuguese':
-			return 'tag indicating warning';
-		case 'Czech':
-			return 'tag indicating warning';
-		case 'Persian':
-			return 'tag indicating warning';
-		case 'Slovak':
-			return 'tag indicating warning';
-		case 'Hebrew':
-			return 'tag indicating warning';
-		case 'Polish':
-			return 'tag indicating warning';
-		default:
-			return 'tag indicating warning';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateSuccessTag = function (language) {
-	var _p2 = language;
-	switch (_p2.ctor) {
-		case 'Chinese':
-			return '成功標籤';
-		case 'English':
-			return 'tag indicating success';
-		case 'French':
-			return 'étiquette indiquant le succès';
-		case 'German':
-			return 'Tag der den Erfolg anzeigt';
-		case 'Italian':
-			return 'tag che indica il successo';
-		case 'Japanese':
-			return '成功を示すタグ';
-		case 'Russian':
-			return 'тег указывающий успех';
-		case 'Spanish':
-			return 'etiqueta que indica el éxito';
-		case 'Swedish':
-			return 'tag indicating success';
-		case 'Vietnamese':
-			return 'tag indicating success';
-		case 'Romanian':
-			return 'tag indicating success';
-		case 'Dutch':
-			return 'tag indicating success';
-		case 'Korean':
-			return 'tag indicating success';
-		case 'Danish':
-			return 'tag indicating success';
-		case 'Bulgarian':
-			return 'tag indicating success';
-		case 'Hungarian':
-			return 'tag indicating success';
-		case 'Ukrainian':
-			return 'tag indicating success';
-		case 'Turkish':
-			return 'tag indicating success';
-		case 'Norwegian':
-			return 'tag indicating success';
-		case 'Thai':
-			return 'tag indicating success';
-		case 'Finnish':
-			return 'tag indicating success';
-		case 'Indonesian':
-			return 'tag indicating success';
-		case 'Greek':
-			return 'tag indicating success';
-		case 'Portuguese':
-			return 'tag indicating success';
-		case 'Czech':
-			return 'tag indicating success';
-		case 'Persian':
-			return 'tag indicating success';
-		case 'Slovak':
-			return 'tag indicating success';
-		case 'Hebrew':
-			return 'tag indicating success';
-		case 'Polish':
-			return 'tag indicating success';
-		default:
-			return 'tag indicating success';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag = function (language) {
-	var _p3 = language;
-	switch (_p3.ctor) {
-		case 'Chinese':
-			return '信息標籤';
-		case 'English':
-			return 'information tag';
-		case 'French':
-			return 'étiquette d\'information';
-		case 'German':
-			return 'Informationstag';
-		case 'Italian':
-			return 'tag di informazione';
-		case 'Japanese':
-			return '情報タグ';
-		case 'Russian':
-			return 'информационный тег';
-		case 'Spanish':
-			return 'etiqueta de información';
-		case 'Swedish':
-			return 'information tag';
-		case 'Vietnamese':
-			return 'information tag';
-		case 'Romanian':
-			return 'information tag';
-		case 'Dutch':
-			return 'information tag';
-		case 'Korean':
-			return 'information tag';
-		case 'Danish':
-			return 'information tag';
-		case 'Bulgarian':
-			return 'information tag';
-		case 'Hungarian':
-			return 'information tag';
-		case 'Ukrainian':
-			return 'information tag';
-		case 'Turkish':
-			return 'information tag';
-		case 'Norwegian':
-			return 'information tag';
-		case 'Thai':
-			return 'information tag';
-		case 'Finnish':
-			return 'information tag';
-		case 'Indonesian':
-			return 'information tag';
-		case 'Greek':
-			return 'information tag';
-		case 'Portuguese':
-			return 'information tag';
-		case 'Czech':
-			return 'information tag';
-		case 'Persian':
-			return 'information tag';
-		case 'Slovak':
-			return 'information tag';
-		case 'Hebrew':
-			return 'information tag';
-		case 'Polish':
-			return 'information tag';
-		default:
-			return 'information tag';
-	}
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$pickSingularOrPlural = F2(
-	function (howMany, singularOrPlural) {
-		return (_elm_lang$core$Native_Utils.cmp(howMany, 2) < 0) ? _elm_lang$core$Tuple$first(singularOrPlural) : _elm_lang$core$Tuple$second(singularOrPlural);
-	});
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$widgetLabel = function (widgetText) {
-	return A2(
-		_elm_lang$html$Html$label,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('label'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(widgetText),
+			_0: _elm_lang$html$Html$text(someText),
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr = function (value) {
-	return value ? 'rtl' : 'ltr';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$getWarningMessage = function (outcome) {
+	var _p0 = outcome;
+	if (_p0.ctor === 'Warning') {
+		return _p0._0;
+	} else {
+		return '';
+	}
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerTagText = F2(
-	function (userIsoLanguage, text) {
-		return {
-			text: text,
-			style: 'is-danger',
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateDangerTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$warningTagText = F2(
-	function (userIsoLanguage, text) {
-		return {
-			text: text,
-			style: 'is-warning',
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateWarningTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText = F3(
-	function (userIsoLanguage, text, style) {
-		return {
-			text: text,
-			style: style,
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText = F2(
-	function (userIsoLanguage, text) {
-		return {
-			text: text,
-			style: 'is-dark',
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags = function (list) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox = function (list) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('tags'),
+			_0: _elm_lang$html$Html_Attributes$class('content'),
 			_1: {ctor: '[]'}
 		},
 		list);
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass = function (list) {
-	return _elm_lang$html$Html_Attributes$class(
-		A2(
-			_elm_lang$core$String$join,
-			' ',
-			_elm_lang$core$List$reverse(list)));
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$rtlOrLtr = function (value) {
+	return value ? 'rtl' : 'ltr';
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2 = F2(
-	function (a, b) {
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass(
-			{
-				ctor: '::',
-				_0: b,
-				_1: {
-					ctor: '::',
-					_0: a,
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag = function (tagInfo) {
-	return A2(
-		_elm_lang$html$Html$span,
-		{
-			ctor: '::',
-			_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'tag', tagInfo.style),
-			_1: {
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$title(tagInfo.title),
-				_1: {ctor: '[]'}
-			}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(tagInfo.text),
-			_1: {ctor: '[]'}
-		});
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsInfo = F2(
-	function (userIsoLanguage, list) {
-		return A2(
-			_elm_lang$core$List$map,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
-			A2(
-				_elm_lang$core$List$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText(userIsoLanguage),
-				list));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsWarning = F2(
-	function (userIsoLanguage, list) {
-		return A2(
-			_elm_lang$core$List$map,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
-			A2(
-				_elm_lang$core$List$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$warningTagText(userIsoLanguage),
-				list));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsDanger = F2(
-	function (userIsoLanguage, list) {
-		return A2(
-			_elm_lang$core$List$map,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
-			A2(
-				_elm_lang$core$List$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerTagText(userIsoLanguage),
-				list));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoHelp = function (helpText) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'help', 'is-info'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(helpText),
-			_1: {ctor: '[]'}
-		});
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp = function (helpText) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'help', 'is-danger'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(helpText),
-			_1: {ctor: '[]'}
-		});
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownActiveStatus = function (value) {
-	return value ? A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'dropdown', 'is-active') : _elm_lang$html$Html_Attributes$class('dropdown');
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess = F3(
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess = F3(
 	function (ifSuccess, outcome, attributes) {
-		var _p0 = outcome;
-		switch (_p0.ctor) {
+		var _p1 = outcome;
+		switch (_p1.ctor) {
 			case 'None':
 				return attributes;
 			case 'Warning':
@@ -10801,7 +9712,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSucce
 					attributes,
 					{
 						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p0._0),
+						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-bubblegum-warn', _p1._0),
 						_1: {ctor: '[]'}
 					});
 			default:
@@ -10810,98 +9721,44 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSucce
 					attributes,
 					{
 						ctor: '::',
-						_0: ifSuccess(_p0._0),
+						_0: ifSuccess(_p1._0),
 						_1: {ctor: '[]'}
 					});
 		}
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$mainBox = F3(
-	function (language, rtl, list) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox = F5(
+	function (adapter, language, rtl, id, list) {
+		var idOrBlank = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'',
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(id));
 		return A2(
 			_elm_lang$html$Html$div,
 			A3(
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-				_elm_lang$html$Html_Attributes$dir,
-				A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr, rtl),
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
+				_elm_lang$html$Html_Attributes$attribute('data-bubblegum-id'),
+				id,
 				A3(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-					_elm_lang$html$Html_Attributes$lang,
-					language,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('bubblegum-tag__widget box is-marginless is-paddingless is-shadowless'),
-						_1: {ctor: '[]'}
-					})),
-			list);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu = F2(
-	function (userSettings, list) {
-		var addContentRtl = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-			_elm_lang$html$Html_Attributes$dir,
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft(userSettings)));
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('dropdown-menu'),
-				_1: {
-					ctor: '::',
-					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'menu'),
-					_1: {ctor: '[]'}
-				}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					addContentRtl(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
+					_elm_lang$html$Html_Attributes$dir,
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$rtlOrLtr, rtl),
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendAttributeIfSuccess,
+						_elm_lang$html$Html_Attributes$lang,
+						language,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('dropdown-content scrollable'),
-							_1: {ctor: '[]'}
-						}),
-					list),
-				_1: {ctor: '[]'}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess = F3(
-	function (ifSuccess, outcome, htmlList) {
-		var _p1 = outcome;
-		switch (_p1.ctor) {
-			case 'None':
-				return htmlList;
-			case 'Warning':
-				return A2(
-					_elm_lang$core$Basics_ops['++'],
-					htmlList,
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
+							_0: _elm_lang$html$Html_Attributes$class('bubblegum-preview__widget box is-marginless is-paddingless is-shadowless'),
+							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('is-invisible warning'),
+								_0: _elm_lang$html$Html_Events$onMouseOver(
+									adapter.onMouseOver(idOrBlank)),
 								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(_p1._0),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					});
-			default:
-				return A2(
-					_elm_lang$core$Basics_ops['++'],
-					htmlList,
-					ifSuccess(_p1._0));
-		}
+							}
+						}))),
+			list);
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess = F3(
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
 		var _p2 = outcome;
 		switch (_p2.ctor) {
@@ -10931,506 +9788,345 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess = 
 				return A2(
 					_elm_lang$core$Basics_ops['++'],
 					htmlList,
-					{
-						ctor: '::',
-						_0: ifSuccess(_p2._0),
-						_1: {ctor: '[]'}
-					});
+					ifSuccess(_p2._0));
 		}
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
-	function (userSettings, settings, state, list) {
-		var numberOfTags = _elm_lang$core$List$length(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
-		var themeBasedOnRange = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress,
-			A3(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange,
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuccessTagRange(settings)),
-			A3(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange,
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange(settings)));
-		var addDotStyle = A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle, themeBasedOnRange);
-		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		var addNumberTag = A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-			A2(
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
-				userIsoLanguage,
-				_elm_lang$core$Basics$toString(numberOfTags)),
-			A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle, themeBasedOnRange));
-		return A2(
-			_elm_lang$html$Html$div,
-			{ctor: '[]'},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-						_1: {ctor: '[]'}
-					},
-					list),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
-									_1: {ctor: '[]'}
-								},
-								A2(
-									_elm_lang$core$Basics_ops['++'],
-									A3(
-										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
-										addNumberTag,
-										{ctor: '[]'}),
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(' '),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												A3(
-													_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-													_elm_lang$html$Html_Attributes$class,
-													addDotStyle,
-													{ctor: '[]'}),
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(
-														A2(_elm_lang$core$String$repeat, numberOfTags, '•')),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									})),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = F2(
-	function (searchLabel, adapter) {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('dropdown-trigger'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('level'),
-						_1: {ctor: '[]'}
-					},
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs = function (outcome) {
+	return A3(
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendListHtmlIfSuccess,
+		function (strings) {
+			return A2(_elm_lang$core$List$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraph, strings);
+		},
+		outcome,
+		{ctor: '[]'});
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess = F3(
+	function (ifSuccess, outcome, htmlList) {
+		var _p3 = outcome;
+		switch (_p3.ctor) {
+			case 'None':
+				return htmlList;
+			case 'Warning':
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					htmlList,
 					{
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
+								_0: _elm_lang$html$Html_Attributes$class('is-invisible warning'),
 								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$p,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$input,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('input'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(adapter.onSearchInput),
-													_1: {ctor: '[]'}
-												}
-											},
-											{ctor: '[]'}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$i,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('fas fa-search'),
-															_1: {ctor: '[]'}
-														},
-														{ctor: '[]'}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$p,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('control'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$button,
-												{
-													ctor: '::',
-													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('button'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
-															_1: {ctor: '[]'}
-														}
-													}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$span,
-														{ctor: '[]'},
-														A3(
-															_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-															_elm_lang$html$Html$text,
-															searchLabel,
-															{ctor: '[]'})),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$i,
-																	{
-																		ctor: '::',
-																		_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
-																		_1: {
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$class('fas fa-angle-down'),
-																			_1: {ctor: '[]'}
-																		}
-																	},
-																	{ctor: '[]'}),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
+								_0: _elm_lang$html$Html$text(_p3._0),
+								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F4(
-	function (adapter, userIsoLanguage, settings, id) {
-		var addTagsDanger = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsDanger(userIsoLanguage),
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDangerTag, settings, id));
-		var addTagsWarning = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsWarning(userIsoLanguage),
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentWarningTag, settings, id));
-		var addTagsInfo = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsInfo(userIsoLanguage),
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentTag, settings, id));
-		var addDescription = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_elm_lang$html$Html$text,
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDescription, settings, id));
-		var addLabel = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_elm_lang$html$Html$text,
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id));
-		return A2(
-			_elm_lang$html$Html$a,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('dropdown-item'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
+					});
+			default:
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					htmlList,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(
-							adapter.onAddTag(id)),
+						_0: ifSuccess(_p3._0),
+						_1: {ctor: '[]'}
+					});
+		}
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText = F2(
+	function (outcomeTextType, contentOutcome) {
+		var linesOutcome = A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _elm_lang$core$String$lines, contentOutcome);
+		var isSingleLine = _flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$isValid(
+			A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listEqual, 1, linesOutcome));
+		var textType = A2(
+			_elm_lang$core$Maybe$withDefault,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$UnknownContentAppearance,
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(outcomeTextType));
+		var _p4 = textType;
+		switch (_p4.ctor) {
+			case 'UiContentAppearanceBlockQuote':
+				return isSingleLine ? A2(
+					_elm_lang$html$Html$blockquote,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'})) : A2(
+					_elm_lang$html$Html$blockquote,
+					{ctor: '[]'},
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome));
+			case 'UiContentAppearanceParagraphs':
+				return isSingleLine ? A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'})) : A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome));
+			case 'UiContentAppearanceDark':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-dark'),
 						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$div,
-							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
-										_1: {ctor: '[]'}
-									},
-									addLabel(
-										{ctor: '[]'})),
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
 								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$span,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('is-size-7 has-text-info'),
-											_1: {ctor: '[]'}
-										},
-										addDescription(
-											{ctor: '[]'})),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags(
-									addTagsInfo(
-										addTagsWarning(
-											addTagsDanger(
-												{ctor: '[]'})))),
-								_1: {ctor: '[]'}
-							}
-						}
-					}),
-				_1: {ctor: '[]'}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F4(
-	function (adapter, userSettings, settings, outcomeSuggestionIds) {
-		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		var anySuggestionTag = A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, adapter, userIsoLanguage, settings);
-		var addSuggestions = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
-			function (list) {
-				return A2(_elm_lang$core$List$map, anySuggestionTag, list);
-			},
-			outcomeSuggestionIds);
-		return A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu,
-			userSettings,
-			addSuggestions(
-				{ctor: '[]'}));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
-	function (adapter, settings, id) {
-		var addDescription = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-			_elm_lang$html$Html_Attributes$title,
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDescription, settings, id));
-		var addLabel = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_elm_lang$html$Html$text,
-			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id));
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('control'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearancePrimary':
+				return A2(
+					_elm_lang$html$Html$article,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								adapter.onDeleteTag(id)),
-							_1: {ctor: '[]'}
-						}
+						_0: _elm_lang$html$Html_Attributes$class('message is-primary'),
+						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$span,
-							addDescription(
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
-									_1: {ctor: '[]'}
-								}),
-							addLabel(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceInfo':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-info'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceSuccess':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-success'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceWarning':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-warning'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceDanger':
+				return A2(
+					_elm_lang$html$Html$article,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('message is-danger'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$paragraphs(linesOutcome)),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceHeaderOne':
+				return A2(
+					_elm_lang$html$Html$h1,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			case 'UiContentAppearanceCode':
+				return A2(
+					_elm_lang$html$Html$pre,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$code,
+							{ctor: '[]'},
+							A3(
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+								_elm_lang$html$Html$text,
+								contentOutcome,
 								{ctor: '[]'})),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$span,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
-							_1: {ctor: '[]'}
-						}
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceSample':
+				return A2(
+					_elm_lang$html$Html$pre,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$samp,
+							{ctor: '[]'},
+							A3(
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+								_elm_lang$html$Html$text,
+								contentOutcome,
+								{ctor: '[]'})),
+						_1: {ctor: '[]'}
+					});
+			case 'UiContentAppearanceHeaderTwo':
+				return A2(
+					_elm_lang$html$Html$h2,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			case 'UiContentAppearanceHeaderThree':
+				return A2(
+					_elm_lang$html$Html$h3,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			case 'UiContentAppearanceHeaderFour':
+				return A2(
+					_elm_lang$html$Html$h4,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			case 'UiContentAppearanceHeaderFive':
+				return A2(
+					_elm_lang$html$Html$h5,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			case 'UiContentAppearanceHeaderSix':
+				return A2(
+					_elm_lang$html$Html$h6,
+					{ctor: '[]'},
+					A3(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$appendHtmlIfSuccess,
+						_elm_lang$html$Html$text,
+						contentOutcome,
+						{ctor: '[]'}));
+			default:
+				return A2(
+					_elm_lang$html$Html$h6,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('is-invisible warning'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$getWarningMessage(outcomeTextType)),
+						_1: {ctor: '[]'}
+					});
+		}
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$BulletedList = {ctor: 'BulletedList'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanLower = {ctor: 'OrderedListRomanLower'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListRomanUpper = {ctor: 'OrderedListRomanUpper'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListAlphabeticLower = {ctor: 'OrderedListAlphabeticLower'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListAlphabeticUpper = {ctor: 'OrderedListAlphabeticUpper'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$OrderedListDecimal = {ctor: 'OrderedListDecimal'};
+
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view = F4(
+	function (adapter, userSettings, settings, state) {
+		return A5(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$mainBox,
+			adapter,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getUserLanguage(userSettings),
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$isUserRightToLeft(userSettings),
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentId(state),
+			{
+				ctor: '::',
+				_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$contentBox(
+					{
+						ctor: '::',
+						_0: A2(
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_BulmaHelper$previewText,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContentAppearance(settings),
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_VocabularyHelper$getContent(state)),
+						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
 			});
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
-	function (adapter, userSettings, settings, state) {
-		var selectedIds = A2(
-			_elm_lang$core$Maybe$withDefault,
-			{ctor: '[]'},
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
-		return A4(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup,
-			userSettings,
-			settings,
-			state,
-			A2(
-				_elm_lang$core$List$map,
-				function (id) {
-					return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, adapter, settings, id);
-				},
-				selectedIds));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$StyledText = F3(
-	function (a, b, c) {
-		return {text: a, style: b, title: c};
-	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
-	function (adapter, userSettings, settings, state) {
-		var isDropdownActive = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownActiveStatus(
-			A2(
-				_elm_lang$core$Maybe$withDefault,
-				false,
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(state))));
-		var suggestions = A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions, settings, state);
-		var addSearchLabel = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearchLabel(settings);
-		var addDangerHelp = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerHelp(state));
-		var addHelp = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoHelp,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getHelp(settings));
-		var addLabel = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$widgetLabel,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getLabel(settings));
-		return A3(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$mainBox,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage(userSettings),
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isUserRightToLeft(userSettings),
-			addHelp(
-				addDangerHelp(
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						{
-							ctor: '::',
-							_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags, adapter, userSettings, settings, state),
-							_1: {ctor: '[]'}
-						},
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							addLabel(
-								{ctor: '[]'}),
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: isDropdownActive,
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown, addSearchLabel, adapter),
-										_1: {
-											ctor: '::',
-											_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown, adapter, userSettings, settings, suggestions),
-											_1: {ctor: '[]'}
-										}
-									}),
-								_1: {ctor: '[]'}
-							})))));
-	});
-
-var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onSearchInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnSearchInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag, onDeleteTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag};
+var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onMouseOver: _flarebyte$bubblegum_ui_tag$AppMsg$OnMouseOver};
 var _flarebyte$bubblegum_ui_tag$WidgetBuilder$viewWidget = function (model) {
-	return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view, _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter, model.userSettings, model.settings, model.state);
+	return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Widget$view, _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter, model.userSettings, model.settings, model.state);
 };
 
 var _flarebyte$bubblegum_ui_tag$AttributeDoc$createKey = F4(
@@ -11452,26 +10148,11 @@ var _flarebyte$bubblegum_ui_tag$AttributeDoc$OneOrMany = {ctor: 'OneOrMany'};
 var _flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne = {ctor: 'ZeroOrOne'};
 var _flarebyte$bubblegum_ui_tag$AttributeDoc$OnlyOne = {ctor: 'OnlyOne'};
 
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentDangerTag = 'Tag representing a dangerous aspect of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentWarningTag = 'Tag representing a warning aspect of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentTag = 'Tag used to describe the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentDescription = 'Description of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descConstituentLabel = 'Label of the constituent';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMaximumTags = 'Warning when over the maximum number of tags';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMinimumTags = 'Warning when under the minimum number of tags';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMaximumTags = 'The maximum number of tags needed for successful content';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMinimumTags = 'The minimum number of tags needed for successful content';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance = 'The appearance of the field content';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descContent = 'The content of the field';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentId = 'The unique id of the content';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft = 'Whether the user is using right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used by the user';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSearchLabel = 'Label related to the search field';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descLabel = 'Label related to the field';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descHelp = 'Some help tip related to the field';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp = 'Help message to highlight an issue with the content';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSearch = 'Search term for filtering the available options';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggestion = 'The list of suggested tags for the field';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting = 'Suggesting is currently happening';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft = 'Whether the content requires right to left';
 
 var _flarebyte$bubblegum_ui_tag$PackageJson$Model = F5(
 	function (a, b, c, d, e) {
@@ -11485,12 +10166,12 @@ var _flarebyte$bubblegum_ui_tag$WidgetDoc$WidgetDoc = F4(
 
 var _flarebyte$bubblegum_ui_tag$WidgetPackageJson$meta = {
 	version: '1.0.0',
-	summary: 'Tag widget for the Bubblegum UI toolkit.',
-	repository: 'https://github.com/flarebyte/bubblegum-ui-tag.git',
+	summary: 'Preview widget for the Bubblegum UI toolkit.',
+	repository: 'https://github.com/flarebyte/bubblegum-ui-preview.git',
 	license: 'BSD3',
 	exposedModules: {
 		ctor: '::',
-		_0: 'Bubblegum.Tag.Widget',
+		_0: 'Bubblegum.Preview.Widget',
 		_1: {ctor: '[]'}
 	}
 };
@@ -11501,356 +10182,51 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 		ctor: '::',
 		_0: A4(
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userLanguage,
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: 'true',
+				_0: 'en-GB',
 				_1: {
 					ctor: '::',
-					_0: 'false',
+					_0: 'ja',
 					_1: {
 						ctor: '::',
-						_0: 'other',
-						_1: {ctor: '[]'}
-					}
-				}
-			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft),
-		_1: {
-			ctor: '::',
-			_0: A4(
-				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage,
-				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-				{
-					ctor: '::',
-					_0: 'en-GB',
-					_1: {
-						ctor: '::',
-						_0: 'ja',
+						_0: 'ar',
 						_1: {
 							ctor: '::',
-							_0: 'ar',
+							_0: 'zh-CN-SC',
 							_1: {
 								ctor: '::',
-								_0: 'zh-CN-SC',
+								_0: 'ru-RUS',
 								_1: {
 									ctor: '::',
-									_0: 'ru-RUS',
+									_0: 'es',
 									_1: {
 										ctor: '::',
-										_0: 'es',
+										_0: 'it',
 										_1: {
 											ctor: '::',
-											_0: 'it',
+											_0: 'fr',
 											_1: {
 												ctor: '::',
-												_0: 'fr',
-												_1: {
-													ctor: '::',
-													_0: 'other',
-													_1: {ctor: '[]'}
-												}
+												_0: 'other',
+												_1: {ctor: '[]'}
 											}
 										}
 									}
 								}
 							}
-						}
-					}
-				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
-			_1: {
-				ctor: '::',
-				_0: A4(
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft,
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-					{
-						ctor: '::',
-						_0: 'true',
-						_1: {
-							ctor: '::',
-							_0: 'false',
-							_1: {
-								ctor: '::',
-								_0: 'other',
-								_1: {ctor: '[]'}
-							}
-						}
-					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
-				_1: {ctor: '[]'}
-			}
-		}
-	},
-	settings: {
-		ctor: '::',
-		_0: A4(
-			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion,
-			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-			{
-				ctor: '::',
-				_0: 'id:suggestion:1',
-				_1: {
-					ctor: '::',
-					_0: 'id:suggestion:2',
-					_1: {
-						ctor: '::',
-						_0: 'id:suggestion:3',
-						_1: {
-							ctor: '::',
-							_0: 'other',
-							_1: {ctor: '[]'}
 						}
 					}
 				}
 			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggestion),
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
 		_1: {
 			ctor: '::',
 			_0: A4(
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_help,
-				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-				{
-					ctor: '::',
-					_0: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.',
-					_1: {
-						ctor: '::',
-						_0: '助けて',
-						_1: {
-							ctor: '::',
-							_0: 'other',
-							_1: {ctor: '[]'}
-						}
-					}
-				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descHelp),
-			_1: {
-				ctor: '::',
-				_0: A4(
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_label,
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-					{
-						ctor: '::',
-						_0: 'Some label',
-						_1: {
-							ctor: '::',
-							_0: 'ラベル',
-							_1: {
-								ctor: '::',
-								_0: 'ضع الكلمة المناسبة',
-								_1: {
-									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descLabel),
-				_1: {
-					ctor: '::',
-					_0: A4(
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel,
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-						{
-							ctor: '::',
-							_0: 'Search',
-							_1: {
-								ctor: '::',
-								_0: '搜索',
-								_1: {
-									ctor: '::',
-									_0: 'пошук',
-									_1: {
-										ctor: '::',
-										_0: 'other',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descSearchLabel),
-					_1: {
-						ctor: '::',
-						_0: A4(
-							_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags,
-							_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-							{
-								ctor: '::',
-								_0: '0',
-								_1: {
-									ctor: '::',
-									_0: '2',
-									_1: {
-										ctor: '::',
-										_0: '4',
-										_1: {
-											ctor: '::',
-											_0: '8',
-											_1: {
-												ctor: '::',
-												_0: '16',
-												_1: {
-													ctor: '::',
-													_0: '32',
-													_1: {
-														ctor: '::',
-														_0: '-5',
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}
-									}
-								}
-							},
-							_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMinimumTags),
-						_1: {
-							ctor: '::',
-							_0: A4(
-								_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-								_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags,
-								_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-								{
-									ctor: '::',
-									_0: '0',
-									_1: {
-										ctor: '::',
-										_0: '2',
-										_1: {
-											ctor: '::',
-											_0: '4',
-											_1: {
-												ctor: '::',
-												_0: '8',
-												_1: {
-													ctor: '::',
-													_0: '16',
-													_1: {
-														ctor: '::',
-														_0: '32',
-														_1: {
-															ctor: '::',
-															_0: '-5',
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMaximumTags),
-							_1: {
-								ctor: '::',
-								_0: A4(
-									_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-									_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMinimumTags,
-									_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-									{
-										ctor: '::',
-										_0: '0',
-										_1: {
-											ctor: '::',
-											_0: '2',
-											_1: {
-												ctor: '::',
-												_0: '4',
-												_1: {
-													ctor: '::',
-													_0: '8',
-													_1: {
-														ctor: '::',
-														_0: '16',
-														_1: {
-															ctor: '::',
-															_0: '32',
-															_1: {
-																ctor: '::',
-																_0: '-5',
-																_1: {ctor: '[]'}
-															}
-														}
-													}
-												}
-											}
-										}
-									},
-									_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMinimumTags),
-								_1: {
-									ctor: '::',
-									_0: A4(
-										_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMaximumTags,
-										_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-										{
-											ctor: '::',
-											_0: '0',
-											_1: {
-												ctor: '::',
-												_0: '2',
-												_1: {
-													ctor: '::',
-													_0: '4',
-													_1: {
-														ctor: '::',
-														_0: '8',
-														_1: {
-															ctor: '::',
-															_0: '16',
-															_1: {
-																ctor: '::',
-																_0: '32',
-																_1: {
-																	ctor: '::',
-																	_0: '-5',
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}
-												}
-											}
-										},
-										_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMaximumTags),
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	},
-	stateAttributes: {
-		ctor: '::',
-		_0: A4(
-			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
-			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-			{
-				ctor: '::',
-				_0: 'id:suggestion:1',
-				_1: {
-					ctor: '::',
-					_0: 'other',
-					_1: {ctor: '[]'}
-				}
-			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descSelected),
-		_1: {
-			ctor: '::',
-			_0: A4(
-				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_userRightToLeft,
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
@@ -11865,46 +10241,117 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 						}
 					}
 				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting),
-			_1: {
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
+			_1: {ctor: '[]'}
+		}
+	},
+	settings: {
+		ctor: '::',
+		_0: A4(
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentAppearance,
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+			{
 				ctor: '::',
-				_0: A4(
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-					{
-						ctor: '::',
-						_0: 'ipsum',
-						_1: {
-							ctor: '::',
-							_0: 'dolor',
-							_1: {
-								ctor: '::',
-								_0: 'other',
-								_1: {ctor: '[]'}
-							}
-						}
-					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
+				_0: 'ui:content-appearance/header/one',
 				_1: {
 					ctor: '::',
-					_0: A4(
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-						{
+					_0: 'ui:content-appearance/header/two',
+					_1: {
+						ctor: '::',
+						_0: 'ui:content-appearance/header/three',
+						_1: {
 							ctor: '::',
-							_0: 'do not do this',
+							_0: 'ui:content-appearance/header/four',
 							_1: {
 								ctor: '::',
-								_0: 'other',
-								_1: {ctor: '[]'}
+								_0: 'ui:content-appearance/header/five',
+								_1: {
+									ctor: '::',
+									_0: 'ui:content-appearance/header/six',
+									_1: {
+										ctor: '::',
+										_0: 'ui:content-appearance/block-quote',
+										_1: {
+											ctor: '::',
+											_0: 'ui:content-appearance/paragraphs',
+											_1: {
+												ctor: '::',
+												_0: 'ui:content-appearance/code',
+												_1: {
+													ctor: '::',
+													_0: 'ui:content-appearance/sample',
+													_1: {
+														ctor: '::',
+														_0: 'ui:content-appearance/dark',
+														_1: {
+															ctor: '::',
+															_0: 'ui:content-appearance/primary',
+															_1: {
+																ctor: '::',
+																_0: 'ui:content-appearance/info',
+																_1: {
+																	ctor: '::',
+																	_0: 'ui:content-appearance/success',
+																	_1: {
+																		ctor: '::',
+																		_0: 'ui:content-appearance/warning',
+																		_1: {
+																			ctor: '::',
+																			_0: 'ui:content-appearance/danger',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
 							}
-						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
+						}
+					}
+				}
+			},
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentAppearance),
+		_1: {ctor: '[]'}
+	},
+	stateAttributes: {
+		ctor: '::',
+		_0: A4(
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_contentId,
+			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+			{
+				ctor: '::',
+				_0: 'id:aa61e603-9947-4fd8-86bb-d63a682259d0',
+				_1: {
+					ctor: '::',
+					_0: 'other',
 					_1: {ctor: '[]'}
 				}
-			}
+			},
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentId),
+		_1: {
+			ctor: '::',
+			_0: A4(
+				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Preview_Vocabulary$ui_content,
+				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+				{
+					ctor: '::',
+					_0: 'some content',
+					_1: {
+						ctor: '::',
+						_0: 'other',
+						_1: {ctor: '[]'}
+					}
+				},
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descContent),
+			_1: {ctor: '[]'}
 		}
 	}
 };
@@ -12685,22 +11132,6 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
-			case 'OnSearchInputContent':
-				return A2(
-					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
-						model.state,
-						A3(
-							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
-							{
-								ctor: '::',
-								_0: _p0._0,
-								_1: {ctor: '[]'}
-							},
-							model.state.attributes)));
 			case 'OnSelectSetting':
 				var _p1 = _p0._0;
 				return A3(
@@ -12759,46 +11190,8 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$deleteAttributeByKey,
 							_p0._0,
 							_flarebyte$bubblegum_ui_tag$AppModel$getStateAttributes(model))));
-			case 'OnToggleDropbox':
-				return A2(
-					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
-						model.state,
-						A3(
-							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
-							{
-								ctor: '::',
-								_0: _flarebyte$bubblegum_ui_tag$AppModel$notSuggesting(model.state),
-								_1: {ctor: '[]'}
-							},
-							model.state.attributes)));
-			case 'OnAddTag':
-				return A2(
-					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
-						model.state,
-						A3(
-							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
-							A2(_flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected, _p0._0, model.state),
-							model.state.attributes)));
 			default:
-				return A2(
-					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
-						model.state,
-						A3(
-							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
-							A2(_flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected, _p0._0, model.state),
-							model.state.attributes)));
+				return model;
 		}
 	});
 var _flarebyte$bubblegum_ui_tag$App$main = _elm_lang$html$Html$beginnerProgram(

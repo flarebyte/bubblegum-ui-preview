@@ -17,18 +17,15 @@ elm-package install flarebyte/bubblegum-ui-preview
 ## Configuring the widget
 
 ```
-import Bubblegum.Tag.Adapter as Adapter
-import Bubblegum.Tag.Widget as Widget
+import Bubblegum.Preview.Adapter as Adapter
+import Bubblegum.Preview.Widget as Widget
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Entity.Attribute as Attribute
 
 
 type TestMsg
-    = OnSearchInput String
-    | OnToggleDropbox
-    | OnAddTag String
-    | OnDeleteTag String
+    = OnMouseOver String
 
 attr: String -> String -> Attribute.Model
 attr key value =
@@ -40,10 +37,7 @@ attr key value =
 
 adapter : Adapter.Model TestMsg
 adapter =  =
-        { onSearchInput = OnSearchInput
-        , onToggleDropbox = OnToggleDropbox
-        , onAddTag = OnAddTag
-        , onDeleteTag = OnDeleteTag
+        { onMouseOver = OnMouseOver
         }
 
 userSettings: SettingsEntity.Model
@@ -56,15 +50,14 @@ userSettings = {
 settings: SettingsEntity.Model
 settings = {
     attributes = [
-        attr "ui:label" "Label for field"
-    ] ++ getExampleAttributes -- see tests/WidgetTestData
+        attr "ui:content-appearance" "ui:content-appearance/block-quote"
+    ]
  }
 
 state: StateEntity.Model
 state = {
     attributes = [
-        attr ui_suggesting "true"
-        , attrs ui_selected [ "id:suggestion:1", "id:suggestion:3" ]
+        attr "ui:content" "Some story"
         ]
  }
 
@@ -76,36 +69,18 @@ state = {
 
 ### User Settings
 
- * **ui:content-right-to-left** : Whether the content requires right to left (Bool)
  * **ui:user-language** : Language used by the user (String)
  * **ui:user-right-to-left** : Whether the user is using right to left (Bool)
 
 ### Settings
 
- * **ui:suggestion** : The list of suggested tags for the field (List String)
- * **ui:help** : Some help tip related to the field (String)
- * **ui:label** : Label related to the field (String)
- * **ui:search-label** : Label related to the search field (String)
- * **ui:success-minimum-tags** : The minimum number of tags needed for successful content (Int)
- * **ui:success-maximum-tags** : The maximum number of tags needed for successful content (Int)
- * **ui:danger-minimum-tags** : Warning when under the minimum number of tags (Int)
- * **ui:danger-maximum-tags** : Warning when over the maximum number of tags (Int)
-
-And for each suggestion, you need to describe further:
-
- * **ui:constituent-label** : Label of the constituent (String)
- * **ui:constituent-description** : Description of the constituent (String)
- * **ui:constituent-tag** : Tag used to describe the constituent (List String)
- * **ui:constituent-warning-tag** : Tag representing a warning aspect of the constituent (List String)
- * **ui:constituent-danger-tag** : Tag representing a dangerous aspect of the constituent (List String)
-
-### State
-
- * **ui:selected** : The selected tags for the field (List String)
- * **ui:suggesting** : Suggesting is currently happening (Bool)
- * **ui:search** : Search term for filtering the available options (String)
- * **ui:danger-help** : Help message to highlight an issue with the content (String)
+ * **ui:content-appearance** : The appearance of the field content (String)
  
+### State
+ 
+ * **ui:content-id** : The unique id of the content (String)
+ * **ui:content** : The content of the field (String)
+
 ## Technical design
 
 See [Technical design](TECHNICAL_DESIGN.md)

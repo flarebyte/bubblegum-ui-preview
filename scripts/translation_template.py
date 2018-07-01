@@ -4,7 +4,7 @@
 ## Language
 
 headerLanguage = """
-module Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
+module Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 
 {-| Utility to identify ISO languages
 
@@ -38,7 +38,7 @@ footerLanguage = """
 ## I18n
 
 headerI18n = """
-module Bubblegum.Tag.Internationalization exposing (..)
+module Bubblegum.Preview.Internationalization exposing (..)
 
 {-| Utility to translate some of the text used by the widget
  
@@ -47,7 +47,7 @@ module Bubblegum.Tag.Internationalization exposing (..)
 -}
 
 import Tuple exposing (first, second)
-import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
+import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
 
 pickSingularOrPlural: Int -> (String, String) -> String
 pickSingularOrPlural howMany singularOrPlural =

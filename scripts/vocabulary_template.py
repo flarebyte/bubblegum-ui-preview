@@ -66,6 +66,30 @@ get$nameCamel settings =
         $rangeRestriction
 """
 
+templateVocabularyHelperEnum = """
+type Enum$nameCamel = $typeEnumeration | Unknown$nameCamel
+
+enum$nameCamel : List String
+enum$nameCamel = [
+       $enumeration 
+    ]    
+
+stringToEnum$nameCamel : String -> Enum$nameCamel
+stringToEnum$nameCamel value =
+    case value of
+        $typeEnumerationFromString
+        _ ->
+            Unknown$nameCamel
+
+{-|  $description -}
+get$nameCamel : $entity.Model -> Outcome Enum$nameCamel
+get$nameCamel settings =
+    findString ui_$namecamel settings.attributes
+        |> Validation.matchEnum enum$nameCamel
+        |> Outcome.map stringToEnum$nameCamel
+
+"""
+
 templateVocabularyHelperStringForId = """
 {-|  $description -}
 get$nameCamel : $entity.Model -> String -> Outcome String
@@ -220,7 +244,7 @@ templateWidgetCreateTestsStateWrongAttr = """
 
 templateTemp = ""
 
-checkTemplateTestData = "fuzzy$nameCamel"
+checkTemplateTestData = "fuzzy$nameCamel :"
 
 templateTestData = """
 -- $description

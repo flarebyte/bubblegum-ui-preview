@@ -5,6 +5,7 @@ import csv
 from string import Template
 from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv, readFileAsString
 from vocabulary_template import * 
+from vocabulary_meta import * 
 
 ui_keys_csv = "ui-keys.csv"
 ui_range_keys_csv = "ui-range-keys.csv"
@@ -19,7 +20,17 @@ def formatTemplate(template, row):
         namecamel = camelCase(name)
         nameCamel = camelCaseUpper(name)
         rangeRestriction=checkRangeRestriction(extra)
-        examples = generateExamples(examplesField, signature)
+        enumeration = None
+        typeEnumeration = None
+        typeEnumerationFromString = None
+        if name in enumerations:
+            parts = ["\"{}\"".format(a) for a in enumerations[name]]
+            enumeration = ",".join(parts)
+            typeParts = ["{}".format(camelCaseUpper(a)) for a in enumerations[name]]
+            typeEnumeration = "|".join(typeParts)
+            typeEnumerationFromStringParts = ["\"{}\" -> {}".format(a, camelCaseUpper(a)) for a in enumerations[name]]
+            typeEnumerationFromString = "\n        ".join(typeEnumerationFromStringParts)
+        examples = generateExamples(examplesField, signature, enumeration)
         entity = "SettingsEntity"
         if isState(row):
             entity = "StateEntity" 
@@ -31,7 +42,10 @@ def formatTemplate(template, row):
             nameCamel=nameCamel,
             rangeRestriction=rangeRestriction,
             examples = examples,
-            entity = entity
+            entity = entity,
+            enumeration = enumeration,
+            typeEnumeration = typeEnumeration,
+            typeEnumerationFromString = typeEnumerationFromString
             )
 
 def formatRangeTemplate(template, row):
@@ -86,7 +100,10 @@ def createVocabularyHelper():
             if isBool(row):
                 file.write(formatTemplate(templateVocabularyHelperBool, row))
             if isString(row):
-                file.write(formatTemplate(templateVocabularyHelperString, row))
+                if isEnum(row):
+                    file.write(formatTemplate(templateVocabularyHelperEnum, row))
+                else:
+                    file.write(formatTemplate(templateVocabularyHelperString, row))
             if isListString(row):
                 if isCurieList(row):
                     file.write(formatTemplate(templateVocabularyHelperListCurie, row))
@@ -231,6 +248,13 @@ def isAttribute(row):
     else:
         return False
 
+def isEnum(row):
+    nameField, descriptionField, signatureField, extraField, examplesField = row
+    if  "enum" in extraField:
+        return True
+    else:
+        return False
+
 def isSettings(row):
     return not (isUserSettings(row) or isState(row))        
 
@@ -258,11 +282,13 @@ def checkRangeRestriction(extra):
     else:
         return ""
 
-def generateExamples(suggested, signature):
+def generateExamples(suggested, signature, enumExamples):
     if (signature == "Bool"):
         return quoteArray(["true", "false", "other"])
     elif (signature == "Int"):
         return quoteArray(["0", "2", "4", "8", "16", "32", "-5"])
+    elif (signature == "String") and enumExamples is not None:
+        return enumExamples
     elif (suggested is not None):
         suggestions = suggested.strip().split(";")
         suggestions.append("other")

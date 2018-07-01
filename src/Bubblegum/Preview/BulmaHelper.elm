@@ -1,14 +1,10 @@
 module Bubblegum.Preview.BulmaHelper
     exposing
-        ( appendHtmlIfSuccess
-        , dangerHelp
-        , dropdownActiveStatus
-        , infoHelp
+        ( ListPreviewType(..)
+        , appendHtmlIfSuccess
+        , contentBox
         , mainBox
-        , searchDropdown
-        , selectedTags
-        , suggestionDropdown
-        , widgetLabel
+        , previewText
         )
 
 {-| The Bulma css framework is used for styling the widget.
@@ -20,34 +16,36 @@ This helper facilitates the creation of Bulma styled html elements.
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
-import Bubblegum.Entity.SettingsEntity as SettingsEntity
-import Bubblegum.Entity.StateEntity as StateEntity
+import Bubblegum.Entity.Validation as Validation
 import Bubblegum.Preview.Adapter as TagAdapter
-import Bubblegum.Preview.Helper
+import Bubblegum.Preview.VocabularyHelper exposing (EnumContentAppearance(..))
+import Html as Html
     exposing
-        ( ProgressStatus(..)
-        , dangerRange
-        , getSelectedAsList
-        , getUserIsoLanguage
-        , successRange
-        , tagStyle
-        , textStyle
-        , themeProgress
+        ( Attribute
+        , Html
+        , article
+        , blockquote
+        , code
+        , div
+        , h1
+        , h2
+        , h3
+        , h4
+        , h5
+        , h6
+        , p
+        , pre
+        , samp
+        , text
         )
-import Bubblegum.Preview.Internationalization exposing (translateDangerTag, translateInfoTag, translateWarningTag)
-import Bubblegum.Preview.IsoLanguage exposing (IsoLanguage(..))
-import Bubblegum.Preview.VocabularyHelper exposing (..)
-import Debug
-import Html exposing (..)
-import Html.Attributes as Attributes exposing (..)
-import Html.Events exposing (onClick, onInput)
+import Html.Attributes as Attributes exposing (attribute, class, dir, lang)
+import Html.Events exposing (onMouseOver)
 import List
-import String exposing (join)
 
 
 {-| Append some html code when the outcome is successful otherwise hide a warning in the html
 -}
-appendHtmlIfSuccess : (a -> Html.Html msg) -> Outcome a -> List (Html.Html msg) -> List (Html.Html msg)
+appendHtmlIfSuccess : (a -> Html msg) -> Outcome a -> List (Html msg) -> List (Html msg)
 appendHtmlIfSuccess ifSuccess outcome htmlList =
     case outcome of
         None ->
@@ -62,7 +60,7 @@ appendHtmlIfSuccess ifSuccess outcome htmlList =
 
 {-| Append a list of html code when the outcome is successful otherwise hide a warning in the html
 -}
-appendListHtmlIfSuccess : (a -> List (Html.Html msg)) -> Outcome a -> List (Html.Html msg) -> List (Html.Html msg)
+appendListHtmlIfSuccess : (a -> List (Html msg)) -> Outcome a -> List (Html msg) -> List (Html msg)
 appendListHtmlIfSuccess ifSuccess outcome htmlList =
     case outcome of
         None ->
@@ -94,117 +92,6 @@ appendAttributeIfSuccess ifSuccess outcome attributes =
 -- Various helpers
 
 
-type alias StyledText =
-    { text : String
-    , style : String
-    , title : String
-    }
-
-
-asClass : List String -> Attribute msg
-asClass list =
-    List.reverse list |> join " " |> class
-
-
-asClass2 : String -> String -> Attribute msg
-asClass2 a b =
-    [ b, a ] |> asClass
-
-
-tag : StyledText -> Html msg
-tag tagInfo =
-    span [ asClass2 "tag" tagInfo.style, Attributes.title tagInfo.title ]
-        [ text tagInfo.text ]
-
-
-tags : List (Html msg) -> Html msg
-tags list =
-    div [ class "tags" ] list
-
-
-tagsGroup : SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> List (Html msg) -> Html msg
-tagsGroup userSettings settings state list =
-    let
-        userIsoLanguage =
-            getUserIsoLanguage userSettings
-
-        numberOfTags =
-            getSelectedAsList state |> List.length
-
-        themeBasedOnRange =
-            themeProgress (Outcome.map2 successRange (Valid numberOfTags) <| getSuccessTagRange settings)
-                (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
-
-        addNumberTag : Outcome StyledText
-        addNumberTag =
-            themeBasedOnRange
-                |> Outcome.map tagStyle
-                |> Outcome.map (coloredText userIsoLanguage (toString numberOfTags))
-
-        addDotStyle : Outcome String
-        addDotStyle =
-            themeBasedOnRange |> Outcome.map textStyle
-    in
-    div []
-        [ div [ class "field is-grouped is-grouped-multiline" ] list
-        , div []
-            [ p [ class "is-size-6" ]
-                (([] |> appendHtmlIfSuccess tag addNumberTag)
-                    ++ [ span [] [ text " " ]
-                       , span ([] |> appendAttributeIfSuccess class addDotStyle) [ text (String.repeat numberOfTags "•") ]
-                       ]
-                )
-            ]
-        ]
-
-
-infoText : IsoLanguage -> String -> StyledText
-infoText userIsoLanguage text =
-    { text = text
-    , style = "is-dark"
-    , title = translateInfoTag userIsoLanguage
-    }
-
-
-coloredText : IsoLanguage -> String -> String -> StyledText
-coloredText userIsoLanguage text style =
-    { text = text
-    , style = style
-    , title = translateInfoTag userIsoLanguage
-    }
-
-
-warningTagText : IsoLanguage -> String -> StyledText
-warningTagText userIsoLanguage text =
-    { text = text
-    , style = "is-warning"
-    , title = translateWarningTag userIsoLanguage
-    }
-
-
-dangerTagText : IsoLanguage -> String -> StyledText
-dangerTagText userIsoLanguage text =
-    { text = text
-    , style = "is-danger"
-    , title = translateDangerTag userIsoLanguage
-    }
-
-
-tagsInfo : IsoLanguage -> List String -> List (Html msg)
-tagsInfo userIsoLanguage list =
-    list |> List.map (infoText userIsoLanguage) |> List.map tag
-
-
-tagsWarning : IsoLanguage -> List String -> List (Html msg)
-tagsWarning userIsoLanguage list =
-    list |> List.map (warningTagText userIsoLanguage) |> List.map tag
-
-
-tagsDanger : IsoLanguage -> List String -> List (Html msg)
-tagsDanger userIsoLanguage list =
-    list |> List.map (dangerTagText userIsoLanguage) |> List.map tag
-
-
 rtlOrLtr : Bool -> String
 rtlOrLtr value =
     if value then
@@ -213,153 +100,121 @@ rtlOrLtr value =
         "ltr"
 
 
-mainBox : Outcome String -> Outcome Bool -> List (Html msg) -> Html msg
-mainBox language rtl list =
+mainBox : TagAdapter.Model msg -> Outcome String -> Outcome Bool -> Outcome String -> List (Html msg) -> Html msg
+mainBox adapter language rtl id list =
+    let
+        idOrBlank =
+            Outcome.toMaybe id |> Maybe.withDefault ""
+    in
     div
-        ([ class "bubblegum-tag__widget box is-marginless is-paddingless is-shadowless" ]
+        ([ class "bubblegum-preview__widget box is-marginless is-paddingless is-shadowless", onMouseOver (adapter.onMouseOver idOrBlank) ]
             |> appendAttributeIfSuccess lang language
             |> appendAttributeIfSuccess dir (rtl |> Outcome.map rtlOrLtr)
+            |> appendAttributeIfSuccess (attribute "data-bubblegum-id") id
         )
         list
 
 
-widgetLabel : String -> Html msg
-widgetLabel widgetText =
-    label [ class "label" ] [ text widgetText ]
+contentBox : List (Html msg) -> Html msg
+contentBox list =
+    div [ class "content" ] list
 
 
-infoHelp : String -> Html msg
-infoHelp helpText =
-    p [ asClass2 "help" "is-info" ]
-        [ text helpText ]
+type ListPreviewType
+    = OrderedListDecimal
+    | OrderedListAlphabeticUpper
+    | OrderedListAlphabeticLower
+    | OrderedListRomanUpper
+    | OrderedListRomanLower
+    | BulletedList
 
 
-dangerHelp : String -> Html msg
-dangerHelp helpText =
-    p [ asClass2 "help" "is-danger" ]
-        [ text helpText ]
+getWarningMessage : Outcome a -> String
+getWarningMessage outcome =
+    case outcome of
+        Warning msg ->
+            msg
+
+        _ ->
+            ""
 
 
-searchDropdown : Outcome String -> TagAdapter.Model msg -> Html msg
-searchDropdown searchLabel adapter =
-    div [ class "dropdown-trigger" ]
-        [ div [ class "level" ]
-            [ div [ class "field has-addons" ]
-                [ p [ class "control has-icons-left" ]
-                    [ input [ class "input", onInput adapter.onSearchInput ]
-                        []
-                    , span [ class "icon is-small is-left" ]
-                        [ i [ class "fas fa-search" ]
-                            []
-                        ]
-                    ]
-                , p [ class "control" ]
-                    [ button
-                        [ attribute "aria-haspopup" "true"
-                        , class "button"
-                        , onClick adapter.onToggleDropbox
-                        ]
-                        [ span []
-                            ([] |> appendHtmlIfSuccess text searchLabel)
-                        , span [ class "icon is-small" ]
-                            [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
-                                []
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
+paragraph : String -> Html.Html msg
+paragraph someText =
+    p [] [ text someText ]
 
 
-dropdownMenu : SettingsEntity.Model -> List (Html msg) -> Html msg
-dropdownMenu userSettings list =
+paragraphs : Outcome (List String) -> List (Html.Html msg)
+paragraphs outcome =
+    [] |> appendListHtmlIfSuccess (\strings -> List.map paragraph strings) outcome
+
+
+previewText : Outcome EnumContentAppearance -> Outcome String -> Html msg
+previewText outcomeTextType contentOutcome =
     let
-        addContentRtl =
-            appendAttributeIfSuccess dir <| (isContentRightToLeft userSettings |> Outcome.map rtlOrLtr)
+        textType =
+            outcomeTextType |> Outcome.toMaybe |> Maybe.withDefault UnknownContentAppearance
+
+        linesOutcome =
+            Outcome.map String.lines contentOutcome
+
+        isSingleLine =
+            Validation.listEqual 1 linesOutcome |> Outcome.isValid
     in
-    div [ class "dropdown-menu", attribute "role" "menu" ]
-        [ div ([ class "dropdown-content scrollable" ] |> addContentRtl) list
-        ]
+    case textType of
+        UiContentAppearanceBlockQuote ->
+            if isSingleLine then
+                blockquote [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            else
+                blockquote [] (paragraphs linesOutcome)
 
+        UiContentAppearanceParagraphs ->
+            if isSingleLine then
+                p [] ([] |> appendHtmlIfSuccess text contentOutcome)
+            else
+                div [] (paragraphs linesOutcome)
 
-suggestionDropdown : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> Outcome (List String) -> Html msg
-suggestionDropdown adapter userSettings settings outcomeSuggestionIds =
-    let
-        userIsoLanguage =
-            getUserIsoLanguage userSettings
+        UiContentAppearanceDark ->
+            article [ class "message is-dark" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
-        anySuggestionTag =
-            suggestionTag adapter userIsoLanguage settings
+        UiContentAppearancePrimary ->
+            article [ class "message is-primary" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
-        addSuggestions =
-            appendListHtmlIfSuccess (\list -> List.map anySuggestionTag list) outcomeSuggestionIds
-    in
-    ([] |> addSuggestions) |> dropdownMenu userSettings
+        UiContentAppearanceInfo ->
+            article [ class "message is-info" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
+        UiContentAppearanceSuccess ->
+            article [ class "message is-success" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
-suggestionTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
-suggestionTag adapter userIsoLanguage settings id =
-    let
-        addLabel =
-            appendHtmlIfSuccess text (getConstituentLabel settings id)
+        UiContentAppearanceWarning ->
+            article [ class "message is-warning" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
-        addDescription =
-            appendHtmlIfSuccess text (getConstituentDescription settings id)
+        UiContentAppearanceDanger ->
+            article [ class "message is-danger" ] [ div [ class "message-body" ] (paragraphs linesOutcome) ]
 
-        addTagsInfo =
-            appendListHtmlIfSuccess (tagsInfo userIsoLanguage) (getConstituentTag settings id)
+        UiContentAppearanceHeaderOne ->
+            h1 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-        addTagsWarning =
-            appendListHtmlIfSuccess (tagsWarning userIsoLanguage) (getConstituentWarningTag settings id)
+        UiContentAppearanceCode ->
+            pre [] [ code [] ([] |> appendHtmlIfSuccess text contentOutcome) ]
 
-        addTagsDanger =
-            appendListHtmlIfSuccess (tagsDanger userIsoLanguage) (getConstituentDangerTag settings id)
-    in
-    a [ class "dropdown-item" ]
-        [ div [ onClick (adapter.onAddTag id) ]
-            [ div [] [ span [ class "is-size-6" ] ([] |> addLabel) ]
-            , div [] [ span [ class "is-size-7 has-text-info" ] ([] |> addDescription) ]
-            , tags ([] |> addTagsDanger |> addTagsWarning |> addTagsInfo)
-            ]
-        ]
+        UiContentAppearanceSample ->
+            pre [] [ samp [] ([] |> appendHtmlIfSuccess text contentOutcome) ]
 
+        UiContentAppearanceHeaderTwo ->
+            h2 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-dropdownActiveStatus : Bool -> Attribute msg
-dropdownActiveStatus value =
-    if value then
-        asClass2 "dropdown" "is-active"
-    else
-        class "dropdown"
+        UiContentAppearanceHeaderThree ->
+            h3 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
+        UiContentAppearanceHeaderFour ->
+            h4 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
+        UiContentAppearanceHeaderFive ->
+            h5 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
--- selected
+        UiContentAppearanceHeaderSix ->
+            h6 [] ([] |> appendHtmlIfSuccess text contentOutcome)
 
-
-selectedTag : TagAdapter.Model msg -> SettingsEntity.Model -> String -> Html msg
-selectedTag adapter settings id =
-    let
-        addLabel =
-            appendHtmlIfSuccess text (getConstituentLabel settings id)
-
-        addDescription =
-            appendAttributeIfSuccess title (getConstituentDescription settings id)
-    in
-    div [ class "control" ]
-        [ div [ class "tags has-addons", onClick (adapter.onDeleteTag id) ]
-            [ span ([ class "tag is-primary" ] |> addDescription)
-                ([] |> addLabel)
-            , span [ class "tag is-delete" ]
-                []
-            ]
-        ]
-
-
-selectedTags : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
-selectedTags adapter userSettings settings state =
-    let
-        selectedIds =
-            getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
-    in
-    selectedIds |> List.map (\id -> selectedTag adapter settings id) |> tagsGroup userSettings settings state
+        UnknownContentAppearance ->
+            h6 [ class "is-invisible warning" ] [ text (getWarningMessage outcomeTextType) ]
